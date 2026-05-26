@@ -44,4 +44,4 @@ After Codex finishes, return to Claude Code and ask for a review against the bri
 
 ## Current phase pointer
 
-The active phase is tracked in [`.claude/skills/write-paralives-article/references/site-quality-target.md`](./.claude/skills/write-paralives-article/references/site-quality-target.md) Section 6. Read that before proposing structural work.
+The active phase is tracked in `.claude/skills/write-paralives-article/references/site-quality-target.md` Section 6 — a local-only doc (`.claude/` is gitignored, so this file is not in the public mirror). Read it on the maintainer's working tree before proposing structural work.
