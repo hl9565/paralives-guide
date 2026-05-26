@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+# Sitemap will be added in Phase 1.5 once translation pipeline emits it.

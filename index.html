@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paralives Guide — Fan resource for the cozy life sim</title>
+  <meta name="description" content="Paralives Guide is a fan resource for Paralives, the cozy life-sim from Paralives Studio. Build guides, character creation, traits, and community house designs — all updated against the current Early Access build.">
+  <link rel="canonical" href="https://paralivesguide.help/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- TODO: Uncomment and populate after AdSense approval.
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=[[ADSENSE_CLIENT]]" crossorigin="anonymous"></script>
+  -->
+  <style>
+    :root {
+      --cream:      #fdf6ec;
+      --pink:       #f4c8c0;
+      --pink-deep:  #e89a8e;
+      --sage:       #b8c9a7;
+      --sage-deep:  #7a9269;
+      --ink:        #3d3530;
+      --ink-soft:   #6b5d54;
+      --line:       #ead9c8;
+      --shadow:     0 4px 16px rgba(61, 53, 48, 0.06);
+      --shadow-hover: 0 8px 28px rgba(61, 53, 48, 0.12);
+
+      --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+      --font-body:    "Inter", -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--cream);
+    }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(253, 246, 236, 0.94);
+      backdrop-filter: blur(12px);
+    }
+
+    .brand {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 18px 0;
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .brand span {
+      color: var(--pink-deep);
+    }
+
+    .wrap {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 88px 0 112px;
+    }
+
+    .hero {
+      max-width: 760px;
+      padding: 48px clamp(24px, 5vw, 56px);
+      border: 1px solid rgba(232, 154, 142, 0.22);
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top left, rgba(244, 200, 192, 0.32), transparent 36%),
+        linear-gradient(180deg, rgba(255, 251, 246, 0.72), rgba(253, 246, 236, 0.96));
+      box-shadow: var(--shadow);
+    }
+
+    .kicker {
+      margin: 0 0 14px;
+      color: var(--sage-deep);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      margin: 0 0 18px;
+      font-size: clamp(3rem, 9vw, 5.4rem);
+      line-height: 0.95;
+    }
+
+    .lede {
+      margin: 0;
+      max-width: 36rem;
+      color: var(--ink-soft);
+      font-size: clamp(1.05rem, 2.6vw, 1.25rem);
+    }
+
+    .lede em {
+      font-style: italic;
+      color: var(--ink);
+    }
+
+    .note {
+      margin: 24px 0 0;
+      color: var(--ink-soft);
+      font-size: 0.98rem;
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 16px 44px;
+    }
+
+    .site-footer .brand,
+    .site-footer .disclaimer,
+    .site-footer .lang-switcher {
+      width: min(1120px, 100%);
+      margin: 0 auto;
+    }
+
+    .site-footer .brand {
+      padding: 0;
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .disclaimer {
+      margin: 0;
+      max-width: 54rem;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+    }
+
+    .lang-switcher {
+      min-height: 1.5rem;
+      margin-top: 18px;
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        padding: 56px 0 80px;
+      }
+
+      .hero {
+        padding: 32px 22px;
+        border-radius: 22px;
+      }
+
+      .brand {
+        width: min(1120px, calc(100% - 24px));
+        padding: 16px 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><a href="/">Paralives<span> </span>Guide</a></div>
+    <!-- nav added in Phase 1 — do not add placeholder links here -->
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <p class="kicker">A fan resource</p>
+      <h1>Paralives Guide</h1>
+      <p class="lede">
+        A cozy, opinionated, build-aware companion for <em>Paralives</em>, the indie life sim
+        from Paralives Studio. Guides, databases, and small tools — fully open, written by
+        players who actually log the hours.
+      </p>
+      <p class="note">
+        The site is just getting started. Hubs and the first guides arrive in the next update.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="brand">Paralives<span> </span>Guide</div>
+    <p class="disclaimer">
+      Paralives is a trademark of Paralives Studio. This is an unaffiliated fan resource;
+      nothing here is endorsed by or affiliated with Paralives Studio.
+    </p>
+    <!-- language switcher slot — empty at Phase 0, populated in Phase 1.5 -->
+    <div class="lang-switcher" aria-hidden="true"></div>
+  </footer>
+</body>
+</html>
