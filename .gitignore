@@ -8,3 +8,4 @@ __pycache__/
 *.swo
 Thumbs.db
 .claude/
+briefs/
