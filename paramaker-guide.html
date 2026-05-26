@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paralives Paramaker Guide | Paralives Guide</title>
+  <meta name="description" content="Get oriented in the Paralives Paramaker with a verified character-creation overview, clear scope notes, and visible placeholders where checks are still needed.">
+  <link rel="canonical" href="https://paralivesguide.help/paramaker-guide.html">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is Paramaker in Paralives?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Paramaker is the Paralives character creator, where you shape a Para's look before taking them into live mode."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you trust every old Paramaker preview still circulating online?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Older dev previews are useful context, but any feature shown there still needs to be checked against the current Early Access build before it is treated as live."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this guide list every trait and body option already?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Detailed option counts and exact trait interactions are left marked for follow-up until they can be verified directly in the live build."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What page should I watch if I want structured trait data later?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Watch the planned Database hub, which is where the future Traits database will live once the first verified rows are ready."
+          }
+        }
+      ]
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- TODO: Uncomment and populate after AdSense approval.
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=[[ADSENSE_CLIENT]]" crossorigin="anonymous"></script>
+  -->
+  <style>
+    :root {
+      --cream:      #fdf6ec;
+      --pink:       #f4c8c0;
+      --pink-deep:  #e89a8e;
+      --sage:       #b8c9a7;
+      --sage-deep:  #7a9269;
+      --ink:        #3d3530;
+      --ink-soft:   #6b5d54;
+      --line:       #ead9c8;
+      --shadow:     0 4px 16px rgba(61, 53, 48, 0.06);
+      --shadow-hover: 0 8px 28px rgba(61, 53, 48, 0.12);
+      --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+      --font-body:    "Inter", -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+      --accent-gd: var(--pink-deep);
+      --accent-db: var(--sage-deep);
+      --accent-tl: var(--pink);
+      --accent-hs: var(--sage);
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--cream); }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    a { color: inherit; text-decoration: none; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(253, 246, 236, 0.94);
+      backdrop-filter: blur(12px);
+    }
+    .topbar-inner,
+    .wrap,
+    .site-footer-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0;
+    }
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    .brand span { color: var(--pink-deep); }
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .topnav a {
+      position: relative;
+      font-size: 0.96rem;
+      color: var(--ink-soft);
+    }
+    .topnav a[aria-current="page"]::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -3px;
+      height: 2px;
+      background: var(--pink-deep);
+      border-radius: 999px;
+    }
+    .wrap { padding: 56px 0 112px; }
+    .crumb {
+      margin-bottom: 18px;
+      color: var(--ink-soft);
+      font-size: 0.94rem;
+    }
+    article {
+      max-width: 820px;
+      padding: 34px clamp(22px, 4vw, 40px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255, 251, 246, 0.88);
+      box-shadow: var(--shadow);
+    }
+    .kicker {
+      margin: 0 0 12px;
+      color: var(--accent-gd);
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.02;
+    }
+    .byline {
+      margin-bottom: 22px;
+      color: var(--ink-soft);
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+      letter-spacing: 0.04em;
+    }
+    article p { margin: 0 0 16px; }
+    .toc,
+    .factbox,
+    .note,
+    .ad-slot,
+    .related a {
+      border-radius: 20px;
+    }
+    .toc {
+      margin: 28px 0;
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      background: rgba(244, 200, 192, 0.16);
+    }
+    .toc h2 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+    .toc ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .toc a { color: var(--sage-deep); }
+    .sec {
+      margin-top: 34px;
+      margin-bottom: 14px;
+      font-size: 1.85rem;
+    }
+    .factbox {
+      margin: 26px 0;
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      background: rgba(255, 251, 246, 0.9);
+      box-shadow: var(--shadow);
+    }
+    .factbox h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+    .factbox table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .factbox td {
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      vertical-align: top;
+    }
+    .factbox tr:first-child td { border-top: 0; }
+    .factbox td:first-child {
+      width: 38%;
+      color: var(--ink-soft);
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+    }
+    .note {
+      margin: 22px 0;
+      padding: 16px 18px;
+      background: rgba(184, 201, 167, 0.22);
+      color: var(--ink);
+    }
+    .ad-slot {
+      margin: 28px 0;
+      padding: 18px;
+      border: 1px dashed var(--line);
+      background: rgba(253, 246, 236, 0.9);
+      color: var(--ink-soft);
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .faq details {
+      padding: 16px 0;
+      border-top: 1px solid var(--line);
+    }
+    .faq details:first-child { border-top: 0; }
+    .faq summary {
+      cursor: pointer;
+      font-weight: 600;
+      list-style: none;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq p {
+      margin: 10px 0 0;
+      color: var(--ink-soft);
+    }
+    .related {
+      margin-top: 28px;
+    }
+    .related h2 {
+      margin: 0 0 16px;
+      font-size: 1.7rem;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .related-grid a {
+      grid-column: span 4;
+      display: block;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--accent-gd);
+      background: rgba(255, 251, 246, 0.9);
+      box-shadow: var(--shadow);
+    }
+    .related-grid .t {
+      margin-bottom: 10px;
+      color: var(--accent-gd);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .related-grid .h {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+    }
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 44px;
+    }
+    .site-footer .brand {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    .disclaimer {
+      margin: 0;
+      max-width: 54rem;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+    }
+    .lang-switcher {
+      min-height: 1.5rem;
+      margin-top: 18px;
+    }
+    @media (max-width: 860px) {
+      .related-grid a { grid-column: span 12; }
+    }
+    @media (max-width: 640px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+      .topnav {
+        justify-content: flex-start;
+        gap: 14px 18px;
+      }
+      .topbar-inner,
+      .wrap,
+      .site-footer-inner {
+        width: min(1120px, calc(100% - 24px));
+      }
+      article {
+        padding: 28px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><a href="index.html">Paralives<span> </span>Guide</a></div>
+      <nav class="topnav" aria-label="Primary">
+        <a href="guides.html" aria-current="page">Guides</a>
+        <a href="database.html">Database</a>
+        <a href="tools.html">Tools</a>
+        <a href="houses.html">Houses</a>
+        <a href="index.html#updates">Updates</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
+  </header>
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Home</a> &nbsp;/&nbsp; <a href="guides.html">Guides</a> &nbsp;/&nbsp; Paramaker guide</div>
+    <article>
+      <div class="kicker">GD-02 · GUIDES</div>
+      <h1>Paramaker guide</h1>
+      <div class="byline">Updated 2026-05-26 &nbsp;·&nbsp; Paralives Guide &nbsp;·&nbsp; 6 min read</div>
+      <p><span translate="no">Paramaker</span> is the part of <span translate="no">Paralives</span> where a new <span translate="no">Para</span> starts to feel like a person instead of a blank preset. This guide is here to orient you without pretending every old preview clip equals a shipped feature.</p>
+      <p>The character-creation layer has years of dev-history behind it, so the safest approach is to separate the broad confirmed shape from the fine-grain details that still need direct Early Access verification.</p>
+      <nav class="toc">
+        <h2>In this guide</h2>
+        <ol>
+          <li><a href="#what-it-is">What Paramaker is for</a></li>
+          <li><a href="#shape">How the creator is described publicly</a></li>
+          <li><a href="#traits">Where traits and personality fit</a></li>
+          <li><a href="#workflow">A calm way to approach a first Para</a></li>
+          <li><a href="#uncertain">What still needs direct build checks</a></li>
+        </ol>
+      </nav>
+
+      <h2 class="sec" id="what-it-is">What Paramaker is for</h2>
+      <p>At the simplest level, <span translate="no">Paramaker</span> is the game's character creator. It is where you shape appearance, identity, and the broad frame of who a <span translate="no">Para</span> is before everyday life takes over in live mode.</p>
+      <p>That sounds ordinary on paper, but it matters because character creators in life sims tend to become shorthand for the whole game's tone. If the creator feels flexible and readable, the rest of the simulation usually feels easier to trust.</p>
+
+      <div class="factbox">
+        <h3>What is safe to say right now</h3>
+        <table>
+          <tr><td>Confirmed role</td><td><span translate="no">Paramaker</span> is the <span translate="no">Paralives</span> character-creation tool.</td></tr>
+          <tr><td>Best source type</td><td>Official studio posts and live build checks.</td></tr>
+          <tr><td>Risk area</td><td>Older preview clips that fans repeat as if every detail shipped unchanged.</td></tr>
+          <tr><td>Next structured companion</td><td><a href="database.html">Database hub</a> for the future Traits database.</td></tr>
+        </table>
+      </div>
+
+      <div class="ad-slot">[ ad slot — responsive in-article ]</div>
+
+      <h2 class="sec" id="shape">How the creator is described publicly</h2>
+      <p>Official studio material presents <span translate="no">Paramaker</span> as a flexible creator built around expressive customization rather than a tiny set of locked presets. That high-level promise is solid enough to write down. The fragile part is any exact list of sliders, panels, or sub-menus unless it has been confirmed in the public build.</p>
+      <p>For that reason, this guide stays broad on purpose. It aims to help you understand the creator's shape, not to fake certainty about every click path.</p>
+
+      <h2 class="sec" id="traits">Where traits and personality fit</h2>
+      <p>Character creation in a life sim is not just a face-maker; it is also the point where future social chemistry starts to take shape. Traits matter here because they eventually affect how a <span translate="no">Para</span> behaves, who they clash with, and how a household feels once you leave the creator.</p>
+      <p>The site will break that out properly once the first verified trait rows exist. Until then, the clean next stop is the planned <a href="database.html">Database hub</a>, which is reserved for a traits-first rollout rather than a made-up full list.</p>
+
+      <div class="note"><b>FILL IN:</b> Confirm the exact number of trait slots, any aspiration-equivalent systems, and whether relationship presets are set directly inside the live Early Access build.</div>
+
+      <h2 class="sec" id="workflow">A calm way to approach a first Para</h2>
+      <p>Start with the broad silhouette of the person you want to play, then layer details in a second pass. In practice that usually means landing the overall look first, then circling back to name, traits, and any contextual details that only make sense once the character already feels grounded.</p>
+      <p>This is also where life-sim muscle memory can help or mislead. If you come from <span translate="no">The Sims</span>, some instincts will transfer, but it is worth leaving room for <span translate="no">Paralives</span> to structure personality a little differently once the build settles.</p>
+
+      <h2 class="sec" id="uncertain">What still needs direct build checks</h2>
+      <p>Any exact option counts, hidden compatibility rules, or claims about how trait combinations behave in live play should be treated as open until tested. That is not a weakness in the guide; it is the point of the guide. Clear uncertainty is better than confident drift.</p>
+      <div class="note"><b>Status:</b> Some long-circulating creator features were shown in earlier studio previews. If a feature appears in preview footage but is not confirmed in the current Early Access build, it should stay in this status lane rather than being described as shipped.</div>
+
+      <div class="ad-slot">[ ad slot — responsive in-article ]</div>
+
+      <h2 class="sec" id="faq">FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>What is Paramaker in Paralives?</summary>
+          <p>Paramaker is the Paralives character creator, where you shape a Para's look before taking them into live mode.</p>
+        </details>
+        <details>
+          <summary>Can you trust every old Paramaker preview still circulating online?</summary>
+          <p>No. Older dev previews are useful context, but any feature shown there still needs to be checked against the current Early Access build before it is treated as live.</p>
+        </details>
+        <details>
+          <summary>Does this guide list every trait and body option already?</summary>
+          <p>No. Detailed option counts and exact trait interactions are left marked for follow-up until they can be verified directly in the live build.</p>
+        </details>
+        <details>
+          <summary>What page should I watch if I want structured trait data later?</summary>
+          <p>Watch the planned Database hub, which is where the future Traits database will live once the first verified rows are ready.</p>
+        </details>
+      </div>
+    </article>
+
+    <section class="related">
+      <h2>Keep reading</h2>
+      <div class="related-grid">
+        <a href="system-requirements.html"><div class="t">GD-01</div><div class="h">Paralives system requirements</div></a>
+        <a href="building-basics.html"><div class="t">GD-03</div><div class="h">Building basics</div></a>
+        <a href="guides.html"><div class="t">GUIDES</div><div class="h">Browse all guides</div></a>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="brand">Paralives<span> </span>Guide</div>
+      <p class="disclaimer">
+        Paralives is a trademark of Paralives Studio. This is an unaffiliated fan resource;
+        nothing here is endorsed by or affiliated with Paralives Studio.
+      </p>
+      <!-- language switcher slot — empty at Phase 0, populated in Phase 1.5 -->
+      <div class="lang-switcher" aria-hidden="true"></div>
+    </div>
+  </footer>
+</body>
+</html>

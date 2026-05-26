@@ -27,6 +27,11 @@
 
       --font-display: "Fraunces", Georgia, "Times New Roman", serif;
       --font-body:    "Inter", -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+      --accent-gd: var(--pink-deep);
+      --accent-db: var(--sage-deep);
+      --accent-tl: var(--pink);
+      --accent-hs: var(--sage);
     }
 
     * {
@@ -66,24 +71,61 @@
       backdrop-filter: blur(12px);
     }
 
-    .brand {
+    .topbar-inner,
+    .site-footer-inner {
       width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
       padding: 18px 0;
+    }
+
+    .brand {
       font-family: var(--font-display);
       font-size: 1.2rem;
       font-weight: 600;
       letter-spacing: -0.02em;
+      white-space: nowrap;
     }
 
     .brand span {
       color: var(--pink-deep);
     }
 
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .topnav a {
+      position: relative;
+      font-size: 0.96rem;
+      color: var(--ink-soft);
+    }
+
+    .topnav a[aria-current="page"]::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -3px;
+      height: 2px;
+      background: var(--pink-deep);
+      border-radius: 999px;
+    }
+
     .wrap {
       width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
-      padding: 88px 0 112px;
+      padding: 72px 0 112px;
     }
 
     .hero {
@@ -130,20 +172,182 @@
       font-size: 0.98rem;
     }
 
-    .site-footer {
-      border-top: 1px solid var(--line);
-      padding: 28px 16px 44px;
+    .signal-strip {
+      margin: 28px 0 0;
+      padding: 16px 20px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: rgba(255, 251, 246, 0.82);
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+      letter-spacing: 0.04em;
+      color: var(--ink);
     }
 
-    .site-footer .brand,
-    .site-footer .disclaimer,
-    .site-footer .lang-switcher {
-      width: min(1120px, 100%);
-      margin: 0 auto;
+    .signal-strip .sep {
+      color: var(--line);
+    }
+
+    .section-block {
+      margin-top: 56px;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 36rem;
+      color: var(--ink-soft);
+    }
+
+    .route-grid,
+    .guide-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .route-card,
+    .guide-card {
+      display: block;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 251, 246, 0.9);
+      box-shadow: var(--shadow);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .route-card:hover,
+    .guide-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-hover);
+      border-color: rgba(122, 146, 105, 0.35);
+    }
+
+    .route-card {
+      grid-column: span 6;
+      border-left: 3px solid var(--line);
+      min-height: 210px;
+    }
+
+    .guide-card {
+      grid-column: span 4;
+      border-left: 3px solid var(--accent-gd);
+    }
+
+    .route-card[data-accent="gd"] {
+      border-left-color: var(--accent-gd);
+    }
+
+    .route-card[data-accent="db"] {
+      border-left-color: var(--accent-db);
+    }
+
+    .route-card[data-accent="tl"] {
+      border-left-color: var(--accent-tl);
+    }
+
+    .route-card[data-accent="hs"] {
+      border-left-color: var(--accent-hs);
+    }
+
+    .route-code,
+    .guide-code {
+      margin: 0 0 10px;
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .route-card[data-accent="gd"] .route-code {
+      color: var(--accent-gd);
+    }
+
+    .route-card[data-accent="db"] .route-code {
+      color: var(--accent-db);
+    }
+
+    .route-card[data-accent="tl"] .route-code {
+      color: var(--ink);
+    }
+
+    .route-card[data-accent="hs"] .route-code {
+      color: var(--accent-db);
+    }
+
+    .route-card h3,
+    .guide-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+    }
+
+    .route-card p,
+    .guide-card p {
+      margin: 0;
+      color: var(--ink-soft);
+    }
+
+    .status-pill {
+      display: inline-flex;
+      align-items: center;
+      margin-top: 18px;
+      padding: 6px 10px;
+      border: 1px solid var(--sage-deep);
+      border-radius: 999px;
+      color: var(--sage-deep);
+      font-size: 0.76rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .guide-meta {
+      margin-top: 14px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
+    }
+
+    .section-link {
+      display: inline-flex;
+      margin-top: 18px;
+      color: var(--sage-deep);
+      font-weight: 600;
+    }
+
+    .updates-list {
+      padding: 24px 26px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 251, 246, 0.84);
+      box-shadow: var(--shadow);
+    }
+
+    .updates-list p {
+      margin: 0;
+      color: var(--ink-soft);
+    }
+
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 44px;
     }
 
     .site-footer .brand {
-      padding: 0;
       margin-bottom: 10px;
       font-size: 1rem;
     }
@@ -160,8 +364,27 @@
       margin-top: 18px;
     }
 
+    @media (max-width: 860px) {
+      .route-card,
+      .guide-card {
+        grid-column: span 12;
+      }
+    }
+
     @media (max-width: 640px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+
+      .topnav {
+        justify-content: flex-start;
+        gap: 14px 18px;
+      }
+
       .wrap {
+        width: min(1120px, calc(100% - 24px));
         padding: 56px 0 80px;
       }
 
@@ -170,17 +393,26 @@
         border-radius: 22px;
       }
 
-      .brand {
-        width: min(1120px, calc(100% - 24px));
-        padding: 16px 0;
+      .signal-strip {
+        font-size: 0.82rem;
+        line-height: 1.8;
       }
     }
   </style>
 </head>
 <body>
   <header class="topbar">
-    <div class="brand"><a href="/">Paralives<span> </span>Guide</a></div>
-    <!-- nav added in Phase 1 — do not add placeholder links here -->
+    <div class="topbar-inner">
+      <div class="brand"><a href="index.html">Paralives<span> </span>Guide</a></div>
+      <nav class="topnav" aria-label="Primary">
+        <a href="guides.html">Guides</a>
+        <a href="database.html">Database</a>
+        <a href="tools.html">Tools</a>
+        <a href="houses.html">Houses</a>
+        <a href="#updates">Updates</a>
+        <a href="about.html">About</a>
+      </nav>
+    </div>
   </header>
 
   <main class="wrap">
@@ -188,24 +420,99 @@
       <p class="kicker">A fan resource</p>
       <h1>Paralives Guide</h1>
       <p class="lede">
-        A cozy, opinionated, build-aware companion for <em>Paralives</em>, the indie life sim
-        from Paralives Studio. Guides, databases, and small tools — fully open, written by
+        A cozy, opinionated, build-aware companion for <em translate="no">Paralives</em>, the indie life sim
+        from <span translate="no">Paralives Studio</span>. Guides, databases, and small tools — fully open, written by
         players who actually log the hours.
       </p>
       <p class="note">
-        The site is just getting started. Hubs and the first guides arrive in the next update.
+        Three guides are live; the database, tools, and houses hubs go live as they fill.
       </p>
+    </section>
+
+    <div class="signal-strip">
+      3 GUIDES <span class="sep">//</span> 0 DB ENTRIES <span class="sep">//</span> 0 TOOLS <span class="sep">//</span> 0 HOUSE PLANS <span class="sep">//</span> LAST FILED 2026-05-26
+    </div>
+
+    <section class="section-block" aria-labelledby="routes-title">
+      <div class="section-head">
+        <h2 id="routes-title">Choose your route</h2>
+        <p>The site is organized by how you actually browse a life-sim guide: read a walkthrough, check a database, open a utility, or browse builds.</p>
+      </div>
+      <div class="route-grid">
+        <a class="route-card" data-accent="gd" href="guides.html">
+          <p class="route-code">GD</p>
+          <h3>Guides</h3>
+          <p>Long-form walkthroughs grounded in the current Early Access build.</p>
+        </a>
+        <a class="route-card" data-accent="db" href="database.html">
+          <p class="route-code">DB</p>
+          <h3>Database</h3>
+          <p>Filterable lists of traits, careers, and furniture — coming as the build stabilizes.</p>
+          <span class="status-pill">Status: PLANNED</span>
+        </a>
+        <a class="route-card" data-accent="tl" href="tools.html">
+          <p class="route-code">TL</p>
+          <h3>Tools</h3>
+          <p>Calculators and trackers built around <span translate="no">Paralives</span>' actual loop. Trait Conflict Checker is up first.</p>
+          <span class="status-pill">Status: PLANNED</span>
+        </a>
+        <a class="route-card" data-accent="hs" href="houses.html">
+          <p class="route-code">HS</p>
+          <h3>Houses</h3>
+          <p>A community gallery for shared house designs, opening when the submission flow lands.</p>
+          <span class="status-pill">Status: PLANNED</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="section-block" aria-labelledby="featured-title">
+      <div class="section-head">
+        <h2 id="featured-title">Featured guides</h2>
+        <p>Three seed guides are live now so the site launches with real reading material, not empty slots.</p>
+      </div>
+      <div class="guide-grid">
+        <a class="guide-card" href="system-requirements.html">
+          <p class="guide-code">GD-01</p>
+          <h3>Paralives system requirements</h3>
+          <p>Official PC specs for <span translate="no">Paralives</span>, with the Steam Early Access store page and studio site lined up in one quick reference.</p>
+          <div class="guide-meta">Updated 2026-05-26</div>
+        </a>
+        <a class="guide-card" href="paramaker-guide.html">
+          <p class="guide-code">GD-02</p>
+          <h3>Paramaker guide</h3>
+          <p>An overview of <span translate="no">Paramaker</span>, the character creator behind each <span translate="no">Para</span>, with uncertain details clearly marked before they harden into myth.</p>
+          <div class="guide-meta">Updated 2026-05-26</div>
+        </a>
+        <a class="guide-card" href="building-basics.html">
+          <p class="guide-code">GD-03</p>
+          <h3>Building basics</h3>
+          <p>A practical look at <span translate="no">Paralives</span> build mode, from free walls to windows that can move independently of the old grid mindset.</p>
+          <div class="guide-meta">Updated 2026-05-26</div>
+        </a>
+      </div>
+      <a class="section-link" href="guides.html">View all guides →</a>
+    </section>
+
+    <section class="section-block" id="updates" aria-labelledby="updates-title">
+      <div class="section-head">
+        <h2 id="updates-title">Updates</h2>
+        <p>Phase 1 starts small on purpose: a stable routing layer first, then verified depth.</p>
+      </div>
+      <div class="updates-list">
+        <p>2026-05-26 — Site launched with three <span translate="no">Paralives</span> guides: system requirements, <span translate="no">Paramaker</span> character creation, and building basics. Database, tools, and houses hubs are placeholder for now.</p>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer">
-    <div class="brand">Paralives<span> </span>Guide</div>
-    <p class="disclaimer">
-      Paralives is a trademark of Paralives Studio. This is an unaffiliated fan resource;
-      nothing here is endorsed by or affiliated with Paralives Studio.
-    </p>
-    <!-- language switcher slot — empty at Phase 0, populated in Phase 1.5 -->
-    <div class="lang-switcher" aria-hidden="true"></div>
+    <div class="site-footer-inner">
+      <div class="brand">Paralives<span> </span>Guide</div>
+      <p class="disclaimer">
+        Paralives is a trademark of Paralives Studio. This is an unaffiliated fan resource;
+        nothing here is endorsed by or affiliated with Paralives Studio.
+      </p>
+      <div class="lang-switcher" aria-hidden="true"></div>
+    </div>
   </footer>
 </body>
 </html>
