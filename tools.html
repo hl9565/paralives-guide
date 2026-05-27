@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Paralives Tools Hub | Paralives Guide</title>
   <meta name="description" content="Track the planned Paralives tool layer, starting with a Trait Conflict Checker and future vanilla JavaScript helpers that need no accounts or backend.">
-  <link rel="canonical" href="https://paralivesguide.help/tools.html">
+  <link rel="canonical" href="https://paralivesguide.help/tools">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -36,7 +36,7 @@
     .brand span { color: var(--pink-deep); }
     .topnav { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: flex-end; }
     .topnav a { position: relative; font-size: 0.96rem; color: var(--ink-soft); }
-    .topnav a[aria-current="page"]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px; background: var(--pink-deep); border-radius: 999px; }
+    .topnav a[aria-current]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px; background: var(--pink-deep); border-radius: 999px; }
     .wrap { padding: 56px 0 112px; }
     .crumb { margin-bottom: 18px; color: var(--ink-soft); font-size: 0.94rem; }
     h1 { margin: 0 0 16px; font-size: clamp(2.5rem, 6vw, 4rem); }
@@ -65,19 +65,19 @@
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <div class="brand"><a href="index.html">Paralives<span> </span>Guide</a></div>
+      <div class="brand"><a href="/">Paralives<span> </span>Guide</a></div>
       <nav class="topnav" aria-label="Primary">
-        <a href="guides.html">Guides</a>
-        <a href="database.html">Database</a>
-        <a href="tools.html" aria-current="page">Tools</a>
-        <a href="houses.html">Houses</a>
-        <a href="index.html#updates">Updates</a>
-        <a href="about.html">About</a>
+        <a href="guides">Guides</a>
+        <a href="database">Database</a>
+        <a href="tools" aria-current="page">Tools</a>
+        <a href="houses">Houses</a>
+        <a href="/#updates">Updates</a>
+        <a href="about">About</a>
       </nav>
     </div>
   </header>
   <main class="wrap">
-    <div class="crumb"><a href="index.html">Home</a> / Tools</div>
+    <div class="crumb"><a href="/">Home</a> / Tools</div>
     <h1>Tools</h1>
     <p class="lede">The tools layer is reserved for small helpers that solve a real player problem quickly. Every tool on this site will stay lightweight, browser-only, and usable without accounts, logins, or a backend service in the middle.</p>
     <div class="placeholder">
