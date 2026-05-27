@@ -21,67 +21,31 @@ from typing import Any
 from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from openai import APIConnectionError, APIStatusError, APITimeoutError, BadRequestError, OpenAI
+from translate_config import (
+    ADSENSE_SRC,
+    ABOUT_LINK_TEXT,
+    ABOUT_PAGE_FILENAME,
+    BRAND_NAME,
+    DEFAULT_MODEL,
+    EXTRA_RULES,
+    FALLBACK_MODEL,
+    GAME_GENRE_DESCRIPTION,
+    GAME_NAME,
+    GAME_STUDIO,
+    GLYPH_CODE_PREFIXES,
+    LANG_SWITCH_CSS,
+    LANGUAGES,
+    MODEL_PRICING,
+    PROPER_NOUNS_TO_PRESERVE,
+    SITE_URL,
+    TONE_DIRECTIVE,
+    TRANSLATION_NOTICE_TEMPLATE,
+)
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-SITE_URL = "https://paralivesguide.help"
-DEFAULT_MODEL = "gpt-5.4"
-FALLBACK_MODEL = "gpt-5.2"
-ADSENSE_SRC = ""
-LANGUAGES = [
-    ("en", "English"),
-    ("fr", "Français"),
-    ("it", "Italiano"),
-    ("de", "Deutsch"),
-    ("pl", "Polski"),
-    ("pt-BR", "Português (Brasil)"),
-    ("es-419", "Español (América Latina)"),
-    ("zh-CN", "简体中文"),
-]
 LANGUAGE_MAP = dict(LANGUAGES)
 NON_ENGLISH = [code for code, _ in LANGUAGES if code != "en"]
-MODEL_PRICING = {
-    "gpt-5.4": {"input": Decimal("1.75"), "output": Decimal("14.00")},
-    "gpt-5.3": {"input": Decimal("1.75"), "output": Decimal("14.00")},
-    "gpt-5.2": {"input": Decimal("1.75"), "output": Decimal("14.00")},
-    "gpt-5": {"input": Decimal("1.25"), "output": Decimal("10.00")},
-    "gpt-5.1": {"input": Decimal("1.25"), "output": Decimal("10.00")},
-}
 RETRY_BACKOFF_SECONDS = [2, 5, 10, 20, 40, 90]
-TRANSLATION_NOTICE = (
-    "Machine-assisted translation from English. Report errors via the About page."
-)
-LANG_SWITCH_CSS = """
-  .lang-switch {
-    appearance: none;
-    background: var(--cream);
-    border: 1px solid var(--line);
-    color: var(--ink);
-    font-family: var(--font-mono);
-    font-size: 12px;
-    letter-spacing: 0.05em;
-    padding: 8px 30px 8px 10px;
-    border-radius: 6px;
-  }
-  .lang-switch:focus {
-    outline: none;
-    border-color: var(--pink-deep);
-    box-shadow: 0 0 0 1px var(--pink-deep);
-  }
-  .translation-notice {
-    margin-top: 18px;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-  }
-  @media (max-width: 540px) {
-    .lang-switch {
-      padding: 7px 26px 7px 8px;
-      font-size: 11px;
-      max-width: 160px;
-    }
-  }
-""".strip("\n")
 DOCTYPE_RE = re.compile(r"^\s*(?:<!DOCTYPE html>\s*)+", re.IGNORECASE)
 
 
@@ -453,13 +417,19 @@ def inject_translation_notice(soup: BeautifulSoup, lang: str) -> None:
     if existing is not None:
         existing.decompose()
 
+    prefix, sep, suffix = TRANSLATION_NOTICE_TEMPLATE.partition("{about_link}")
+    if not sep:
+        raise ValueError(
+            "TRANSLATION_NOTICE_TEMPLATE must contain {about_link} placeholder"
+        )
+
     paragraph = soup.new_tag("p", attrs={"class": "translation-notice"})
     em = soup.new_tag("em")
-    em.append(TRANSLATION_NOTICE.split("About page")[0])
-    about_link = soup.new_tag("a", href=url_for(lang, "about.html"))
-    about_link.string = "About page"
+    em.append(prefix)
+    about_link = soup.new_tag("a", href=url_for(lang, ABOUT_PAGE_FILENAME))
+    about_link.string = ABOUT_LINK_TEXT
     em.append(about_link)
-    em.append(".")
+    em.append(suffix)
     paragraph.append(em)
     disclaimer.insert_before(paragraph)
 
@@ -479,39 +449,40 @@ def validate_output(soup: BeautifulSoup, lang: str, filename: str, source_commit
             raise ValueError("AdSense script was not preserved verbatim")
 
 
+def _identity_rules(native_name: str) -> str:
+    proper_nouns = "\n".join(f"   - {noun}" for noun in PROPER_NOUNS_TO_PRESERVE)
+    glyph_prefixes = " / ".join(GLYPH_CODE_PREFIXES)
+    extra_rules = "\n".join(
+        f"{index}. {rule}" for index, rule in enumerate(EXTRA_RULES, start=5)
+    )
+    tone_rule_number = len(EXTRA_RULES) + 5
+    return (
+        f"You are translating a single HTML page of a {GAME_GENRE_DESCRIPTION} fan\n"
+        f"resource about the video game {GAME_NAME} (made by {GAME_STUDIO}, currently\n"
+        f"in Early Access). Target language: {native_name}. The page is for\n"
+        "ad-supported public deployment, so translation must be natural, idiomatic,\n"
+        "and grammatically clean.\n\n"
+        "Rules:\n"
+        "1. Translate visible prose, headings, button labels, FAQ entries, and the\n"
+        "   meta description.\n"
+        "2. Preserve verbatim (do NOT translate):\n"
+        f"{proper_nouns}\n"
+        f'3. The glyph code system uses prefixes {glyph_prefixes}. Any token matching <prefix>-<digits>, e.g. "GD-01", is preserved verbatim.\n'
+        '4. Respect the W3C-standard translate="no" attribute on any element. Any\n'
+        '   text inside <span translate="no">…</span>, <td translate="no">…</td>,\n'
+        '   <code>…</code>, etc. is left exactly as it is in English.\n'
+        f"{extra_rules}\n"
+        f"{tone_rule_number}. {TONE_DIRECTIVE}\n"
+    )
+
+
 def build_prompt(lang: str, filename: str, source_commit: str, source_html: str) -> tuple[str, str]:
     native_name = LANGUAGE_MAP[lang]
     system = (
-        "You are translating a single HTML page of a cozy fan resource about the\n"
-        "video game PARALIVES, an indie life-sim from Paralives Studio (in Early\n"
-        f"Access). Target language: {native_name}. The page is for ad-supported\n"
-        "public deployment, so translation must be natural, idiomatic, and\n"
-        "grammatically clean — read like a thoughtful friend explaining the game,\n"
-        "not like a marketing brochure and not like a literal dictionary swap.\n\n"
-        "Rules:\n"
-        "1. Translate visible prose, headings, button labels, FAQ entries, and the\n"
-        "   meta description. Translate the page <title> but keep the trailing\n"
-        '   " | Paralives Guide" wordmark verbatim.\n'
-        "2. Preserve verbatim (do NOT translate):\n"
-        '   - Brand "Paralives Guide"\n'
-        "   - Game / studio names: Paralives, Paralives Studio\n"
-        "   - In-game terms: Paramaker, Para, Paras\n"
-        "   - Comparison reference when present: The Sims (and EA, Electronic Arts)\n"
-        '   - Build version strings: "EA 0.4", "Early Access", and any "build X.Y" token\n'
-        "   - Real-person names and any URLs\n"
-        "   - All glyph codes such as GD-01, DB-04, TL-02, HS-03\n"
-        '3. Respect the W3C-standard translate="no" attribute on any element. Any\n'
-        '   text inside <span translate="no">…</span>, <td translate="no">…</td>,\n'
-        '   <code>…</code>, etc. is left exactly as it is in English.\n'
-        "4. Tone: warm, opinionated, build-aware. Do NOT add hype words, exclamation\n"
-        '   chains, emoji clusters, or "discover", "dive in", "everything you need to know" - even if\n'
-        "   the natural translation would use them. Match the\n"
-        "   register of the English source.\n"
-        "5. Do NOT translate or alter URLs, file paths, code snippets, or CSS class\n"
-        "   names.\n"
-        f"6. Set <html lang> to {lang}, canonical to {url_for(lang, filename)}, "
+        _identity_rules(native_name)
+        + f"8. Set <html lang> to {lang}, canonical to {url_for(lang, filename)}, "
         f"translation-source-commit to {source_commit}, and translation-source-path to {filename}.\n"
-        "7. Return ONLY the complete translated HTML document, starting with <!DOCTYPE html>.\n"
+        "9. Return ONLY the complete translated HTML document, starting with <!DOCTYPE html>.\n"
     )
     user = f"Translate this HTML document to {native_name}:\n\n{source_html}"
     return system, user
@@ -520,35 +491,13 @@ def build_prompt(lang: str, filename: str, source_commit: str, source_html: str)
 def build_chunk_prompt(lang: str, filename: str, units: list[TranslationUnit]) -> tuple[str, str]:
     native_name = LANGUAGE_MAP[lang]
     system = (
-        "You are translating extracted content fragments from a single HTML page of a cozy fan resource about the\n"
-        "video game PARALIVES, an indie life-sim from Paralives Studio (in Early Access).\n"
-        f"Target language: {native_name}. The page is for ad-supported public deployment, so\n"
-        "translation must be natural, idiomatic, and grammatically clean — read like a\n"
-        "thoughtful friend explaining the game, not like a marketing brochure and not like\n"
-        "a literal dictionary swap.\n\n"
+        _identity_rules(native_name)
+        +
         "Return valid JSON only: an object with key \"translations\" whose value is an array of "
         "{\"id\": string, \"text\": string} objects.\n\n"
-        "Rules:\n"
-        "1. Translate visible prose, headings, button labels, FAQ entries, and the meta description.\n"
-        '   Translate the page <title> but keep the trailing " | Paralives Guide" wordmark verbatim.\n'
-        "2. Preserve verbatim (do NOT translate):\n"
-        '   - Brand "Paralives Guide"\n'
-        "   - Game / studio names: Paralives, Paralives Studio\n"
-        "   - In-game terms: Paramaker, Para, Paras\n"
-        "   - Comparison reference when present: The Sims (and EA, Electronic Arts)\n"
-        '   - Build version strings: "EA 0.4", "Early Access", and any "build X.Y" token\n'
-        "   - Real-person names and any URLs\n"
-        "   - All glyph codes such as GD-01, DB-04, TL-02, HS-03\n"
-        '3. Respect the W3C-standard translate="no" attribute on any element. Any text inside\n'
-        '   <span translate="no">…</span>, <td translate="no">…</td>, <code>…</code>, etc.\n'
-        "   is left exactly as it is in English.\n"
-        "4. Tone: warm, opinionated, build-aware. Do NOT add hype words, exclamation chains,\n"
-        '   emoji clusters, or "discover", "dive in", "everything you need to know" - even if\n'
-        "   the natural translation would use them. Match the register of the English source.\n"
-        "5. Do NOT translate or alter URLs, file paths, code snippets, or CSS class names.\n"
-        "6. Preserve HTML inline tags already inside a fragment, such as <strong>, <em>, <b>, <a>, and entities.\n"
-        '7. Preserve the "<b>NOTE:</b>" and "<b>FILL IN:</b>" markers in English.\n'
-        "8. Do not add commentary, markdown, or explanations.\n"
+        "8. Preserve HTML inline tags already inside a fragment, such as <strong>, <em>, <b>, <a>, and entities.\n"
+        '9. Preserve the "<b>NOTE:</b>" and "<b>FILL IN:</b>" markers in English.\n'
+        "10. Do not add commentary, markdown, or explanations.\n"
     )
     payload = {
         "filename": filename,
@@ -783,7 +732,7 @@ def collect_translation_units(soup: BeautifulSoup, lang: str) -> list[Translatio
             TranslationUnit(
                 unit_id=str(uuid.uuid4()),
                 kind="html",
-                payload='Machine-assisted translation from English. Report errors via the <a href="about.html">About page</a>.',
+                payload=TRANSLATION_NOTICE_TEMPLATE.format(about_link=ABOUT_LINK_TEXT),
                 node=None,
                 extra="translation_notice",
             )
@@ -901,7 +850,7 @@ def apply_translation_units(soup: BeautifulSoup, units: list[TranslationUnit], t
         for child in list(fragment.contents):
             em.append(child)
         for anchor in em.find_all("a"):
-            anchor["href"] = url_for(lang, "about.html")
+            anchor["href"] = url_for(lang, ABOUT_PAGE_FILENAME)
         paragraph.append(em)
         disclaimer.insert_before(paragraph)
     return notice_html or ""
