@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paralives Aging Too Fast: Lifespan Settings and Character Workarounds | Paralives Guide</title>
-  <meta name="description" content="Troubleshoot Paralives aging too fast with community-reported lifespan and character-edit workarounds, plus clear notes on what is not confirmed.">
-  <link rel="canonical" href="https://paralivesguide.help/aging-too-fast">
+  <title>Paralives Updates: Official News and Site Changes | Paralives Guide</title>
+  <meta name="description" content="Track official Paralives news, the current Early Access status, and recent changes on Paralives Guide from one stable Updates page.">
+  <link rel="canonical" href="https://paralivesguide.help/updates">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -13,42 +13,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Can I fix a Para who aged too quickly?",
+          "name": "Where can I find official Paralives updates?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Maybe. A community-reported workaround says you may be able to slow lifespan settings first, then reopen the Para in Paramaker and change the life stage back down, but that is not confirmed here as an official or guaranteed fix."
+            "text": "The safest official sources are the Paralives News page, the development page, and the FAQ. This page links to those sources directly and uses them as the baseline for verified update notes."
           }
         },
         {
           "@type": "Question",
-          "name": "How do I slow aging or lifespan in Paralives?",
+          "name": "Does this page track every Paralives patch?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "A Discord-reported workaround says the pause-screen Storyteller menu may include short, medium, and long lifespan speeds. Because this page does not verify that menu in the current build, treat it as something to check before relying on it."
+            "text": "Not yet. Right now this page is a routing and status hub for official sources and reviewed site changes, rather than a full patch-note database."
           }
         },
         {
           "@type": "Question",
-          "name": "What does EDITCHARACTER do?",
+          "name": "Are community tips treated as official updates?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "According to a community-reported Discord note, typing EDITCHARACTER in the reported cheat menu may send you back to Paramaker so you can try editing the affected Para. That behavior is not presented here as official documentation."
+            "text": "No. Community tips, Discord workarounds, and fan speculation do not become official updates here unless they are backed by official Paralives sources."
           }
         },
         {
           "@type": "Question",
-          "name": "Is SETAGE safe to use?",
+          "name": "What changed on Paralives Guide recently?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Its exact ranges and side effects are not confirmed here. If you experiment with SETAGE, do it on a backup or copy first rather than assuming it is safe for every save."
+            "text": "Recent site additions include the Early Access features guide on May 27, 2026, the aging-too-fast troubleshooting guide on May 27, 2026, and the Phase 1 seed pages and hubs that launched on May 26, 2026."
           }
         },
         {
           "@type": "Question",
-          "name": "Can I save an aged Para for another save?",
+          "name": "Where should I go for Early Access feature status?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "That has not been confirmed here. If you are testing any character workaround, back up the save first and avoid assuming the Para can be exported for future saves unless you verify that in the current build."
+            "text": "Go to the Early Access features guide for the clearest split between day-one systems and features planned to arrive later during Early Access."
           }
         }
       ]
@@ -194,6 +194,7 @@
     .factbox,
     .note,
     .ad-slot,
+    .source-list a,
     .related a {
       border-radius: 20px;
     }
@@ -250,6 +251,40 @@
       padding: 16px 18px;
       background: rgba(184, 201, 167, 0.22);
       color: var(--ink);
+    }
+    .source-list,
+    .update-log {
+      display: grid;
+      gap: 14px;
+      margin: 22px 0;
+    }
+    .source-list a,
+    .update-log article {
+      display: block;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      background: rgba(255, 251, 246, 0.9);
+      box-shadow: var(--shadow);
+    }
+    .source-list .label,
+    .update-log .stamp {
+      margin-bottom: 8px;
+      color: var(--accent-gd);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .source-list .title,
+    .update-log h3 {
+      margin: 0 0 8px;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+    }
+    .source-list p,
+    .update-log p {
+      margin: 0;
+      color: var(--ink-soft);
     }
     .ad-slot {
       margin: 28px 0;
@@ -358,100 +393,130 @@
     <div class="topbar-inner">
       <div class="brand"><a href="/">Paralives<span> </span>Guide</a></div>
       <nav class="topnav" aria-label="Primary">
-        <a href="guides" aria-current="true">Guides</a>
+        <a href="guides">Guides</a>
         <a href="database">Database</a>
         <a href="tools">Tools</a>
         <a href="houses">Houses</a>
-        <a href="updates">Updates</a>
+        <a href="updates" aria-current="true">Updates</a>
         <a href="about">About</a>
       </nav>
     </div>
   </header>
   <div class="wrap">
-    <div class="crumb"><a href="/">Home</a> &nbsp;/&nbsp; <a href="guides">Guides</a> &nbsp;/&nbsp; Paralives aging too fast</div>
+    <div class="crumb"><a href="/">Home</a> &nbsp;/&nbsp; Updates</div>
     <article>
-      <div class="kicker">GD-04 · GUIDES</div>
-      <h1>Paralives Aging Too Fast: Lifespan Settings and Character Workarounds</h1>
-      <div class="byline">Updated 2026-05-27 &nbsp;·&nbsp; Paralives Guide &nbsp;·&nbsp; 7 min read</div>
-      <p>If <span translate="no">Paralives</span> aging feels too fast in your save, the safest first move is to slow lifespan settings before you keep playing. After that, a community-reported workaround says you may be able to reopen the affected <span translate="no">Para</span> in <a href="paramaker-guide"><span translate="no">Paramaker</span></a> and correct the life stage there.</p>
-      <p>This page is a troubleshooting guide, not an official command reference. The current workaround notes come from a player report in the official <span translate="no">Paralives</span> Discord, so treat each step as something to verify in the current build rather than a guaranteed save repair.</p>
+      <div class="kicker">UP-01 · UPDATES</div>
+      <h1>Paralives Updates: Official News and Site Changes</h1>
+      <div class="byline">Updated 2026-05-27 &nbsp;·&nbsp; Paralives Guide &nbsp;·&nbsp; 6 min read</div>
+      <p>This page is the stable route for what changed in <span translate="no">Paralives</span> and what changed on <span translate="no">Paralives Guide</span>. It is not a full patch-note database yet, but it gives one clean place to check official sources, current Early Access status, and the latest reviewed additions on this fan site.</p>
+      <p>The key line stays simple: official <span translate="no">Paralives</span> news comes from official pages, and site changes here are separate editorial updates, not game patches.</p>
 
-      <div class="note"><b>Status:</b> Community-reported workaround from the official <span translate="no">Paralives</span> Discord; verify in the current build before relying on it.</div>
+      <div class="note"><b>Status:</b> Early Access began on May 25, 2026. The official development page separates day-one systems from features planned to arrive later during Early Access.</div>
 
       <nav class="toc">
         <h2>In this guide</h2>
         <ol>
-          <li><a href="#quick-answer">Quick answer</a></li>
-          <li><a href="#storyteller">Change lifespan in Storyteller</a></li>
-          <li><a href="#editcharacter">Reopen Paramaker with <span translate="no">EDITCHARACTER</span></a></li>
-          <li><a href="#setage">About <span translate="no">SETAGE</span></a></li>
-          <li><a href="#future-save">Can you save the character for a future save?</a></li>
-          <li><a href="#before-playing">Before you keep playing</a></li>
+          <li><a href="#quick-status">Quick status</a></li>
+          <li><a href="#official-sources">Official Paralives sources</a></li>
+          <li><a href="#site-log">Site update log</a></li>
+          <li><a href="#verified">What counts as verified here</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ol>
       </nav>
 
-      <h2 class="sec" id="quick-answer">Quick answer</h2>
-      <p>Try slowing lifespan first, then test any character-edit workaround on a copy of the save if you can. The community-reported sequence is: open the pause menu, check the reported <span translate="no">Storyteller</span> lifespan setting, then only experiment with character-edit commands if the affected <span translate="no">Para</span> has already aged past the stage you wanted.</p>
-      <p>That order matters because it reduces the chance of repeating the same problem after you make a manual correction.</p>
+      <h2 class="sec" id="quick-status">Quick status</h2>
+      <p><span translate="no">Paralives</span> is in Early Access as of May 25, 2026 and is available on <span translate="no">Steam</span> for PC and Mac. For feature status, the safest current reading is the same one used in the site's <a href="early-access-features">Early Access features guide</a>: day-one systems and planned-later systems are not the same bucket.</p>
+      <p>That makes this page a routing layer first. It points you toward official news, the official development roadmap, the official FAQ, and the most recent site changes without pretending every future patch already has a full searchable archive.</p>
 
       <div class="factbox">
-        <h3>What this guide can say with confidence</h3>
+        <h3>Current official status snapshot</h3>
         <table>
-          <tr><td>Source status</td><td>The workaround steps on this page are community-reported, not verified here as official documentation.</td></tr>
-          <tr><td>Safest first step</td><td>Check lifespan speed before continuing the save.</td></tr>
-          <tr><td>Reported menu path</td><td><span translate="no">Storyteller</span> in the pause screen may offer short, medium, and long lifespan speeds.</td></tr>
-          <tr><td>Unconfirmed area</td><td><span translate="no">SETAGE</span> ranges and whether characters can be saved for future saves are not confirmed here.</td></tr>
+          <tr><td>Release stage</td><td>Early Access, starting May 25, 2026.</td></tr>
+          <tr><td>Store/platform</td><td><span translate="no">Steam</span> for PC and Mac.</td></tr>
+          <tr><td>Feature status source</td><td>The official development page separates day-one Early Access features from planned later additions.</td></tr>
+          <tr><td>This page's role</td><td>Official-source routing plus reviewed fan-site change notes.</td></tr>
         </table>
       </div>
 
       <div class="ad-slot">[ ad slot — responsive in-article ]</div>
 
-      <h2 class="sec" id="storyteller">Change lifespan in Storyteller</h2>
-      <p>A Discord-reported workaround says the pause-screen <span translate="no">Storyteller</span> menu may include lifespan speed options that look like <span translate="no">short</span>, <span translate="no">medium</span>, and <span translate="no">long</span>. Because this page does not verify that menu in the current build, treat those labels as a community note to check rather than a guaranteed current interface.</p>
-      <p>If the setting is present in your build, change it before unpausing. That way, if the save is advancing age faster than you expected, you can reduce the pace before testing any more invasive workaround.</p>
+      <h2 class="sec" id="official-sources">Official Paralives sources</h2>
+      <p>If you want the cleanest possible source chain, start with the official pages below. They are the backbone for news checks, Early Access scope checks, and future patch-tracking work on this site.</p>
+      <div class="source-list">
+        <a href="https://paralives.com/news">
+          <div class="label">Official news</div>
+          <div class="title">Paralives News</div>
+          <p>Studio-posted news items and official announcements.</p>
+        </a>
+        <a href="https://paralives.com/development">
+          <div class="label">Official development</div>
+          <div class="title">Development page</div>
+          <p>The clearest source for day-one Early Access features versus systems planned to arrive later.</p>
+        </a>
+        <a href="https://paralives.com/faq">
+          <div class="label">Official FAQ</div>
+          <div class="title">Paralives FAQ</div>
+          <p>Release date, platforms, pricing, language support, and other official project basics.</p>
+        </a>
+        <a href="https://store.steampowered.com/app/1118520/Paralives/">
+          <div class="label">Official store listing</div>
+          <div class="title"><span translate="no">Steam</span> page</div>
+          <p>Useful for store-facing details and platform confirmation when needed.</p>
+        </a>
+      </div>
 
-      <h2 class="sec" id="editcharacter">Reopen Paramaker with <span translate="no">EDITCHARACTER</span></h2>
-      <p>The same Discord note reports that pressing <span translate="no">Ctrl + F1</span> may open a cheats menu, and typing <span translate="no">EDITCHARACTER</span> there may return you to <a href="paramaker-guide"><span translate="no">Paramaker</span></a>. If that works in your build, the reported goal is to lower the affected <span translate="no">Para</span>'s life stage before resuming play.</p>
-      <p>This should be treated as a community workaround, not an official promise. If the menu does not open, if the command behaves differently, or if the edited <span translate="no">Para</span> comes back with side effects, stop and test on a backup instead of pushing the same save further.</p>
-
-      <div class="note"><b>Community note:</b> The Discord report suggests checking lifespan speed first, then trying <span translate="no">Ctrl + F1</span> and <span translate="no">EDITCHARACTER</span> only if you still need to correct an already-aged <span translate="no">Para</span>.</div>
-
-      <h2 class="sec" id="setage">About <span translate="no">SETAGE</span></h2>
-      <p>The Discord poster also reported a <span translate="no">SETAGE</span> command for more specific age changes. That is the limit of what this page can responsibly say right now.</p>
-      <p>Exact <span translate="no">SETAGE</span> ranges are not confirmed here, and this guide does not present the command as safe for every save. If you experiment with it, do it on a backup or test copy first rather than assuming the command will behave cleanly.</p>
-
-      <h2 class="sec" id="future-save">Can you save the character for a future save?</h2>
-      <p>That has not been confirmed here. This page does not claim that an edited <span translate="no">Para</span> can be exported or saved for use in a future save, because the current source note does not verify that outcome.</p>
-      <p>If future-save portability matters to you, back up the household first and confirm the behavior directly in your current build before treating it as part of your recovery plan.</p>
+      <h2 class="sec" id="site-log">Site update log</h2>
+      <p>The entries below are fan-site change notes, not game patch notes. They describe what changed on <span translate="no">Paralives Guide</span> after review.</p>
+      <div class="update-log">
+        <article>
+          <div class="stamp">2026-05-27</div>
+          <h3><a href="is-paralives-worth-it">Added the honest Early Access verdict page</a></h3>
+          <p>The site now has a structured buying-decision page for readers weighing the current build against the usual Early Access tradeoffs.</p>
+        </article>
+        <article>
+          <div class="stamp">2026-05-27</div>
+          <h3><a href="early-access-features">Added the Early Access features guide</a></h3>
+          <p>A new official-source guide now separates day-one systems from features planned to arrive later during Early Access.</p>
+        </article>
+        <article>
+          <div class="stamp">2026-05-27</div>
+          <h3><a href="aging-too-fast">Added the aging-too-fast troubleshooting guide</a></h3>
+          <p>The site now has a careful troubleshooting page that labels Discord-sourced workarounds as community-reported rather than official.</p>
+        </article>
+        <article>
+          <div class="stamp">2026-05-26</div>
+          <h3><a href="guides">Launched the Phase 1 seed pages and hubs</a></h3>
+          <p>The first wave of guide pages and top-level hubs established the site routing layer for guides, database plans, tools, and houses.</p>
+        </article>
+      </div>
 
       <div class="ad-slot">[ ad slot — responsive in-article ]</div>
 
-      <h2 class="sec" id="before-playing">Before you keep playing</h2>
-      <p>Use a cautious checklist before you unpause again:</p>
-      <p>Back up the save if possible, test on a copy if you can, slow lifespan first, and only then try to edit the affected <span translate="no">Paras</span>. The point is to reduce risk, not to race through several unverified fixes in one go.</p>
-      <p>If none of the reported steps work in your build, treat that result as useful information. A workaround failing is better than damaging the only copy of a household because a Discord tip sounded definitive when it was not.</p>
+      <h2 class="sec" id="verified">What counts as verified here</h2>
+      <p>Official <span translate="no">Paralives</span> pages count as the highest-confidence source layer for this page. Reviewed site changes also count, because they are visible in the public pages you can browse here. What does not count as official update material is just as important: unverified community tips, fan rumor chains, and screenshot fragments without an official source do not become patch notes on this page.</p>
+      <p>Later, this route can grow into a fuller update log that references reviewed source-monitor digests and cleaner patch-history summaries. For now, the priority is being stable and honest, not pretending the automation layer is already finished.</p>
 
       <h2 class="sec" id="faq">FAQ</h2>
       <div class="faq">
         <details>
-          <summary>Can I fix a Para who aged too quickly?</summary>
-          <p>Maybe. A community-reported workaround says you may be able to slow lifespan settings first, then reopen the Para in Paramaker and change the life stage back down, but that is not confirmed here as an official or guaranteed fix.</p>
+          <summary>Where can I find official Paralives updates?</summary>
+          <p>The safest official sources are the Paralives News page, the development page, and the FAQ. This page links to those sources directly and uses them as the baseline for verified update notes.</p>
         </details>
         <details>
-          <summary>How do I slow aging or lifespan in Paralives?</summary>
-          <p>A Discord-reported workaround says the pause-screen Storyteller menu may include short, medium, and long lifespan speeds. Because this page does not verify that menu in the current build, treat it as something to check before relying on it.</p>
+          <summary>Does this page track every Paralives patch?</summary>
+          <p>Not yet. Right now this page is a routing and status hub for official sources and reviewed site changes, rather than a full patch-note database.</p>
         </details>
         <details>
-          <summary>What does EDITCHARACTER do?</summary>
-          <p>According to a community-reported Discord note, typing EDITCHARACTER in the reported cheat menu may send you back to Paramaker so you can try editing the affected Para. That behavior is not presented here as official documentation.</p>
+          <summary>Are community tips treated as official updates?</summary>
+          <p>No. Community tips, Discord workarounds, and fan speculation do not become official updates here unless they are backed by official Paralives sources.</p>
         </details>
         <details>
-          <summary>Is SETAGE safe to use?</summary>
-          <p>Its exact ranges and side effects are not confirmed here. If you experiment with SETAGE, do it on a backup or copy first rather than assuming it is safe for every save.</p>
+          <summary>What changed on Paralives Guide recently?</summary>
+          <p>Recent site additions include the honest Early Access verdict page on May 27, 2026, the Early Access features guide on May 27, 2026, the aging-too-fast troubleshooting guide on May 27, 2026, and the Phase 1 seed pages and hubs that launched on May 26, 2026.</p>
         </details>
         <details>
-          <summary>Can I save an aged Para for another save?</summary>
-          <p>That has not been confirmed here. If you are testing any character workaround, back up the save first and avoid assuming the Para can be exported for future saves unless you verify that in the current build.</p>
+          <summary>Where should I go for Early Access feature status?</summary>
+          <p>Go to the Early Access features guide for the clearest split between day-one systems and features planned to arrive later during Early Access.</p>
         </details>
       </div>
     </article>
@@ -459,10 +524,10 @@
     <section class="related">
       <h2>Keep reading</h2>
       <div class="related-grid">
-        <a href="paramaker-guide"><div class="t">GD-02</div><div class="h">Paramaker guide</div></a>
-        <a href="system-requirements"><div class="t">GD-01</div><div class="h">Paralives system requirements</div></a>
+        <a href="early-access-features"><div class="t">GD-05</div><div class="h">Paralives Early Access features</div></a>
         <a href="is-paralives-worth-it"><div class="t">GD-06</div><div class="h">Is Paralives worth it?</div></a>
         <a href="guides"><div class="t">GUIDES</div><div class="h">Browse all guides</div></a>
+        <a href="system-requirements"><div class="t">GD-01</div><div class="h">Paralives system requirements</div></a>
       </div>
     </section>
   </div>

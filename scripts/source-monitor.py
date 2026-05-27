@@ -43,10 +43,27 @@ KEYWORDS = [
     "hobbies",
     "build mode",
     "building",
-    "patch",
-    "update",
-    "EA 0",
     "Early Access",
+    "patch",
+    "hotfix",
+    "fix",
+    "fixed",
+    "added",
+    "removed",
+    "balance",
+    "crash",
+    "save",
+    "performance",
+    "EA",
+    "0.1",
+    "0.2",
+    "0.3",
+    "0.4",
+    "0.5",
+    "0.1.0",
+    "0.1.1",
+    "0.1.2",
+    "0.1.3",
 ]
 
 SOURCES = {
@@ -54,21 +71,25 @@ SOURCES = {
         "kind": "html",
         "url": "https://paralives.com/news",
         "enabled": True,
+        "trust": "official",
     },
     "paralives_development": {
         "kind": "html",
         "url": "https://paralives.com/development",
         "enabled": False,
+        "trust": "official",
     },
     "steam_news": {
         "kind": "steam",
         "appid": 1118520,  # Paralives' Steam app id
         "enabled": True,
+        "trust": "official",
     },
     "reddit": {
         "kind": "reddit",
         "subreddit": "paralives",
         "enabled": False,
+        "trust": "community",
     },
     "youtube": {
         "kind": "youtube_rss",
@@ -76,12 +97,14 @@ SOURCES = {
         # view page source, search for "channelId" or "externalId"
         # (string starting with "UC..."), paste here. Then flip enabled to True.
         "enabled": False,
+        "trust": "official",
     },
     "bluesky": {
         "kind": "bluesky",
         "handle": "",  # TO FILL: Paralives Studio's Bluesky handle, e.g. "paralivesstudio.bsky.social".
         # If Paralives Studio is not on Bluesky, leave empty and enabled=False.
         "enabled": False,
+        "trust": "official",
     },
 }
 
@@ -96,11 +119,14 @@ class SourceItem:
     cursor: str
     sort_ts: float
     matched: list[str]
+    trust: str = ""
+    version: str | None = None
 
 
 @dataclass
 class SourceResult:
     status: str
+    trust: str
     fetched: int = 0
     matched_count: int = 0
     items: list[SourceItem] | None = None
@@ -186,6 +212,29 @@ def matched_keywords(text: str) -> list[str]:
     return matches
 
 
+EA_VERSION_RE = re.compile(r"\bEA\s*(\d+\.\d+(?:\.\d+)?)\b")
+BARE_VERSION_RE = re.compile(r"\b(0\.\d+(?:\.\d+)?)\b")
+
+
+def extract_version(title: str, excerpt: str, *, source_name: str) -> str | None:
+    combined = f"{title}\n{excerpt}"
+    match = EA_VERSION_RE.search(combined)
+    if match:
+        return match.group(1)
+    if source_name == "steam_news":
+        bare_match = BARE_VERSION_RE.search(title)
+        if bare_match:
+            return bare_match.group(1)
+    return None
+
+
+def validate_source_configs() -> None:
+    for name, config in SOURCES.items():
+        trust = config.get("trust")
+        if trust not in {"official", "community"}:
+            raise ValueError(f"Source '{name}' must declare trust as 'official' or 'community'.")
+
+
 def read_json_url(url: str) -> object:
     return json.loads(http_get(url))
 
@@ -268,6 +317,8 @@ def fetch_official_html_source(name: str, config: dict[str, object]) -> list[Sou
                 cursor=url,
                 sort_ts=sort_timestamp(date_text),
                 matched=[],
+                trust=str(config["trust"]),
+                version=extract_version(title, excerpt, source_name=name),
             )
         )
     return items
@@ -294,6 +345,12 @@ def fetch_steam_news(name: str, config: dict[str, object]) -> list[SourceItem]:
                 cursor=collapse_whitespace(str(entry.get("gid", ""))),
                 sort_ts=parsed.timestamp() if parsed is not None else 0.0,
                 matched=[],
+                trust=str(config["trust"]),
+                version=extract_version(
+                    collapse_whitespace(str(entry.get("title", ""))),
+                    strip_tags(str(entry.get("contents", ""))),
+                    source_name=name,
+                ),
             )
         )
     return items
@@ -321,6 +378,12 @@ def fetch_reddit(name: str, config: dict[str, object]) -> list[SourceItem]:
                 cursor=f"t3_{collapse_whitespace(str(entry.get('id', '')))}",
                 sort_ts=parsed.timestamp() if parsed is not None else 0.0,
                 matched=[],
+                trust=str(config["trust"]),
+                version=extract_version(
+                    collapse_whitespace(str(entry.get("title", ""))),
+                    collapse_whitespace(str(entry.get("selftext", ""))),
+                    source_name=name,
+                ),
             )
         )
     return items
@@ -353,6 +416,8 @@ def fetch_youtube_rss(name: str, config: dict[str, object]) -> list[SourceItem]:
                 cursor=video_id,
                 sort_ts=parsed.timestamp() if parsed is not None else 0.0,
                 matched=[],
+                trust=str(config["trust"]),
+                version=extract_version(title, description, source_name=name),
             )
         )
     return items
@@ -390,6 +455,8 @@ def fetch_bluesky(name: str, config: dict[str, object]) -> list[SourceItem]:
                 cursor=uri,
                 sort_ts=parsed.timestamp() if parsed is not None else 0.0,
                 matched=[],
+                trust=str(config["trust"]),
+                version=extract_version(title, text, source_name=name),
             )
         )
     return items
@@ -489,6 +556,23 @@ def truncate_excerpt(value: str, limit: int = 400) -> str:
     return f"{text[: limit - 3].rstrip()}..."
 
 
+def render_source_section(name: str, result: SourceResult) -> list[str]:
+    lines = [f"### {name}", ""]
+    if result.status == "error":
+        lines.append(f"**FETCH FAILED**: {result.error}")
+        return lines
+    for item in result.items or []:
+        lines.append(f"#### {item.title}")
+        lines.append(f"- **URL**: {item.url}")
+        lines.append(f"- **Date**: {item.date}")
+        lines.append(f"- **Matched**: {', '.join(item.matched)}")
+        lines.append(f"- **Excerpt**: {truncate_excerpt(item.excerpt)}")
+        lines.append("")
+    if not (result.items or []):
+        lines.append("_No matching posts._")
+    return lines
+
+
 def render_digest(scan_started: datetime, results: dict[str, SourceResult]) -> str:
     lines = [
         f"# Paralives source-monitor digest — {scan_started.strftime('%Y-%m-%d %H:%M UTC')}",
@@ -499,22 +583,30 @@ def render_digest(scan_started: datetime, results: dict[str, SourceResult]) -> s
     ]
     for name in results:
         lines.append(format_summary_line(name, results[name]))
-    for name, result in results.items():
-        if result.status == "skipped":
-            continue
-        lines.extend(["", "---", "", f"## {name}", ""])
-        if result.status == "error":
-            lines.append(f"**FETCH FAILED**: {result.error}")
-            continue
-        for item in result.items or []:
-            lines.append(f"### {item.title}")
-            lines.append(f"- **URL**: {item.url}")
-            lines.append(f"- **Date**: {item.date}")
-            lines.append(f"- **Matched**: {', '.join(item.matched)}")
-            lines.append(f"- **Excerpt**: {truncate_excerpt(item.excerpt)}")
+
+    grouped_names = {
+        "official": [name for name, result in results.items() if result.trust == "official"],
+        "community": [name for name, result in results.items() if result.trust == "community"],
+    }
+
+    lines.extend(["", "---", "", "## Official sources (citable)", ""])
+    if grouped_names["official"]:
+        for name in grouped_names["official"]:
+            lines.extend(render_source_section(name, results[name]))
             lines.append("")
-        if not (result.items or []):
-            lines.append("_No matching posts._")
+    else:
+        lines.append("_No items this scan._")
+
+    lines.extend(["---", "", "## Community leads (verify before citing)", ""])
+    lines.append("Community items are leads only. Do not cite directly in articles without confirming from an official source.")
+    lines.append("")
+    if grouped_names["community"]:
+        for name in grouped_names["community"]:
+            lines.extend(render_source_section(name, results[name]))
+            lines.append("")
+    else:
+        lines.append("_No items this scan._")
+
     lines.append("")
     return "\n".join(lines)
 
@@ -526,7 +618,56 @@ def save_digest(scan_started: datetime, digest: str) -> Path:
     return digest_path
 
 
+def save_json_digest(scan_started: datetime, payload: dict[str, object]) -> Path:
+    CACHE_DIR.mkdir(parents=True, exist_ok=True)
+    digest_path = CACHE_DIR / f"digest-{scan_started.date().isoformat()}.json"
+    digest_path.write_text(json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True), encoding="utf-8")
+    return digest_path
+
+
+def build_json_digest(scan_started: datetime, results: dict[str, SourceResult]) -> dict[str, object]:
+    payload: dict[str, object] = {
+        "scan_started": scan_started.replace(microsecond=0).isoformat().replace("+00:00", "Z"),
+        "keywords": KEYWORDS,
+        "results": {},
+    }
+    result_payload: dict[str, object] = {}
+    for name, result in results.items():
+        entry: dict[str, object] = {
+            "status": result.status,
+            "trust": result.trust,
+            "fetched": result.fetched,
+            "matched_count": result.matched_count,
+            "items": [],
+        }
+        if result.status == "skipped":
+            entry["error"] = None
+            entry["skip_reason"] = result.skip_reason
+        elif result.status == "error":
+            entry["error"] = result.error
+            entry["skip_reason"] = None
+        else:
+            entry["error"] = None
+            entry["skip_reason"] = None
+        entry["items"] = [
+            {
+                "title": item.title,
+                "url": item.url,
+                "date": item.date,
+                "excerpt": item.excerpt,
+                "matched": item.matched,
+                "trust": item.trust,
+                "version": item.version,
+            }
+            for item in (result.items or [])
+        ]
+        result_payload[name] = entry
+    payload["results"] = result_payload
+    return payload
+
+
 def scan_sources(args: argparse.Namespace) -> int:
+    validate_source_configs()
     since_date = parse_human_date(args.since) if args.since else None
     if args.since and since_date is None:
         print("--since must be in YYYY-MM-DD format.", file=sys.stderr)
@@ -542,7 +683,11 @@ def scan_sources(args: argparse.Namespace) -> int:
         cursor_field = CURSOR_FIELDS[name]
         skip_reason = source_skip_reason(name, config)
         if skip_reason is not None:
-            results[name] = SourceResult(status="skipped", skip_reason=skip_reason)
+            results[name] = SourceResult(
+                status="skipped",
+                trust=str(config["trust"]),
+                skip_reason=skip_reason,
+            )
             continue
         try:
             fetcher = FETCHERS[str(config["kind"])]
@@ -565,6 +710,7 @@ def scan_sources(args: argparse.Namespace) -> int:
             latest_cursor = fetched_items[0].cursor if fetched_items else None
             results[name] = SourceResult(
                 status="ok",
+                trust=str(config["trust"]),
                 fetched=len(fetched_items),
                 matched_count=len(matched_items),
                 items=matched_items,
@@ -578,10 +724,16 @@ def scan_sources(args: argparse.Namespace) -> int:
                 }
         except Exception as exc:
             print(f"[{name}] fetch failed: {exc}", file=sys.stderr)
-            results[name] = SourceResult(status="error", error=str(exc))
+            results[name] = SourceResult(
+                status="error",
+                trust=str(config["trust"]),
+                error=str(exc),
+            )
 
     digest = render_digest(scan_started, results)
     digest_path = save_digest(scan_started, digest)
+    if args.format == "json":
+        save_json_digest(scan_started, build_json_digest(scan_started, results))
     write_last_seen(new_state)
     print(f"Wrote digest to {digest_path}")
     return 0
@@ -593,6 +745,7 @@ def most_recent_digest_path() -> Path | None:
 
 
 def report_digest(args: argparse.Namespace) -> int:
+    validate_source_configs()
     if args.date:
         digest_path = CACHE_DIR / f"digest-{args.date}.md"
     else:
@@ -628,6 +781,12 @@ def build_parser() -> argparse.ArgumentParser:
         "--full",
         action="store_true",
         help="Ignore last-seen state and --since; include every item returned by each source.",
+    )
+    scan_parser.add_argument(
+        "--format",
+        choices=("markdown", "json"),
+        default="markdown",
+        help="Write markdown only (default) or markdown plus a sibling JSON digest.",
     )
     scan_parser.set_defaults(func=scan_sources)
 
