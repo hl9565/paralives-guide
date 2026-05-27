@@ -13,7 +13,8 @@
 ## What Claude Code does NOT do here
 
 - **Do not edit project source files**: `*.html`, `deploy.sh`, `init.sh`, `CNAME`, CSS, JS, or any file under the project root. Codex writes these.
-- Do not run `./deploy.sh` or any git commit / push against this repo. Codex deploys.
+- Do not run `./deploy.sh` or push against this repo. Codex or the maintainer deploys.
+- Claude Code may create local git commits only when the handoff/review workflow says the completed Codex output is reviewed and ready to commit, the changed files are within the reviewed scope, and the working tree has no unrelated or suspicious changes. If in doubt, ask before committing.
 - Do not write content for articles, even drafts in markdown. Hand the brief to Codex.
 
 **Exception — Claude Code may write:** `CLAUDE.md` itself, and any file under `briefs/`. These are architectural documents, not source code.
