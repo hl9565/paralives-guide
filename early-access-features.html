@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- maintenance-tier: WARM -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -388,6 +389,25 @@
         grid-template-columns: 1fr;
       }
     }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin: -6px 0 28px;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      font-family: var(--font-mono);
+    }
+    .article-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .article-meta span + span::before {
+      content: "·";
+      margin-right: 8px;
+      color: var(--line);
+    }
   </style>
 </head>
 <body>
@@ -409,7 +429,11 @@
     <article>
       <div class="kicker">GD-05 · GUIDES</div>
       <h1>Paralives Early Access Features: Day-One Systems and Planned Updates</h1>
-      <div class="byline">Updated 2026-05-27 &nbsp;·&nbsp; Paralives Guide &nbsp;·&nbsp; 8 min read</div>
+      <div class="article-meta">
+        <span>Updated: 2026-05-27</span>
+        <span>Game Version: EA 0.1</span>
+        <span>Feature overview</span>
+      </div>
       <p>If you want the shortest version, <span translate="no">Paralives</span> officially separates what is playable on day one of Early Access from what is planned to arrive later as free updates. That distinction matters because a planned feature is not the same thing as a launch feature.</p>
       <p>This guide uses the official <a href="https://www.paralives.com/development">development page</a> and <a href="https://www.paralives.com/faq">FAQ</a> only, so it stays close to the studio's own wording instead of mixing confirmed systems with wishlist assumptions.</p>
 

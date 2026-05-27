@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- maintenance-tier: COLD -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -343,6 +344,25 @@
         padding: 28px 20px;
       }
     }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin: -6px 0 28px;
+      font-size: 0.92rem;
+      color: var(--ink-soft);
+      font-family: var(--font-mono);
+    }
+    .article-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .article-meta span + span::before {
+      content: "·";
+      margin-right: 8px;
+      color: var(--line);
+    }
   </style>
 </head>
 <body>
@@ -364,7 +384,11 @@
     <article>
       <div class="kicker">GD-02 · GUIDES</div>
       <h1>Paramaker guide</h1>
-      <div class="byline">Updated 2026-05-26 &nbsp;·&nbsp; Paralives Guide &nbsp;·&nbsp; 6 min read</div>
+      <div class="article-meta">
+        <span>Updated: 2026-05-27</span>
+        <span>Game Version: EA 0.1</span>
+        <span>Reference guide</span>
+      </div>
       <p><span translate="no">Paramaker</span> is the part of <span translate="no">Paralives</span> where a new <span translate="no">Para</span> starts to feel like a person instead of a blank preset. This guide is here to orient you without pretending every old preview clip equals a shipped feature.</p>
       <p>The character-creation layer has years of dev-history behind it, so the safest approach is to separate the broad confirmed shape from the fine-grain details that still need direct Early Access verification.</p>
       <nav class="toc">
