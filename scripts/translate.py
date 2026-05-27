@@ -2,8 +2,10 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
+import random
 import re
 import subprocess
 import sys
@@ -48,7 +50,7 @@ MODEL_PRICING = {
     "gpt-5": {"input": Decimal("1.25"), "output": Decimal("10.00")},
     "gpt-5.1": {"input": Decimal("1.25"), "output": Decimal("10.00")},
 }
-RETRY_BACKOFF_SECONDS = [2, 4, 8, 16, 32]
+RETRY_BACKOFF_SECONDS = [2, 5, 10, 20, 40, 90]
 TRANSLATION_NOTICE = (
     "Machine-assisted translation from English. Report errors via the Contact page."
 )
@@ -146,6 +148,23 @@ def source_files() -> list[Path]:
 
 def source_commit_for(path: Path) -> str:
     return run_git(["log", "-n", "1", "--format=%H", "--", path.name])
+
+
+def source_content_hash_for(path: Path) -> str:
+    soup = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")
+    units = collect_translation_units(soup, "en")
+    payload = [{"kind": unit.kind, "payload": unit.payload} for unit in units]
+    canonical = json.dumps(payload, ensure_ascii=False, sort_keys=False, separators=(",", ":"))
+    return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
+
+
+def batch_cache_path(lang: str, filename: str) -> Path:
+    return REPO_ROOT / ".translate-cache" / lang / f"{filename}.json"
+
+
+def batch_cache_key(unit: TranslationUnit) -> str:
+    digest = hashlib.sha256(unit.payload.encode("utf-8")).hexdigest()
+    return f"{unit.kind}:{digest}"
 
 
 def url_for(lang: str, filename: str) -> str:
@@ -261,6 +280,31 @@ def compute_cost(model: str, input_tokens: int, output_tokens: int) -> Decimal:
     return (input_cost + output_cost).quantize(Decimal("0.000001"))
 
 
+def load_batch_cache(path: Path) -> dict[str, str]:
+    if not path.exists():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        print(f"cache file {path} unreadable, rebuilding", flush=True)
+        return {}
+
+    if not isinstance(payload, dict) or payload.get("version") != 1:
+        return {}
+    entries = payload.get("entries")
+    if not isinstance(entries, dict):
+        return {}
+    return {str(key): value for key, value in entries.items() if isinstance(value, str)}
+
+
+def flush_batch_cache(path: Path, entries: dict[str, str]) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temp_path = path.with_name(f"{path.name}.tmp")
+    payload = {"version": 1, "entries": entries}
+    temp_path.write_text(json.dumps(payload, ensure_ascii=False, sort_keys=True, indent=2), encoding="utf-8")
+    os.replace(temp_path, path)
+
+
 def usage_from_response(response) -> tuple[int, int, int]:
     usage = getattr(response, "usage", None)
     if not usage:
@@ -277,7 +321,13 @@ def build_alternate_links(filename: str) -> list[tuple[str, str]]:
     return links
 
 
-def ensure_head_metadata(soup: BeautifulSoup, lang: str, filename: str, source_commit: str) -> None:
+def ensure_head_metadata(
+    soup: BeautifulSoup,
+    lang: str,
+    filename: str,
+    source_commit: str,
+    source_content_hash: str,
+) -> None:
     html_tag = soup.html
     if html_tag is None:
         raise ValueError("Missing <html> element")
@@ -301,6 +351,7 @@ def ensure_head_metadata(soup: BeautifulSoup, lang: str, filename: str, source_c
         head.append(tag)
 
     upsert_meta(head, soup, "translation-source-commit", source_commit)
+    upsert_meta(head, soup, "translation-source-content-hash", source_content_hash)
     upsert_meta(head, soup, "translation-source-path", filename)
 
 
@@ -505,7 +556,8 @@ def chat_completion(client: OpenAI, model: str, system: str, user: str):
                 f"Retry {attempt}/{len(RETRY_BACKOFF_SECONDS)} after API {status_code} for chat completion: {exc}",
                 flush=True,
             )
-            time.sleep(RETRY_BACKOFF_SECONDS[attempt - 1])
+            delay = RETRY_BACKOFF_SECONDS[attempt - 1] * random.uniform(0.7, 1.3)
+            time.sleep(delay)
         except (APIConnectionError, APITimeoutError) as exc:
             if attempt == max_attempts:
                 raise
@@ -513,7 +565,8 @@ def chat_completion(client: OpenAI, model: str, system: str, user: str):
                 f"Retry {attempt}/{len(RETRY_BACKOFF_SECONDS)} after {type(exc).__name__} for chat completion: {exc}",
                 flush=True,
             )
-            time.sleep(RETRY_BACKOFF_SECONDS[attempt - 1])
+            delay = RETRY_BACKOFF_SECONDS[attempt - 1] * random.uniform(0.7, 1.3)
+            time.sleep(delay)
 
 
 def accepted_model_id(response: Any, fallback: str) -> str:
@@ -711,7 +764,7 @@ def collect_translation_units(soup: BeautifulSoup, lang: str) -> list[Translatio
     return units
 
 
-def batched_units(units: list[TranslationUnit], max_units: int = 12, max_chars: int = 3200) -> list[list[TranslationUnit]]:
+def batched_units(units: list[TranslationUnit], max_units: int = 8, max_chars: int = 1800) -> list[list[TranslationUnit]]:
     batches: list[list[TranslationUnit]] = []
     batch: list[TranslationUnit] = []
     size = 0
@@ -832,6 +885,7 @@ def translate_page_in_chunks(
     source_path: Path,
     lang: str,
     model: str,
+    force: bool,
     fallback_model: str | None,
 ) -> tuple[BeautifulSoup, UsageTotals, str]:
     source_html = source_path.read_text(encoding="utf-8")
@@ -839,12 +893,27 @@ def translate_page_in_chunks(
     units = collect_translation_units(soup, lang)
     usage = UsageTotals(accepted_models=[])
     translated: dict[str, str] = {}
+    cache_path = batch_cache_path(lang, source_path.name)
+    cache_entries = load_batch_cache(cache_path)
+    uncached_units: list[TranslationUnit] = []
+    current_keys = {batch_cache_key(unit) for unit in units}
+    for unit in units:
+        key = batch_cache_key(unit)
+        cached_text = cache_entries.get(key)
+        if not force and cached_text is not None:
+            translated[unit.unit_id] = cached_text
+            continue
+        uncached_units.append(unit)
+
     active_model = model
-    for batch in batched_units(units):
+    for batch in batched_units(uncached_units):
         mapping, batch_usage, active_model = request_chunk_translation(
             client, active_model, lang, source_path.name, batch, fallback_model
         )
         translated.update(mapping)
+        for unit in batch:
+            cache_entries[batch_cache_key(unit)] = mapping[unit.unit_id]
+        flush_batch_cache(cache_path, cache_entries)
         usage.input_tokens += batch_usage.input_tokens
         usage.output_tokens += batch_usage.output_tokens
         usage.total_tokens += batch_usage.total_tokens
@@ -852,6 +921,16 @@ def translate_page_in_chunks(
         usage.accepted_models.extend(batch_usage.accepted_models or [])
         if batch_usage.model_substitution:
             usage.model_substitution = batch_usage.model_substitution
+
+    try:
+        stale_keys = [key for key in cache_entries if key not in current_keys]
+        if stale_keys:
+            for key in stale_keys:
+                cache_entries.pop(key, None)
+            flush_batch_cache(cache_path, cache_entries)
+    except Exception:  # noqa: BLE001
+        pass
+
     apply_translation_units(soup, units, translated, lang)
     return soup, usage, active_model
 
@@ -865,13 +944,14 @@ def translate_one(
     fallback_model: str | None = None,
 ) -> TranslationResult:
     source_commit = source_commit_for(source_path)
+    source_content_hash = source_content_hash_for(source_path)
     target_dir = REPO_ROOT / lang
     target_path = target_dir / source_path.name
 
     if target_path.exists() and not force:
         soup = BeautifulSoup(target_path.read_text(encoding="utf-8"), "html.parser")
-        meta = soup.find("meta", attrs={"name": "translation-source-commit"})
-        if meta and meta.get("content") == source_commit:
+        meta = soup.find("meta", attrs={"name": "translation-source-content-hash"})
+        if meta and meta.get("content") == source_content_hash:
             return TranslationResult(
                 source_file=source_path.name,
                 target_lang=lang,
@@ -881,7 +961,7 @@ def translate_one(
             )
 
     try:
-        soup, usage, model = translate_page_in_chunks(client, source_path, lang, model, fallback_model)
+        soup, usage, model = translate_page_in_chunks(client, source_path, lang, model, force, fallback_model)
     except Exception as exc:  # noqa: BLE001
         return TranslationResult(
             source_file=source_path.name,
@@ -894,7 +974,7 @@ def translate_one(
     try:
         source_html = source_path.read_text(encoding="utf-8")
         source_soup = BeautifulSoup(source_html, "html.parser")
-        ensure_head_metadata(soup, lang, source_path.name, source_commit)
+        ensure_head_metadata(soup, lang, source_path.name, source_commit, source_content_hash)
         inject_lang_switch(soup, lang, source_path.name)
         inject_style_rules(soup, source_soup)
         restore_adsense_script(soup, source_soup)
@@ -1069,9 +1149,9 @@ def run_translate(args: argparse.Namespace) -> int:
         return 1
     return 0
 
-def recorded_source_commit(path: Path) -> str | None:
+def recorded_source_content_hash(path: Path) -> str | None:
     soup = BeautifulSoup(path.read_text(encoding="utf-8"), "html.parser")
-    meta = soup.find("meta", attrs={"name": "translation-source-commit"})
+    meta = soup.find("meta", attrs={"name": "translation-source-content-hash"})
     return meta.get("content") if meta else None
 
 
@@ -1082,10 +1162,10 @@ def run_check(_: argparse.Namespace) -> int:
         if not lang_dir.exists():
             continue
         for target in sorted(lang_dir.glob("*.html")):
-            current_commit = source_commit_for(REPO_ROOT / target.name)
-            recorded = recorded_source_commit(target)
-            if recorded != current_commit:
-                stale.append((str(target.relative_to(REPO_ROOT)), recorded, current_commit))
+            current_hash = source_content_hash_for(REPO_ROOT / target.name)
+            recorded = recorded_source_content_hash(target)
+            if recorded != current_hash:
+                stale.append((str(target.relative_to(REPO_ROOT)), recorded, current_hash))
 
     if not stale:
         print("No stale translations found.")
