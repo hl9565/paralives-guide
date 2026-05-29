@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- maintenance-tier: COLD -->
+<!-- maintenance-tier: HOT -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paralives Paramaker Guide | Paralives Guide</title>
-  <meta name="description" content="Get oriented in the Paralives Paramaker with a verified character-creation overview, clear scope notes, and visible placeholders where checks are still needed.">
-  <link rel="canonical" href="https://paralivesguide.help/paramaker-guide">
+  <title>Paralives Troubleshooting: Known Issues and Fixes | Paralives Guide</title>
+  <meta name="description" content="Paralives troubleshooting hub for known Early Access issues, official reporting links, and careful guides without unverified fixes.">
+  <link rel="canonical" href="https://paralivesguide.help/troubleshooting">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -14,34 +14,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "What is Paramaker in Paralives?",
+          "name": "Is Paralives in Early Access? Are bugs expected?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Paramaker is the Paralives character creator, where you shape a Para's look before taking them into live mode."
+            "text": "Yes. Paralives entered Early Access on May 25, 2026, so bugs and unfinished areas can happen while the game is still being updated."
           }
         },
         {
           "@type": "Question",
-          "name": "Can you trust every old Paramaker preview still circulating online?",
+          "name": "Where should I report a Paralives bug?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Older dev previews are useful context, but any feature shown there still needs to be checked against the current Early Access build before it is treated as live."
+            "text": "Use official Paralives channels first, such as the Steam community hub or the official FAQ links, rather than relying on fan pages as bug-report intake."
           }
         },
         {
           "@type": "Question",
-          "name": "Does this guide list every trait and body option already?",
+          "name": "Will fixes come during Early Access?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. Detailed option counts and exact trait interactions are left marked for follow-up until they can be verified directly in the live build."
+            "text": "Paralives is an Early Access game, so updates are expected over time, but this page does not promise timing for any specific fix unless an official source says so."
           }
         },
         {
           "@type": "Question",
-          "name": "What page should I watch if I want structured trait data later?",
+          "name": "Why isn't there an article for my issue here yet?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Watch the planned Database hub, which is where the future Traits database will live once the first verified rows are ready."
+            "text": "This hub only links issues that have a dedicated guide or an official source trail. If an issue is only a community lead, it waits here until it can be verified responsibly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are community workarounds reliable?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Treat community workarounds as things to test carefully, not guaranteed fixes. Back up saves when possible and prefer official guidance when it exists."
           }
         }
       ]
@@ -186,6 +194,7 @@
     .toc,
     .factbox,
     .note,
+    .source-list a,
     .related a {
       border-radius: 20px;
     }
@@ -243,6 +252,31 @@
       background: rgba(184, 201, 167, 0.22);
       color: var(--ink);
     }
+    .source-list {
+      display: grid;
+      gap: 14px;
+      margin: 18px 0 4px;
+    }
+    .source-list a {
+      display: block;
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      background: rgba(255, 251, 246, 0.9);
+      box-shadow: var(--shadow);
+    }
+    .source-list .label {
+      color: var(--accent-gd);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .source-list .title {
+      margin: 4px 0 6px;
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+    }
+    .source-list p { margin: 0; color: var(--ink-soft); }
     .faq details {
       padding: 16px 0;
       border-top: 1px solid var(--line);
@@ -355,7 +389,7 @@
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <div class="brand"><a href="/">Paralives<span> </span>Guide</a></div>
+      <div class="brand"><a href="/"><span translate="no">Paralives</span><span> </span>Guide</a></div>
       <nav class="topnav" aria-label="Primary">
         <a href="guides" aria-current="true">Guides</a>
         <a href="database">Database</a>
@@ -367,79 +401,92 @@
     </div>
   </header>
   <div class="wrap">
-    <div class="crumb"><a href="/">Home</a> &nbsp;/&nbsp; <a href="guides">Guides</a> &nbsp;/&nbsp; Paramaker guide</div>
+    <div class="crumb"><a href="/">Home</a> &nbsp;/&nbsp; <a href="guides">Guides</a> &nbsp;/&nbsp; Troubleshooting</div>
     <article>
-      <div class="kicker">GD-02 · GUIDES</div>
-      <h1>Paramaker guide</h1>
+      <div class="kicker">GD-07 · GUIDES</div>
+      <h1>Paralives Troubleshooting: Known Issues and Fixes</h1>
       <div class="article-meta">
-        <span>Updated: 2026-05-27</span>
+        <span>Updated: 2026-05-29</span>
         <span>Game Version: EA 0.1</span>
-        <span>Reference guide</span>
+        <span>Hub</span>
       </div>
-      <p><span translate="no">Paramaker</span> is the part of <span translate="no">Paralives</span> where a new <span translate="no">Para</span> starts to feel like a person instead of a blank preset. This guide is here to orient you without pretending every old preview clip equals a shipped feature.</p>
-      <p>The character-creation layer has years of dev-history behind it, so the safest approach is to separate the broad confirmed shape from the fine-grain details that still need direct Early Access verification.</p>
+      <p>This <span translate="no">Paralives</span> troubleshooting hub is the stable starting point when something in Early Access feels broken, unclear, or not working as expected.</p>
+      <p>It is not a list of unverified fixes. When this site has a dedicated guide, the issue is linked below. When it does not, this page points to official <span translate="no">Paralives</span> sources instead of turning community reports into claims.</p>
+
+      <div class="note"><b>Status:</b> Early Access began on May 25, 2026. This hub only lists site-reviewed guides, official-source routes, and visibly empty categories reserved for future articles.</div>
+
       <nav class="toc">
-        <h2>In this guide</h2>
+        <h2>On this page</h2>
         <ol>
-          <li><a href="#what-it-is">What Paramaker is for</a></li>
-          <li><a href="#shape">How the creator is described publicly</a></li>
-          <li><a href="#traits">Where traits and personality fit</a></li>
-          <li><a href="#workflow">A calm way to approach a first Para</a></li>
-          <li><a href="#uncertain">What still needs direct build checks</a></li>
+          <li><a href="#quick-check">Quick checklist</a></li>
+          <li><a href="#gameplay">Gameplay issues</a></li>
+          <li><a href="#performance">Performance and technical issues</a></li>
+          <li><a href="#saves">Saves and progression issues</a></li>
+          <li><a href="#report">Where to report bugs</a></li>
+          <li><a href="#faq">FAQ</a></li>
         </ol>
       </nav>
 
-      <h2 class="sec" id="what-it-is">What Paramaker is for</h2>
-      <p>At the simplest level, <span translate="no">Paramaker</span> is the game's character creator. It is where you shape appearance, identity, and the broad frame of who a <span translate="no">Para</span> is before everyday life takes over in live mode.</p>
-      <p>That sounds ordinary on paper, but it matters because character creators in life sims tend to become shorthand for the whole game's tone. If the creator feels flexible and readable, the rest of the simulation usually feels easier to trust.</p>
+      <h2 class="sec" id="quick-check">Quick checklist</h2>
+      <p>Before treating an issue as a known bug, use a short sanity check:</p>
+      <ul>
+        <li>Confirm the game is updated to the latest Early Access patch available in <span translate="no">Steam</span>.</li>
+        <li>Check the <a href="system-requirements">system requirements</a> if the problem looks hardware-related.</li>
+        <li>Compare missing or unfinished-feeling systems with the <a href="early-access-features">Early Access features guide</a>.</li>
+        <li>Back up important saves before testing community workarounds.</li>
+        <li>Use official reporting routes when you can reproduce an issue.</li>
+      </ul>
+
+      <h2 class="sec" id="gameplay">Gameplay issues</h2>
+      <div class="source-list">
+        <a href="aging-too-fast">
+          <div class="label">Dedicated guide</div>
+          <div class="title"><span translate="no">Paralives</span> aging too fast</div>
+          <p>A cautious guide for lifespan and character-edit workarounds, with community-reported steps clearly labeled instead of presented as official fixes.</p>
+        </a>
+      </div>
+
+      <h2 class="sec" id="performance">Performance and technical issues</h2>
+      <p>No dedicated articles yet. For now, check the official <a href="https://store.steampowered.com/app/1118520/Paralives/"><span translate="no">Steam</span> page</a>, the <a href="https://steamcommunity.com/app/1118520/discussions/"><span translate="no">Steam</span> community hub</a>, and the official <a href="https://paralives.com/faq"><span translate="no">Paralives</span> FAQ</a> before relying on fan workarounds.</p>
+
+      <h2 class="sec" id="saves">Saves and progression issues</h2>
+      <p>No dedicated articles yet. This section is reserved for save, progression, and patch-regression guides once there is a verified source trail or a reviewed in-house article.</p>
 
       <div class="factbox">
-        <h3>What is safe to say right now</h3>
+        <h3>What gets listed here</h3>
         <table>
-          <tr><td>Confirmed role</td><td><span translate="no">Paramaker</span> is the <span translate="no">Paralives</span> character-creation tool.</td></tr>
-          <tr><td>Best source type</td><td>Official studio posts and live build checks.</td></tr>
-          <tr><td>Risk area</td><td>Older preview clips that fans repeat as if every detail shipped unchanged.</td></tr>
-          <tr><td>Next structured companion</td><td><a href="database">Database hub</a> for the future Traits database.</td></tr>
+          <tr><td>Dedicated site guide</td><td>Listed as a child entry, like the aging-too-fast guide.</td></tr>
+          <tr><td>Official acknowledgement</td><td>Linked as a known issue route without inventing fix steps.</td></tr>
+          <tr><td>Community-only lead</td><td>Held back until confirmed by an official source or turned into a cautious guide.</td></tr>
+          <tr><td>Empty category</td><td>Shown plainly as empty so future expansion is obvious.</td></tr>
         </table>
       </div>
 
-
-      <h2 class="sec" id="shape">How the creator is described publicly</h2>
-      <p>Official studio material presents <span translate="no">Paramaker</span> as a flexible creator built around expressive customization rather than a tiny set of locked presets. That high-level promise is solid enough to write down. The fragile part is any exact list of sliders, panels, or sub-menus unless it has been confirmed in the public build.</p>
-      <p>For that reason, this guide stays broad on purpose. It aims to help you understand the creator's shape, not to fake certainty about every click path.</p>
-
-      <h2 class="sec" id="traits">Where traits and personality fit</h2>
-      <p>Character creation in a life sim is not just a face-maker; it is also the point where future social chemistry starts to take shape. Traits matter here because they eventually affect how a <span translate="no">Para</span> behaves, who they clash with, and how a household feels once you leave the creator.</p>
-      <p>The site will break that out properly once the first verified trait rows exist. Until then, the clean next stop is the planned <a href="database">Database hub</a>, which is reserved for a traits-first rollout rather than a made-up full list.</p>
-
-      <div class="note"><b>FILL IN:</b> Confirm the exact number of trait slots, any aspiration-equivalent systems, and whether relationship presets are set directly inside the live Early Access build.</div>
-
-      <h2 class="sec" id="workflow">A calm way to approach a first Para</h2>
-      <p>Start with the broad silhouette of the person you want to play, then layer details in a second pass. In practice that usually means landing the overall look first, then circling back to name, traits, and any contextual details that only make sense once the character already feels grounded.</p>
-      <p>This is also where life-sim muscle memory can help or mislead. If you come from <span translate="no">The Sims</span>, some instincts will transfer, but it is worth leaving room for <span translate="no">Paralives</span> to structure personality a little differently once the build settles.</p>
-
-      <h2 class="sec" id="uncertain">What still needs direct build checks</h2>
-      <p>Any exact option counts, hidden compatibility rules, or claims about how trait combinations behave in live play should be treated as open until tested. That is not a weakness in the guide; it is the point of the guide. Clear uncertainty is better than confident drift.</p>
-      <div class="note"><b>Status:</b> Some long-circulating creator features were shown in earlier studio previews. If a feature appears in preview footage but is not confirmed in the current Early Access build, it should stay in this status lane rather than being described as shipped.</div>
-
+      <h2 class="sec" id="report">Where to report bugs</h2>
+      <p>Use official routes first. The safest public starting points are the <a href="https://steamcommunity.com/app/1118520/discussions/"><span translate="no">Steam</span> community hub</a>, the official <a href="https://paralives.com/faq"><span translate="no">Paralives</span> FAQ</a>, and official pages linked from <a href="https://paralives.com/">paralives.com</a>.</p>
+      <p>This fan site can organize troubleshooting notes, but it is not an official support inbox and cannot confirm whether a report has reached the studio.</p>
 
       <h2 class="sec" id="faq">FAQ</h2>
       <div class="faq">
         <details>
-          <summary>What is Paramaker in Paralives?</summary>
-          <p>Paramaker is the Paralives character creator, where you shape a Para's look before taking them into live mode.</p>
+          <summary>Is Paralives in Early Access? Are bugs expected?</summary>
+          <p>Yes. Paralives entered Early Access on May 25, 2026, so bugs and unfinished areas can happen while the game is still being updated.</p>
         </details>
         <details>
-          <summary>Can you trust every old Paramaker preview still circulating online?</summary>
-          <p>No. Older dev previews are useful context, but any feature shown there still needs to be checked against the current Early Access build before it is treated as live.</p>
+          <summary>Where should I report a Paralives bug?</summary>
+          <p>Use official Paralives channels first, such as the Steam community hub or the official FAQ links, rather than relying on fan pages as bug-report intake.</p>
         </details>
         <details>
-          <summary>Does this guide list every trait and body option already?</summary>
-          <p>No. Detailed option counts and exact trait interactions are left marked for follow-up until they can be verified directly in the live build.</p>
+          <summary>Will fixes come during Early Access?</summary>
+          <p>Paralives is an Early Access game, so updates are expected over time, but this page does not promise timing for any specific fix unless an official source says so.</p>
         </details>
         <details>
-          <summary>What page should I watch if I want structured trait data later?</summary>
-          <p>Watch the planned Database hub, which is where the future Traits database will live once the first verified rows are ready.</p>
+          <summary>Why isn't there an article for my issue here yet?</summary>
+          <p>This hub only links issues that have a dedicated guide or an official source trail. If an issue is only a community lead, it waits here until it can be verified responsibly.</p>
+        </details>
+        <details>
+          <summary>Are community workarounds reliable?</summary>
+          <p>Treat community workarounds as things to test carefully, not guaranteed fixes. Back up saves when possible and prefer official guidance when it exists.</p>
         </details>
       </div>
     </article>
@@ -447,10 +494,9 @@
     <section class="related">
       <h2>Keep reading</h2>
       <div class="related-grid">
-        <a href="system-requirements"><div class="t">GD-01</div><div class="h">Paralives system requirements</div></a>
         <a href="aging-too-fast"><div class="t">GD-04</div><div class="h">Paralives aging too fast</div></a>
+        <a href="system-requirements"><div class="t">GD-01</div><div class="h">Paralives system requirements</div></a>
         <a href="early-access-features"><div class="t">GD-05</div><div class="h">Paralives Early Access features</div></a>
-        <a href="building-basics"><div class="t">GD-03</div><div class="h">Building basics</div></a>
         <a href="guides"><div class="t">GUIDES</div><div class="h">Browse all guides</div></a>
       </div>
     </section>
