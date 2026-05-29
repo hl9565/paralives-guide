@@ -1,12 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-<!-- maintenance-tier: COLD -->
+<!-- maintenance-tier: WARM -->
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paralives Tools Hub | Paralives Guide</title>
-  <meta name="description" content="Track the planned Paralives tool layer, starting with a Trait Conflict Checker and future vanilla JavaScript helpers that need no accounts or backend.">
+  <title>Paralives Tools & Resources: Official Channels, Mods, and Community | Paralives Guide</title>
+  <meta name="description" content="Use this verified Paralives tools and resources hub to find official channels, mod sources, community spaces, creator links, and reference companions.">
   <link rel="canonical" href="https://paralivesguide.help/tools">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Where do I find official Paralives announcements?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Check the official Paralives website, the Paralives News page, the Development page, the FAQ, and the Steam store page for studio-published updates and release information."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is there a Paralives Discord?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Paralives runs an official Discord community, but this page only links it when the current invite URL is publicly exposed on official surfaces."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where are Paralives mods hosted?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Paralives mods are currently centered on the Steam Workshop flow. Use this site's mods guide for the workflow, and prefer official or directly verifiable Workshop links over mirrors."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does this site recommend specific creators?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. This page lists creator pointers by function and recent Paralives coverage, not by quality ranking, subscriber count, or endorsement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why isn't another site listed here?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Entries must fit this page's categories, avoid direct competitor guides, and resolve to a verifiably live destination when checked during implementation."
+          }
+        }
+      ]
+    }
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -36,7 +84,6 @@
     }
     * { box-sizing: border-box; }
     body { margin: 0; font-family: var(--font-body); background: var(--cream); color: var(--ink); line-height: 1.7; }
-    h1, h2 { font-family: var(--font-display); }
     a { color: inherit; text-decoration: none; }
     .topbar { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); background: rgba(253, 246, 236, 0.94); backdrop-filter: blur(12px); }
     .topbar-inner, .wrap, .site-footer-inner { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
@@ -48,18 +95,138 @@
     .topnav a[aria-current]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px; background: var(--pink-deep); border-radius: 999px; }
     .wrap { padding: 56px 0 112px; }
     .crumb { margin-bottom: 18px; color: var(--ink-soft); font-size: 0.94rem; }
+    h1, h2, h3 { font-family: var(--font-display); }
     h1 { margin: 0 0 16px; font-size: clamp(2.5rem, 6vw, 4rem); }
     .lede { max-width: 42rem; margin: 0 0 28px; color: var(--ink-soft); }
-    .placeholder {
+    .intro-note,
+    .resource-section,
+    .faq,
+    .related {
+      margin-top: 28px;
       padding: 24px;
       border: 1px solid var(--line);
-      border-left: 3px solid var(--pink);
       border-radius: 24px;
-      background: rgba(255, 251, 246, 0.88);
+      background: rgba(255, 251, 246, 0.9);
       box-shadow: var(--shadow);
     }
-    .status { font-family: var(--font-mono); letter-spacing: 0.04em; color: var(--ink); }
-    .placeholder p { margin: 14px 0 0; color: var(--ink-soft); }
+    .intro-note { border-left: 3px solid var(--pink); }
+    .intro-note p,
+    .resource-section > p,
+    .faq > p,
+    .related > p { margin: 0; color: var(--ink-soft); }
+    .resource-section + .resource-section,
+    .faq,
+    .related { margin-top: 22px; }
+    .resource-section h2,
+    .faq h2,
+    .related h2 { margin: 0 0 10px; font-size: clamp(1.45rem, 3vw, 2rem); }
+    .resource-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 0;
+      display: grid;
+      gap: 16px;
+    }
+    .resource-list li {
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(253, 246, 236, 0.92);
+    }
+    .resource-list strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 1.02rem;
+    }
+    .resource-list strong a {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+    .meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 12px;
+      align-items: center;
+      margin-bottom: 8px;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+    }
+    .trust-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(244, 200, 192, 0.24);
+      color: var(--ink);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+    }
+    .trust-chip.community {
+      background: rgba(184, 201, 167, 0.24);
+    }
+    .link-row {
+      font-family: var(--font-mono);
+      font-size: 0.89rem;
+      color: var(--ink-soft);
+      word-break: break-all;
+    }
+    .resource-list p {
+      margin: 0;
+      color: var(--ink-soft);
+    }
+    .empty-note {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px dashed var(--line);
+      color: var(--ink-soft);
+      background: rgba(253, 246, 236, 0.75);
+    }
+    .faq details {
+      padding: 16px 0;
+      border-top: 1px solid var(--line);
+    }
+    .faq details:first-of-type {
+      margin-top: 18px;
+    }
+    .faq summary {
+      cursor: pointer;
+      font-weight: 600;
+      color: var(--ink);
+    }
+    .faq details p {
+      margin: 10px 0 0;
+      color: var(--ink-soft);
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .related-grid a {
+      display: block;
+      padding: 18px;
+      border-radius: 20px;
+      border: 1px solid var(--line);
+      background: rgba(253, 246, 236, 0.92);
+    }
+    .related-grid .t {
+      font-family: var(--font-mono);
+      color: var(--pink-deep);
+      font-size: 0.88rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .related-grid .h {
+      margin-top: 8px;
+      font-weight: 600;
+      color: var(--ink);
+    }
     .site-footer { border-top: 1px solid var(--line); padding: 28px 0 44px; }
     .site-footer .brand { margin-bottom: 10px; font-size: 1rem; }
     .disclaimer { margin: 0; max-width: 54rem; color: var(--ink-soft); font-size: 0.92rem; }
@@ -106,17 +273,160 @@
   </header>
   <main class="wrap">
     <div class="crumb"><a href="/">Home</a> / Tools</div>
-    <h1>Tools</h1>
-      <div class="article-meta">
-        <span>Updated: 2026-05-27</span>
+    <h1><span translate="no">Paralives</span> Tools &amp; Resources</h1>
+    <div class="article-meta">
+        <span>Updated: 2026-05-29</span>
         <span>Game Version: EA 0.1</span>
-        <span>Hub</span>
-      </div>
-    <p class="lede">The tools layer is reserved for small helpers that solve a real player problem quickly. Every tool on this site will stay lightweight, browser-only, and usable without accounts, logins, or a backend service in the middle.</p>
-    <div class="placeholder">
-      <div class="status">Status: PLANNED · Trait Conflict Checker first, with a Build Mode Size Calculator and Family Tree Planner behind it.</div>
-      <p>That sequence is deliberate: tools should follow verified game structure, not outrun it. Once the supporting data is solid enough, each tool ships as plain HTML, CSS, and vanilla JavaScript that works in one file.</p>
+        <span>Resources hub</span>
     </div>
+    <p class="lede">This verified <span translate="no">Paralives</span> tools and resources hub points to official channels, community spaces, creator coverage, and reference companions without pretending this page is a calculator shelf. Use it when you want a clean route to information that lives beyond this site.</p>
+    <section class="intro-note">
+      <p>Every external destination listed below resolved during implementation on <span translate="no">2026-05-29</span>. If a category could not be verified from this environment, it stays visible with a short note instead of a guessed link.</p>
+    </section>
+
+    <section class="resource-section" id="official">
+      <h2>Official <span translate="no">Paralives</span> channels</h2>
+      <p>Studio-published pages and public profiles where release information, development posts, and platform details are surfaced directly.</p>
+      <ul class="resource-list">
+        <li>
+          <strong><a href="https://paralives.com/" translate="no">Paralives.com</a></strong>
+          <div class="meta-row"><span class="trust-chip">Official</span><span>Verified 2026-05-29</span></div>
+          <div class="link-row" translate="no">https://paralives.com/</div>
+          <p>The main studio site and the starting point for official navigation, news, and outbound profile links.</p>
+        </li>
+        <li>
+          <strong><a href="https://paralives.com/news" translate="no">Paralives News</a></strong>
+          <div class="meta-row"><span class="trust-chip">Official</span><span>Verified 2026-05-29</span></div>
+          <div class="link-row" translate="no">https://paralives.com/news</div>
+          <p>The studio's news archive for published updates, announcements, and milestone posts.</p>
+        </li>
+        <li>
+          <strong><a href="https://paralives.com/development" translate="no">Paralives Development</a></strong>
+          <div class="meta-row"><span class="trust-chip">Official</span><span>Verified 2026-05-29</span></div>
+          <div class="link-row" translate="no">https://paralives.com/development</div>
+          <p>The development page that collects roadmap-style context, production notes, and studio-facing progress summaries.</p>
+        </li>
+        <li>
+          <strong><a href="https://paralives.com/faq" translate="no">Paralives FAQ</a></strong>
+          <div class="meta-row"><span class="trust-chip">Official</span><span>Verified 2026-05-29</span></div>
+          <div class="link-row" translate="no">https://paralives.com/faq</div>
+          <p>The official FAQ covering supported platforms, feature answers, and recurring studio responses.</p>
+        </li>
+        <li>
+          <strong><a href="https://store.steampowered.com/app/1118520/" translate="no">Paralives on Steam</a></strong>
+          <div class="meta-row"><span class="trust-chip">Official</span><span>Verified 2026-05-29</span></div>
+          <div class="link-row" translate="no">https://store.steampowered.com/app/1118520/</div>
+          <p>The current store listing for release status, PC requirements, and official store-side announcement placement.</p>
+        </li>
+        <li>
+          <strong><a href="https://twitter.com/ParalivesGame" translate="no">Paralives on X / Twitter</a></strong>
+          <div class="meta-row"><span class="trust-chip">Official</span><span>Verified 2026-05-29</span></div>
+          <div class="link-row" translate="no">https://twitter.com/ParalivesGame</div>
+          <p>A studio-linked social profile surfaced from the official site footer.</p>
+        </li>
+        <li>
+          <strong><a href="https://www.instagram.com/paralivesgame/" translate="no">Paralives on Instagram</a></strong>
+          <div class="meta-row"><span class="trust-chip">Official</span><span>Verified 2026-05-29</span></div>
+          <div class="link-row" translate="no">https://www.instagram.com/paralivesgame/</div>
+          <p>A studio-linked social profile surfaced from the official site footer.</p>
+        </li>
+        <li>
+          <strong><a href="https://www.facebook.com/Paralives/" translate="no">Paralives on Facebook</a></strong>
+          <div class="meta-row"><span class="trust-chip">Official</span><span>Verified 2026-05-29</span></div>
+          <div class="link-row" translate="no">https://www.facebook.com/Paralives/</div>
+          <p>A studio-linked social profile surfaced from the official site footer.</p>
+        </li>
+        <li>
+          <strong><a href="https://www.youtube.com/c/Paralives" translate="no">Paralives on YouTube</a></strong>
+          <div class="meta-row"><span class="trust-chip">Official</span><span>Verified 2026-05-29</span></div>
+          <div class="link-row" translate="no">https://www.youtube.com/c/Paralives</div>
+          <p>The official video channel linked from the studio site.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="resource-section" id="mods-workshop">
+      <h2>Mods &amp; Workshop</h2>
+      <p>This route is for the current mod workflow and where to start when you need the on-site explanation first.</p>
+      <ul class="resource-list">
+        <li>
+          <strong><a href="mods">This site's <span translate="no">Paralives</span> mods guide</a></strong>
+          <div class="meta-row"><span class="trust-chip">Official</span><span>Verified 2026-05-29</span></div>
+          <div class="link-row" translate="no">https://paralivesguide.help/mods</div>
+          <p>An internal walkthrough for the Workshop subscription flow, install checks, and safe disable or removal steps.</p>
+        </li>
+      </ul>
+      <p class="empty-note">No verified external Workshop link was added in this pass because the Steam Community and Workshop endpoints timed out from the implementation environment on 2026-05-29.</p>
+    </section>
+
+    <section class="resource-section" id="community">
+      <h2>Community discussion</h2>
+      <p>Conversation spaces where players compare notes, report friction points, and share observations that may later be confirmed elsewhere.</p>
+      <p class="empty-note">No verified community discussion links are listed right now. The official site visibly embeds a <span translate="no">Discord</span> widget, so an official <span translate="no">Discord</span> community exists, but the current public invite URL was not exposed in a way this implementation could verify directly.</p>
+    </section>
+
+    <section class="resource-section" id="creators">
+      <h2>Creator pointers</h2>
+      <p>Channels worth checking when you want recent <span translate="no">Paralives</span> coverage without turning this page into a ranking board.</p>
+      <ul class="resource-list">
+        <li>
+          <strong><a href="https://www.youtube.com/c/Paralives" translate="no">Paralives YouTube channel</a></strong>
+          <div class="meta-row"><span class="trust-chip">Official</span><span>Verified 2026-05-29</span></div>
+          <div class="link-row" translate="no">https://www.youtube.com/c/Paralives</div>
+          <p>The studio's own video channel remains the most direct source for official footage and recorded update material.</p>
+        </li>
+      </ul>
+      <p class="empty-note">No additional creator channels were added because this brief requires public, directly verifiable evidence of recurring <span translate="no">Paralives</span> coverage, and this implementation did not have enough reliable source surface to verify more names cleanly.</p>
+    </section>
+
+    <section class="resource-section" id="reference">
+      <h2>Reference companions</h2>
+      <p>External reference surfaces that serve a different job than this site instead of duplicating the same editorial lane.</p>
+      <ul class="resource-list">
+        <li>
+          <strong><a href="https://paralives.wiki/" translate="no">paralives.wiki</a></strong>
+          <div class="meta-row"><span class="trust-chip community">Community</span><span>Verified 2026-05-29</span></div>
+          <div class="link-row" translate="no">https://paralives.wiki/</div>
+          <p>A fan-edited encyclopedic reference companion, distinct from this site's guided routes and article-style walk-throughs.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section class="faq" id="faq">
+      <h2>FAQ</h2>
+      <p>Common routing questions for this page's external-resources role.</p>
+      <details>
+        <summary>Where do I find official <span translate="no">Paralives</span> announcements?</summary>
+        <p>Check the official <span translate="no">Paralives</span> website, the <span translate="no">Paralives</span> News page, the Development page, the FAQ, and the <span translate="no">Steam</span> store page for studio-published updates and release information.</p>
+      </details>
+      <details>
+        <summary>Is there a <span translate="no">Paralives</span> Discord?</summary>
+        <p>Yes. <span translate="no">Paralives</span> runs an official <span translate="no">Discord</span> community, but this page only links it when the current invite URL is publicly exposed on official surfaces.</p>
+      </details>
+      <details>
+        <summary>Where are <span translate="no">Paralives</span> mods hosted?</summary>
+        <p><span translate="no">Paralives</span> mods are currently centered on the <span translate="no">Steam Workshop</span> flow. Use this site's mods guide for the workflow, and prefer official or directly verifiable Workshop links over mirrors.</p>
+      </details>
+      <details>
+        <summary>Does this site recommend specific creators?</summary>
+        <p>No. This page lists creator pointers by function and recent <span translate="no">Paralives</span> coverage, not by quality ranking, subscriber count, or endorsement.</p>
+      </details>
+      <details>
+        <summary>Why isn't another site listed here?</summary>
+        <p>Entries must fit this page's categories, avoid direct competitor guides, and resolve to a verifiably live destination when checked during implementation.</p>
+      </details>
+    </section>
+
+    <section class="related">
+      <h2>Related routes</h2>
+      <p>Use these internal pages when you want site-owned context instead of another outbound hop.</p>
+      <div class="related-grid">
+        <a href="mods"><div class="t">GD-08</div><div class="h"><span translate="no">Paralives</span> mods guide</div></a>
+        <a href="faq"><div class="t">GD-10</div><div class="h"><span translate="no">Paralives</span> FAQ</div></a>
+        <a href="updates"><div class="t">UP-01</div><div class="h">Updates hub</div></a>
+        <a href="guides"><div class="t">GD</div><div class="h">Browse all guides</div></a>
+      </div>
+    </section>
   </main>
   <footer class="site-footer">
     <div class="site-footer-inner">

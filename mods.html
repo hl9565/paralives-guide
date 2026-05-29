@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paralives Troubleshooting: Known Issues and Fixes | Paralives Guide</title>
-  <meta name="description" content="Paralives troubleshooting hub for known Early Access issues, official reporting links, and careful guides without unverified fixes.">
-  <link rel="canonical" href="https://paralivesguide.help/troubleshooting">
+  <title>Paralives Mods: Current Status and What to Expect | Paralives Guide</title>
+  <meta name="description" content="Paralives mods guide for Steam Workshop status, subscription basics, safe remove steps, and a neutral subscriber-count snapshot.">
+  <link rel="canonical" href="https://paralivesguide.help/mods">
   <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -14,42 +14,42 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Is Paralives in Early Access? Are bugs expected?",
+          "name": "Does Paralives have mods?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Paralives entered Early Access on May 25, 2026, so bugs and unfinished areas can happen while the game is still being updated."
+            "text": "Yes. Paralives has a Steam Workshop hub, and this page treats Workshop as the official place to check the current mod scene."
           }
         },
         {
           "@type": "Question",
-          "name": "Where should I report a Paralives bug?",
+          "name": "How do I install Paralives mods?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Use official Paralives channels first, such as the Steam community hub or the official FAQ links, rather than relying on fan pages as bug-report intake."
+            "text": "Use the Steam Workshop hub, open an item page, and subscribe through Steam. Steam handles the download and later Workshop updates."
           }
         },
         {
           "@type": "Question",
-          "name": "Will fixes come during Early Access?",
+          "name": "Where can I download Paralives mods?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Paralives is an Early Access game, so updates are expected over time, but this page does not promise timing for any specific fix unless an official source says so."
+            "text": "Use the Steam Workshop hub for Paralives. This page does not point readers to third-party mod hosts for Early Access mods."
           }
         },
         {
           "@type": "Question",
-          "name": "Why isn't there an article for my issue here yet?",
+          "name": "Is it safe to install Paralives mods during Early Access?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "This hub only links issues that have a dedicated guide or an official source trail. If an issue is only a community lead, it waits here until it can be verified responsibly."
+            "text": "Use caution. Early Access builds can change, Workshop items can break after patches, and save backups are sensible before testing mods."
           }
         },
         {
           "@type": "Question",
-          "name": "Are community workarounds reliable?",
+          "name": "Does this site pick specific Paralives mods?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Treat community workarounds as things to test carefully, not guaranteed fixes. Back up saves when possible and prefer official guidance when it exists."
+            "text": "No. This page is descriptive only. Subscriber counts are a popularity signal on Steam Workshop, not an endorsement from this site."
           }
         }
       ]
@@ -233,12 +233,15 @@
       width: 100%;
       border-collapse: collapse;
     }
-    .factbox td {
+    .factbox td,
+    .factbox th {
       padding: 10px 0;
       border-top: 1px solid var(--line);
       vertical-align: top;
+      text-align: left;
     }
-    .factbox tr:first-child td { border-top: 0; }
+    .factbox tr:first-child td,
+    .factbox tr:first-child th { border-top: 0; }
     .factbox td:first-child {
       width: 38%;
       color: var(--ink-soft);
@@ -401,92 +404,97 @@
     </div>
   </header>
   <div class="wrap">
-    <div class="crumb"><a href="/">Home</a> &nbsp;/&nbsp; <a href="guides">Guides</a> &nbsp;/&nbsp; Troubleshooting</div>
+    <div class="crumb"><a href="/">Home</a> &nbsp;/&nbsp; <a href="guides">Guides</a> &nbsp;/&nbsp; <span translate="no">Paralives</span> mods</div>
     <article>
-      <div class="kicker">GD-07 · GUIDES</div>
-      <h1>Paralives Troubleshooting: Known Issues and Fixes</h1>
+      <div class="kicker">GD-08 · GUIDES</div>
+      <h1>Paralives Mods: Current Status and What to Expect</h1>
       <div class="article-meta">
         <span>Updated: 2026-05-29</span>
         <span>Game Version: EA 0.1</span>
-        <span>Hub</span>
+        <span>Guide</span>
       </div>
-      <p>This <span translate="no">Paralives</span> troubleshooting hub is the stable starting point when something in Early Access feels broken, unclear, or not working as expected.</p>
-      <p>It is not a list of unverified fixes. When this site has a dedicated guide, the issue is linked below. When it does not, this page points to official <span translate="no">Paralives</span> sources instead of turning community reports into claims.</p>
+      <p><span translate="no">Paralives</span> mods are already part of the Early Access conversation because the game has a <span translate="no">Steam Workshop</span> hub. Early Access began on May 25, 2026, so the mod scene is still new and can change quickly.</p>
+      <p>This page is descriptive only. It explains how <span translate="no">Steam Workshop</span> subscription works, how to disable or remove items safely, and how this site handles subscriber-count snapshots without editorial labels or curated picks.</p>
 
-      <div class="note"><b>Status:</b> Early Access began on May 25, 2026. This hub only lists site-reviewed guides, official-source routes, and visibly empty categories reserved for future articles.</div>
+      <div class="note"><b>Status:</b> Workshop data could not be fetched during this implementation because the <span translate="no">Steam Workshop</span> request did not return in time. The snapshot section below links the hub without inventing rows.</div>
 
       <nav class="toc">
         <h2>On this page</h2>
         <ol>
-          <li><a href="#quick-check">Quick checklist</a></li>
-          <li><a href="#gameplay">Gameplay issues</a></li>
-          <li><a href="#performance">Performance and technical issues</a></li>
-          <li><a href="#saves">Saves and progression issues</a></li>
-          <li><a href="#report">Where to report bugs</a></li>
+          <li><a href="#developer-notes">What the developers have said about mods</a></li>
+          <li><a href="#workshop">How Paralives mods work on Steam Workshop</a></li>
+          <li><a href="#manage">How to enable, disable, or remove mods</a></li>
+          <li><a href="#snapshot">Most-subscribed mods on Steam Workshop right now</a></li>
+          <li><a href="#risks">Risks during Early Access</a></li>
+          <li><a href="#more">Where to find more mods later</a></li>
           <li><a href="#faq">FAQ</a></li>
         </ol>
       </nav>
 
-      <h2 class="sec" id="quick-check">Quick checklist</h2>
-      <p>Before treating an issue as a known bug, use a short sanity check:</p>
-      <ul>
-        <li>Confirm the game is updated to the latest Early Access patch available in <span translate="no">Steam</span>.</li>
-        <li>Check the <a href="system-requirements">system requirements</a> if the problem looks hardware-related.</li>
-        <li>Compare missing or unfinished-feeling systems with the <a href="early-access-features">Early Access features guide</a>.</li>
-        <li>Back up important saves before testing community workarounds.</li>
-        <li>Use official reporting routes when you can reproduce an issue.</li>
-      </ul>
+      <h2 class="sec" id="developer-notes">What the developers have said about mods</h2>
+      <p>The safest official starting points are the <a href="https://paralives.com/faq"><span translate="no">Paralives</span> FAQ</a>, the <a href="https://paralives.com/development"><span translate="no">Paralives</span> development page</a>, official <span translate="no">Steam</span> announcements, and the public <a href="https://steamcommunity.com/app/1118520/workshop/"><span translate="no">Steam Workshop</span> hub</a>.</p>
+      <p>As of this page's May 29, 2026 update, this guide does not claim a studio timeline for extra mod tools. If an official page does not state a specific tooling detail, this site leaves that detail open rather than turning community assumptions into facts.</p>
 
-      <h2 class="sec" id="gameplay">Gameplay issues</h2>
-      <div class="source-list">
-        <a href="aging-too-fast">
-          <div class="label">Dedicated guide</div>
-          <div class="title"><span translate="no">Paralives</span> aging too fast</div>
-          <p>A cautious guide for lifespan and character-edit workarounds, with community-reported steps clearly labeled instead of presented as official fixes.</p>
-        </a>
-      </div>
-
-      <h2 class="sec" id="performance">Performance and technical issues</h2>
-      <p>No dedicated articles yet. For now, check the official <a href="https://store.steampowered.com/app/1118520/Paralives/"><span translate="no">Steam</span> page</a>, the <a href="https://steamcommunity.com/app/1118520/discussions/"><span translate="no">Steam</span> community hub</a>, and the official <a href="https://paralives.com/faq"><span translate="no">Paralives</span> FAQ</a> before relying on fan workarounds.</p>
-
-      <h2 class="sec" id="saves">Saves and progression issues</h2>
-      <p>No dedicated articles yet. This section is reserved for save, progression, and patch-regression guides once there is a verified source trail or a reviewed in-house article.</p>
+      <h2 class="sec" id="workshop">How Paralives mods work on Steam Workshop</h2>
+      <p><span translate="no">Steam Workshop</span> is a subscription model. Instead of downloading a file manually from a third-party host, you open a Workshop item page in <span translate="no">Steam</span>, subscribe to it, and let <span translate="no">Steam</span> handle the download.</p>
+      <p>Workshop files are managed by <span translate="no">Steam</span> inside its library folders, not by this site. When an item author updates a subscribed Workshop item, <span translate="no">Steam</span> can pull that update automatically.</p>
+      <p>For players used to <span translate="no">Nexus Mods</span>, <span translate="no">CurseForge</span>, or manual folder installs, the important difference is that the Workshop item page is the control point: subscribe to add it, check the page for update notes, and unsubscribe when you want it removed.</p>
 
       <div class="factbox">
-        <h3>What gets listed here</h3>
+        <h3>Workshop basics</h3>
         <table>
-          <tr><td>Dedicated site guide</td><td>Listed as a child entry, like the aging-too-fast guide.</td></tr>
-          <tr><td>Official acknowledgement</td><td>Linked as a known issue route without inventing fix steps.</td></tr>
-          <tr><td>Community-only lead</td><td>Held back until confirmed by an official source or turned into a cautious guide.</td></tr>
-          <tr><td>Empty category</td><td>Shown plainly as empty so future expansion is obvious.</td></tr>
+          <tr><td>Official hub</td><td><a href="https://steamcommunity.com/app/1118520/workshop/"><span translate="no">steamcommunity.com/app/1118520/workshop/</span></a></td></tr>
+          <tr><td>Install path</td><td>Managed by <span translate="no">Steam</span>; use the Workshop page rather than a manual file path for normal installs.</td></tr>
+          <tr><td>Updates</td><td>Subscribed Workshop items can update through <span translate="no">Steam</span>.</td></tr>
+          <tr><td>Source boundary</td><td>This hub does not link third-party mod hosts for Early Access mods.</td></tr>
         </table>
       </div>
 
-      <h2 class="sec" id="report">Where to report bugs</h2>
-      <p>Use official routes first. The safest public starting points are the <a href="https://steamcommunity.com/app/1118520/discussions/"><span translate="no">Steam</span> community hub</a>, the official <a href="https://paralives.com/faq"><span translate="no">Paralives</span> FAQ</a>, and official pages linked from <a href="https://paralives.com/">paralives.com</a>.</p>
-      <p>This fan site can organize troubleshooting notes, but it is not an official support inbox and cannot confirm whether a report has reached the studio.</p>
+      <h2 class="sec" id="manage">How to enable, disable, or remove mods</h2>
+      <p>Before testing any mod in Early Access, back up any save you care about. A patch, an outdated Workshop item, or a removed dependency can change how a save behaves.</p>
+      <ol>
+        <li>Open the <a href="https://steamcommunity.com/app/1118520/workshop/"><span translate="no">Paralives Steam Workshop</span> hub</a>.</li>
+        <li>Open the Workshop item page and read its description, comments, and last-updated date.</li>
+        <li>Subscribe through <span translate="no">Steam</span> to install the item.</li>
+        <li>Launch <span translate="no">Paralives</span> and check any in-game mod or custom-content screen if the current build exposes one.</li>
+        <li>If there is no in-game toggle for the item, unsubscribe from the Workshop page to use <span translate="no">Steam</span> as the off-switch.</li>
+        <li>After unsubscribing, restart the game before judging whether the item is gone from a save or menu.</li>
+      </ol>
+
+      <h2 class="sec" id="snapshot">Most-subscribed mods on Steam Workshop right now</h2>
+      <div class="note">Data snapshot pending &mdash; Workshop hub link below.</div>
+      <p>This site has not personally tested these mods. Subscriber count reflects popularity, not endorsement. Read each mod's Workshop comments and last-updated date before subscribing.</p>
+      <p><a href="https://steamcommunity.com/app/1118520/workshop/"><span translate="no">Open the Paralives Steam Workshop hub</span></a> and sort by Most Subscribed to inspect the current public list directly.</p>
+
+      <h2 class="sec" id="risks">Risks of installing mods during Early Access</h2>
+      <p>Early Access builds change frequently. Workshop items can lag behind game patches, behave differently after an update, or stop working if an author removes or changes them.</p>
+      <p>Use a separate test save when possible, keep backups, and read the Workshop item's comments and update history before loading an important household with new subscribed items.</p>
+
+      <h2 class="sec" id="more">Where to find more mods later</h2>
+      <p>The official <a href="https://steamcommunity.com/app/1118520/workshop/"><span translate="no">Steam Workshop</span> hub</a> is the place to watch. This site will update its snapshot only from public Workshop data or official <span translate="no">Paralives</span> sources.</p>
+      <p>For broader game-status context, use the <a href="early-access-features">Early Access features guide</a> and the <a href="is-paralives-worth-it">Early Access verdict page</a>.</p>
 
       <h2 class="sec" id="faq">FAQ</h2>
       <div class="faq">
         <details>
-          <summary>Is Paralives in Early Access? Are bugs expected?</summary>
-          <p>Yes. Paralives entered Early Access on May 25, 2026, so bugs and unfinished areas can happen while the game is still being updated.</p>
+          <summary>Does Paralives have mods?</summary>
+          <p>Yes. Paralives has a Steam Workshop hub, and this page treats Workshop as the official place to check the current mod scene.</p>
         </details>
         <details>
-          <summary>Where should I report a Paralives bug?</summary>
-          <p>Use official Paralives channels first, such as the Steam community hub or the official FAQ links, rather than relying on fan pages as bug-report intake.</p>
+          <summary>How do I install Paralives mods?</summary>
+          <p>Use the Steam Workshop hub, open an item page, and subscribe through Steam. Steam handles the download and later Workshop updates.</p>
         </details>
         <details>
-          <summary>Will fixes come during Early Access?</summary>
-          <p>Paralives is an Early Access game, so updates are expected over time, but this page does not promise timing for any specific fix unless an official source says so.</p>
+          <summary>Where can I download Paralives mods?</summary>
+          <p>Use the Steam Workshop hub for Paralives. This page does not point readers to third-party mod hosts for Early Access mods.</p>
         </details>
         <details>
-          <summary>Why isn't there an article for my issue here yet?</summary>
-          <p>This hub only links issues that have a dedicated guide or an official source trail. If an issue is only a community lead, it waits here until it can be verified responsibly.</p>
+          <summary>Is it safe to install Paralives mods during Early Access?</summary>
+          <p>Use caution. Early Access builds can change, Workshop items can break after patches, and save backups are sensible before testing mods.</p>
         </details>
         <details>
-          <summary>Are community workarounds reliable?</summary>
-          <p>Treat community workarounds as things to test carefully, not guaranteed fixes. Back up saves when possible and prefer official guidance when it exists.</p>
+          <summary>Does this site pick specific Paralives mods?</summary>
+          <p>No. This page is descriptive only. Subscriber counts are a popularity signal on Steam Workshop, not an endorsement from this site.</p>
         </details>
       </div>
     </article>
@@ -495,10 +503,10 @@
       <h2>Keep reading</h2>
       <div class="related-grid">
         <a href="faq"><div class="t">GD-10</div><div class="h">Paralives FAQ</div></a>
-        <a href="aging-too-fast"><div class="t">GD-04</div><div class="h">Paralives aging too fast</div></a>
-        <a href="system-requirements"><div class="t">GD-01</div><div class="h">Paralives system requirements</div></a>
         <a href="early-access-features"><div class="t">GD-05</div><div class="h">Paralives Early Access features</div></a>
         <a href="guides"><div class="t">GUIDES</div><div class="h">Browse all guides</div></a>
+        <a href="system-requirements"><div class="t">GD-01</div><div class="h">Paralives system requirements</div></a>
+        <a href="is-paralives-worth-it"><div class="t">GD-06</div><div class="h">Is Paralives worth it?</div></a>
       </div>
     </section>
   </div>

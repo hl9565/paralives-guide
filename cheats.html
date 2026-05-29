@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- maintenance-tier: WARM -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paralives Cheats: Early Access Cheat Console Commands | Paralives Guide</title>
+  <meta name="description" content="Paralives cheats reference for Early Access: how to open the cheat console, money commands, time controls, character cheats, needs, aging, fire, build mode, and debug commands.">
+  <link rel="canonical" href="https://paralivesguide.help/cheats">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Paralives Cheats: Early Access Cheat Console Commands",
+      "description": "A categorized Early Access Paralives cheat console reference adapted from paralives.wiki with CC BY-SA 4.0 attribution.",
+      "author": {
+        "@type": "Organization",
+        "name": "Paralives Guide"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Paralives Guide"
+      },
+      "datePublished": "2026-05-29",
+      "dateModified": "2026-05-29",
+      "mainEntityOfPage": "https://paralivesguide.help/cheats"
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BZ21KDKP4C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BZ21KDKP4C');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4624485020338199" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --cream:      #fdf6ec;
+      --pink:       #f4c8c0;
+      --pink-deep:  #e89a8e;
+      --sage:       #b8c9a7;
+      --sage-deep:  #7a9269;
+      --ink:        #3d3530;
+      --ink-soft:   #6b5d54;
+      --line:       #ead9c8;
+      --shadow:     0 4px 16px rgba(61, 53, 48, 0.06);
+      --shadow-hover: 0 8px 28px rgba(61, 53, 48, 0.12);
+      --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+      --font-body:    "Inter", -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+      --accent-gd: var(--pink-deep);
+      --accent-db: var(--sage-deep);
+      --accent-tl: var(--pink);
+      --accent-hs: var(--sage);
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--cream); }
+    body { margin: 0; font-family: var(--font-body); background: var(--cream); color: var(--ink); line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; color: var(--ink); }
+    a { color: inherit; text-decoration: none; }
+    code { font-family: var(--font-mono); }
+    .topbar { position: sticky; top: 0; z-index: 10; border-bottom: 1px solid var(--line); background: rgba(253, 246, 236, 0.94); backdrop-filter: blur(12px); }
+    .topbar-inner, .wrap, .site-footer-inner { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+    .topbar-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 0; }
+    .brand { font-family: var(--font-display); font-size: 1.2rem; font-weight: 600; letter-spacing: -0.02em; white-space: nowrap; }
+    .brand span { color: var(--pink-deep); }
+    .topnav { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: flex-end; }
+    .topnav a { position: relative; font-size: 0.96rem; color: var(--ink-soft); }
+    .topnav a[aria-current]::after { content: ""; position: absolute; left: 0; right: 0; bottom: -3px; height: 2px; background: var(--pink-deep); border-radius: 999px; }
+    .wrap { padding: 56px 0 112px; }
+    .crumb { margin-bottom: 18px; color: var(--ink-soft); font-size: 0.94rem; }
+    article { max-width: 920px; padding: 34px clamp(22px, 4vw, 40px); border: 1px solid var(--line); border-radius: 28px; background: rgba(255, 251, 246, 0.88); box-shadow: var(--shadow); }
+    .kicker { margin: 0 0 12px; color: var(--accent-gd); font-family: var(--font-mono); font-size: 0.84rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; }
+    h1 { margin: 0 0 12px; font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.02; }
+    article p { margin: 0 0 16px; }
+    .toc, .factbox, .note, .license-note, .related a { border-radius: 20px; }
+    .toc { margin: 28px 0; padding: 20px 22px; border: 1px solid var(--line); background: rgba(244, 200, 192, 0.16); }
+    .toc h2 { margin: 0 0 12px; font-size: 1.2rem; }
+    .toc ol { columns: 2; margin: 0; padding-left: 20px; }
+    .toc a { color: var(--sage-deep); }
+    .sec { margin-top: 34px; margin-bottom: 14px; font-size: 1.85rem; }
+    .article-meta { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: -6px 0 28px; font-size: 0.92rem; color: var(--ink-soft); font-family: var(--font-mono); }
+    .article-meta span { display: inline-flex; align-items: center; gap: 6px; }
+    .article-meta span + span::before { content: "·"; margin-right: 8px; color: var(--line); }
+    .note { margin: 22px 0; padding: 16px 18px; background: rgba(184, 201, 167, 0.22); color: var(--ink); }
+    .cheat-table { width: 100%; border-collapse: collapse; margin: 14px 0 26px; border: 1px solid var(--line); border-radius: 18px; overflow: hidden; background: rgba(255, 251, 246, 0.92); }
+    .cheat-table th, .cheat-table td { padding: 12px 14px; border-top: 1px solid var(--line); text-align: left; vertical-align: top; }
+    .cheat-table th { border-top: 0; color: var(--ink); background: rgba(244, 200, 192, 0.18); font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .cheat-table td:first-child { width: 30%; }
+    .cheat-table td:last-child { width: 28%; color: var(--ink-soft); }
+    .cheat-table code { display: inline-block; padding: 1px 5px; border-radius: 7px; background: rgba(232, 154, 142, 0.12); color: var(--ink); }
+    .license-note { max-width: 920px; margin-top: 34px; padding: 18px 20px; border: 1px solid var(--line); background: rgba(255, 251, 246, 0.9); color: var(--ink-soft); box-shadow: var(--shadow); }
+    .related { max-width: 980px; margin-top: 42px; }
+    .related h2 { margin-bottom: 16px; font-size: 1.5rem; }
+    .related-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 16px; }
+    .related-grid a { grid-column: span 6; padding: 18px 20px; border: 1px solid var(--line); background: rgba(255, 251, 246, 0.9); box-shadow: var(--shadow); transition: transform 0.18s ease, box-shadow 0.18s ease; }
+    .related-grid a:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+    .related-grid .t { margin-bottom: 6px; color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .related-grid .h { font-family: var(--font-display); font-size: 1.1rem; }
+    .site-footer { border-top: 1px solid var(--line); padding: 28px 0 44px; }
+    .site-footer .brand { margin-bottom: 10px; font-size: 1rem; }
+    .disclaimer { margin: 0; max-width: 54rem; color: var(--ink-soft); font-size: 0.92rem; }
+    .lang-switcher { min-height: 1.5rem; margin-top: 18px; }
+    @media (max-width: 720px) {
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding: 16px 0; }
+      .topnav { justify-content: flex-start; gap: 14px 18px; }
+      .topbar-inner, .wrap, .site-footer-inner { width: min(1120px, calc(100% - 24px)); }
+      article { padding: 28px 20px; }
+      .toc ol { columns: 1; }
+      .cheat-table, .cheat-table thead, .cheat-table tbody, .cheat-table tr, .cheat-table th, .cheat-table td { display: block; width: 100%; }
+      .cheat-table thead { display: none; }
+      .cheat-table tr { border-top: 1px solid var(--line); }
+      .cheat-table tr:first-child { border-top: 0; }
+      .cheat-table td { border-top: 0; }
+      .cheat-table td:first-child::before { content: "Command"; display: block; color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; }
+      .cheat-table td:nth-child(2)::before { content: "What it does"; display: block; color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; }
+      .cheat-table td:last-child::before { content: "Example"; display: block; color: var(--ink-soft); font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; }
+      .related-grid a { grid-column: span 12; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><a href="/">Paralives<span> </span>Guide</a></div>
+      <nav class="topnav" aria-label="Primary">
+        <a href="guides">Guides</a>
+        <a href="database">Database</a>
+        <a href="tools">Tools</a>
+        <a href="houses">Houses</a>
+        <a href="updates">Updates</a>
+        <a href="about">About</a>
+      </nav>
+    </div>
+  </header>
+  <div class="wrap">
+    <div class="crumb"><a href="/">Home</a> &nbsp;/&nbsp; <a href="guides">Guides</a> &nbsp;/&nbsp; <span translate="no">Paralives</span> cheats</div>
+    <article>
+      <div class="kicker">GD-11 · GUIDES</div>
+      <h1>Paralives Cheats: Early Access Cheat Console Commands</h1>
+      <div class="article-meta">
+        <span>Updated: 2026-05-29</span>
+        <span>Game Version: EA 0.1</span>
+        <span>Cheat console</span>
+      </div>
+      <p>This <span translate="no">Paralives</span> cheats reference is a community-derived Early Access command list, rewritten for clarity and organized so you can quickly find economy, time, character, need, build, and debug commands.</p>
+      <div class="note">
+        <b>Early Access warning:</b> Cheats are developer-debug tools, not a stable player-facing API. Per a Paradev statement referenced on the <a href="https://paralives.wiki/wiki/Cheats">paralives.wiki Cheats page</a>, many of the roughly 300 commands may be removed, hidden, or reworked. The authoritative current list is whatever the in-game console shows. Last reviewed against <span translate="no">paralives.wiki</span> on 2026-05-29.
+      </div>
+
+      <h2 class="sec" id="open">How to open the cheat console</h2>
+      <p>Open the in-game console with <code translate="no">Ctrl + F1</code> or <code translate="no">Ctrl + Shift + C</code>. If a command does not run, type <code translate="no">HELP</code> in the console and trust the list exposed by your current build.</p>
+
+      <nav class="toc">
+        <h2>Cheat categories</h2>
+        <ol>
+          <li><a href="#money-cheats">Money cheats</a></li>
+          <li><a href="#time-cheats">Time cheats</a></li>
+          <li><a href="#character-cheats">Character cheats</a></li>
+          <li><a href="#need-cheats">Need cheats</a></li>
+          <li><a href="#occupation-cheats">Occupation cheats</a></li>
+          <li><a href="#pregnancy-cheats">Pregnancy cheats</a></li>
+          <li><a href="#aging-and-death-cheats">Aging and death cheats</a></li>
+          <li><a href="#fire-cheats">Fire cheats</a></li>
+          <li><a href="#newspaper-and-mail-cheats">Newspaper and mail cheats</a></li>
+          <li><a href="#build-mode-cheats">Build Mode cheats</a></li>
+          <li><a href="#debug-and-miscellaneous-cheats">Debug and miscellaneous cheats</a></li>
+          <li><a href="#performance-cheats">Performance cheats</a></li>
+          <li><a href="#fun-cheats">Fun cheats</a></li>
+        </ol>
+      </nav>
+
+      <h2 class="sec" id="money-cheats">Money cheats</h2>
+      <table class="cheat-table"><thead><tr><th>Command</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+        <tr><td><code translate="no">PRINTMONEY</code></td><td>Adds the entered amount of Paradimes to the current household.</td><td><code translate="no">PRINTMONEY 1000</code></td></tr>
+        <tr><td><code translate="no">SETMONEY</code></td><td>Sets household funds to the exact amount you enter.</td><td><code translate="no">SETMONEY 10000</code></td></tr>
+        <tr><td><code translate="no">JACKPOT</code></td><td>Grants a large one-time money boost.</td><td></td></tr>
+        <tr><td><code translate="no">MAKEITRAIN</code></td><td>Adds a smaller large-payout money boost.</td><td></td></tr>
+        <tr><td><code translate="no">PAYDAY</code></td><td>Adds a small household cash bump.</td><td></td></tr>
+        <tr><td><code translate="no">PIGGYBANK</code></td><td>Adds a medium household cash bump.</td><td></td></tr>
+        <tr><td><code translate="no">LOTTERY</code></td><td>Triggers a random money payout.</td><td></td></tr>
+      </tbody></table>
+
+      <h2 class="sec" id="time-cheats">Time cheats</h2>
+      <table class="cheat-table"><thead><tr><th>Command</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+        <tr><td><code translate="no">SETHOUR</code></td><td>Moves the clock to the specified hour.</td><td><code translate="no">SETHOUR 8</code></td></tr>
+        <tr><td><code translate="no">ADVANCEHOUR</code></td><td>Pushes the clock forward by one hour.</td><td></td></tr>
+        <tr><td><code translate="no">ADVANCEDAY</code></td><td>Skips ahead to the next day.</td><td></td></tr>
+        <tr><td><code translate="no">SETSUNHOUR</code></td><td>Sets the lighting to a specific sun hour.</td><td><code translate="no">SETSUNHOUR 12</code></td></tr>
+        <tr><td><code translate="no">SKIPTO5MINUTESBEFOREWORK</code></td><td>Moves time close to the selected character's work start.</td><td></td></tr>
+      </tbody></table>
+
+      <h2 class="sec" id="character-cheats">Character cheats</h2>
+      <table class="cheat-table"><thead><tr><th>Command</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+        <tr><td><code translate="no">EDITCHARACTER</code></td><td>Opens character editing for the selected Para when available.</td><td></td></tr>
+        <tr><td><code translate="no">LEVELUPPERSONALITY</code></td><td>Advances a personality-related value for the selected character.</td><td></td></tr>
+        <tr><td><code translate="no">RESETPERSONALITY</code></td><td>Resets personality debug state for the selected character.</td><td></td></tr>
+        <tr><td><code translate="no">PRINTINVENTORY</code></td><td>Prints the selected character's inventory debug output.</td><td></td></tr>
+        <tr><td><code translate="no">ADDITEMTOINVENTORY</code></td><td>Adds an item to a selected character inventory when the item id is valid.</td><td><code translate="no">ADDITEMTOINVENTORY item_id</code></td></tr>
+      </tbody></table>
+
+      <h2 class="sec" id="need-cheats">Need cheats</h2>
+      <table class="cheat-table"><thead><tr><th>Command</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+        <tr><td><code translate="no">RELIEFNEED</code></td><td>Refills a named need for the selected character.</td><td><code translate="no">RELIEFNEED sleep</code></td></tr>
+        <tr><td><code translate="no">RELIEFALLNEEDS</code></td><td>Refills all needs for the selected character.</td><td></td></tr>
+        <tr><td><code translate="no">RELIEFALLNEEDSOFALLCHARACTERS</code></td><td>Refills needs for every character.</td><td></td></tr>
+        <tr><td><code translate="no">CHANGENEED</code></td><td>Changes a need by id and intensity if the build exposes that syntax.</td><td><code translate="no">CHANGENEED sleep 20</code></td></tr>
+        <tr><td><code translate="no">DECAYNEED</code></td><td>Forces a need to drop by a specified amount.</td><td><code translate="no">DECAYNEED hunger 20</code></td></tr>
+      </tbody></table>
+
+      <h2 class="sec" id="occupation-cheats">Occupation cheats</h2>
+      <table class="cheat-table"><thead><tr><th>Command</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+        <tr><td><code translate="no">SKIPTO5MINUTESBEFOREWORK</code></td><td>Jumps close to work start for testing job flow.</td><td></td></tr>
+        <tr><td><code translate="no">LEVELUPSKILL</code></td><td>Raises a named skill when the skill key is accepted by the build.</td><td><code translate="no">LEVELUPSKILL cooking</code></td></tr>
+        <tr><td><code translate="no">COMPLETECURRENTWANTS</code></td><td>Completes currently active wants for fast reward or state testing.</td><td></td></tr>
+      </tbody></table>
+
+      <h2 class="sec" id="pregnancy-cheats">Pregnancy cheats</h2>
+      <table class="cheat-table"><thead><tr><th>Command</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+        <tr><td><code translate="no">HELP</code></td><td>Use the in-game command list to check whether your build exposes pregnancy debug commands. The accessible source snapshot did not provide stable pregnancy syntax.</td><td></td></tr>
+      </tbody></table>
+
+      <h2 class="sec" id="aging-and-death-cheats">Aging and death cheats</h2>
+      <table class="cheat-table"><thead><tr><th>Command</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+        <tr><td><code translate="no">SETAGE</code></td><td>Sets a selected character to a target age or life stage value.</td><td><code translate="no">SETAGE adult</code></td></tr>
+        <tr><td><code translate="no">HELP</code></td><td>Use the current console list for death-related debug commands, because accessible source text only exposed life-stage jumpers as community additions.</td><td></td></tr>
+      </tbody></table>
+
+      <h2 class="sec" id="fire-cheats">Fire cheats</h2>
+      <table class="cheat-table"><thead><tr><th>Command</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+        <tr><td><code translate="no">SELECTEDCHARACTERSONFIRE</code></td><td>Sets selected characters on fire for testing.</td><td></td></tr>
+        <tr><td><code translate="no">EXTINGUISHSELECTEDCHARACTERSONFIRE</code></td><td>Removes fire from selected characters.</td><td></td></tr>
+        <tr><td><code translate="no">SETITEMONFIRE</code></td><td>Starts a fire on the selected item.</td><td></td></tr>
+        <tr><td><code translate="no">EXTINGUISHALLFIRES</code></td><td>Clears active fires in the current area.</td><td></td></tr>
+      </tbody></table>
+
+      <h2 class="sec" id="newspaper-and-mail-cheats">Newspaper and mail cheats</h2>
+      <table class="cheat-table"><thead><tr><th>Command</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+        <tr><td><code translate="no">GENERATEBILL</code></td><td>Creates a household bill for testing mail and payment flow.</td><td></td></tr>
+        <tr><td><code translate="no">CLEARBILLS</code></td><td>Clears current household bills.</td><td></td></tr>
+        <tr><td><code translate="no">CLEARSELECTEDCHARACTERSBILLS</code></td><td>Clears bills tied to selected characters.</td><td></td></tr>
+        <tr><td><code translate="no">CAUSEOUTAGE</code></td><td>Triggers an outage state tied to bills or utilities.</td><td></td></tr>
+        <tr><td><code translate="no">FIXOUTAGE</code></td><td>Restores service after an outage state.</td><td></td></tr>
+      </tbody></table>
+
+      <h2 class="sec" id="build-mode-cheats">Build Mode cheats</h2>
+      <table class="cheat-table"><thead><tr><th>Command</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+        <tr><td><code translate="no">SETITEMONFIRE</code></td><td>Also useful in build testing when an object needs fire-state testing.</td><td></td></tr>
+        <tr><td><code translate="no">HELP</code></td><td>Check the console for build-specific commands in your current patch. The accessible source snapshot did not expose stable free-build syntax.</td><td></td></tr>
+      </tbody></table>
+
+      <h2 class="sec" id="debug-and-miscellaneous-cheats">Debug and miscellaneous cheats</h2>
+      <table class="cheat-table"><thead><tr><th>Command</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+        <tr><td><code translate="no">HELP</code></td><td>Prints or exposes the current build's available console commands.</td><td></td></tr>
+        <tr><td><code translate="no">PRINTINVENTORY</code></td><td>Outputs inventory details for debugging.</td><td></td></tr>
+        <tr><td><code translate="no">ADDRELATIONSHIP</code></td><td>Changes relationship debug values when accepted by the build.</td><td><code translate="no">ADDRELATIONSHIP character_id 20</code></td></tr>
+        <tr><td><code translate="no">CLEARSELECTEDCHARACTERSBILLS</code></td><td>Clears selected-character bill debug state.</td><td></td></tr>
+      </tbody></table>
+
+      <h2 class="sec" id="performance-cheats">Performance cheats</h2>
+      <table class="cheat-table"><thead><tr><th>Command</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+        <tr><td><code translate="no">HELP</code></td><td>Check the in-game command dump for performance or overlay diagnostics. The accessible source snapshot did not provide stable performance command names.</td><td></td></tr>
+      </tbody></table>
+
+      <h2 class="sec" id="fun-cheats">Fun cheats</h2>
+      <table class="cheat-table"><thead><tr><th>Command</th><th>What it does</th><th>Example</th></tr></thead><tbody>
+        <tr><td><code translate="no">CAT</code></td><td>Runs a joke or novelty command from the console list.</td><td></td></tr>
+        <tr><td><code translate="no">BEAR</code></td><td>Runs another novelty command.</td><td></td></tr>
+        <tr><td><code translate="no">8BALL</code></td><td>Returns an eight-ball style response.</td><td></td></tr>
+        <tr><td><code translate="no">EIGHTBALL</code></td><td>Alternate spelling for the eight-ball command.</td><td></td></tr>
+        <tr><td><code translate="no">SPIN</code></td><td>Runs a novelty spin command.</td><td></td></tr>
+      </tbody></table>
+    </article>
+
+    <section class="related">
+      <h2>Keep reading</h2>
+      <div class="related-grid">
+        <a href="paramaker-guide"><div class="t">GD-02</div><div class="h">Paramaker guide</div></a>
+        <a href="building-basics"><div class="t">GD-03</div><div class="h">Building basics</div></a>
+        <a href="early-access-features"><div class="t">GD-05</div><div class="h">Paralives Early Access features</div></a>
+        <a href="aging-too-fast"><div class="t">GD-04</div><div class="h">Paralives aging too fast</div></a>
+      </div>
+    </section>
+
+    <aside class="license-note">
+      This page is adapted from "Cheats" on <span translate="no">paralives.wiki</span>, available under the
+      Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0).
+      Source: <a href="https://paralives.wiki/wiki/Cheats" translate="no">https://paralives.wiki/wiki/Cheats</a>
+      Adapted content on this page is likewise released under CC BY-SA 4.0.
+    </aside>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="brand">Paralives<span> </span>Guide</div>
+      <p class="disclaimer">
+        Paralives is a trademark of Paralives Studio. This is an unaffiliated fan resource;
+        nothing here is endorsed by or affiliated with Paralives Studio.
+      </p>
+      <!-- language switcher slot — empty at Phase 0, populated in Phase 1.5 -->
+      <div class="lang-switcher" aria-hidden="true"></div>
+    </div>
+  </footer>
+</body>
+</html>
