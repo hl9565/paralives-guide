@@ -68,6 +68,8 @@
       text-decoration: none;
     }
 
+    .icon{display:inline-block;width:1em;height:1em;vertical-align:-0.15em;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;fill:none;flex:none}
+
     .topbar {
       position: sticky;
       top: 0;
@@ -426,16 +428,39 @@
   </style>
 </head>
 <body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-guides" viewBox="0 0 24 24"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H20v14.5A1.5 1.5 0 0 0 18.5 17H6.5A2.5 2.5 0 0 0 4 19.5z"/><path d="M12 4v13"/></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5"/><path d="M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></symbol>
+    <symbol id="i-tools" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m12 12 4-4"/></symbol>
+    <symbol id="i-houses" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+    <symbol id="i-updates" viewBox="0 0 24 24"><path d="M12 4a5 5 0 0 0-5 5v2.5c0 .8-.3 1.6-.9 2.1L4.5 15h15l-1.6-1.4a3 3 0 0 1-.9-2.1V9a5 5 0 0 0-5-5"/><path d="M9.5 18a2.5 2.5 0 0 0 5 0"/></symbol>
+    <symbol id="i-about" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10v6"/><path d="M12 7h.01"/></symbol>
+    <symbol id="i-system" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="12" rx="2"/><path d="M8 19h8"/><path d="M12 17v2"/></symbol>
+    <symbol id="i-paramaker" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r=".5"/><circle cx="15" cy="10" r=".5"/><path d="M8.5 16a5 5 0 0 1 7 0"/><path d="M12 13a3 3 0 0 0 3-3 3 3 0 1 0-6 0 3 3 0 0 0 3 3Z"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M5 5h6v6H5z"/><path d="M13 5h6v6h-6z"/><path d="M5 13h6v6H5z"/><path d="M13 13h6v6h-6z"/></symbol>
+    <symbol id="i-aging" viewBox="0 0 24 24"><path d="M7 4h10"/><path d="M7 20h10"/><path d="M8 4c0 4 4 4 4 8s-4 4-4 8"/><path d="M16 4c0 4-4 4-4 8s4 4 4 8"/></symbol>
+    <symbol id="i-ea" viewBox="0 0 24 24"><path d="M12 20V9"/><path d="M12 13c0-4 2.5-6.5 6-7-1 4-2.5 6.5-6 7Z"/><path d="M12 15c0-3-1.8-5.1-5-6 0 3.6 1.6 5.9 5 6Z"/></symbol>
+    <symbol id="i-worth" viewBox="0 0 24 24"><path d="M12 4v16"/><path d="M6 7h12"/><path d="m8 7-3 5a3 3 0 0 0 6 0Z"/><path d="m16 7-3 5a3 3 0 0 0 6 0Z"/><path d="M8 20h8"/></symbol>
+    <symbol id="i-troubleshooting" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 4v4"/><path d="M12 16v4"/><path d="M4 12h4"/><path d="M16 12h4"/><path d="m6.5 6.5 2.8 2.8"/><path d="m14.7 14.7 2.8 2.8"/><path d="m17.5 6.5-2.8 2.8"/><path d="m9.3 14.7-2.8 2.8"/></symbol>
+    <symbol id="i-mods" viewBox="0 0 24 24"><path d="M8.5 5.5a2.5 2.5 0 1 1 4 2l2 2a2.5 2.5 0 1 1 2 4l-2 2a2.5 2.5 0 1 1-4 2l-2-2a2.5 2.5 0 1 1-2-4l2-2a2.5 2.5 0 0 1 0-4Z"/></symbol>
+    <symbol id="i-traits" viewBox="0 0 24 24"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8Z"/><path d="m18.5 15 .8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8Z"/></symbol>
+    <symbol id="i-faq" viewBox="0 0 24 24"><path d="M6 7.5A3.5 3.5 0 0 1 9.5 4h5A3.5 3.5 0 0 1 18 7.5v5A3.5 3.5 0 0 1 14.5 16H11l-4 4v-4H9.5A3.5 3.5 0 0 1 6 12.5z"/><path d="M10.5 9a1.5 1.5 0 1 1 3 0c0 1-1.5 1.3-1.5 2.5"/><path d="M12 14h.01"/></symbol>
+    <symbol id="i-cheats" viewBox="0 0 24 24"><path d="m5 8 4 4-4 4"/><path d="M11 16h5"/><path d="M11 18h7"/></symbol>
+    <symbol id="i-vs" viewBox="0 0 24 24"><path d="M12 4v6"/><path d="M12 10c0 4-2.5 7-6 10"/><path d="M12 10c0 4 2.5 7 6 10"/></symbol>
+    <symbol id="i-steam-reviews" viewBox="0 0 24 24"><path d="m12 4 2.3 4.7 5.2.8-3.8 3.7.9 5.3-4.6-2.4-4.6 2.4.9-5.3-3.8-3.7 5.2-.8Z"/></symbol>
+    <symbol id="i-trust-official" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8.5 12 2.3 2.3 4.7-4.8"/></symbol>
+    <symbol id="i-trust-community" viewBox="0 0 24 24"><path d="M9 13a3 3 0 1 0-3-3 3 3 0 0 0 3 3Z"/><path d="M15.5 14a2.5 2.5 0 1 0-2.5-2.5 2.5 2.5 0 0 0 2.5 2.5Z"/><path d="M4.5 19a4.5 4.5 0 0 1 9 0"/><path d="M13 19a3.5 3.5 0 0 1 7 0"/></symbol>
+  </svg>
   <header class="topbar">
     <div class="topbar-inner">
       <div class="brand"><a href="/">Paralives<span> </span>Guide</a></div>
       <nav class="topnav" aria-label="Primary">
-        <a href="guides">Guides</a>
-        <a href="database">Database</a>
-        <a href="tools">Tools</a>
-        <a href="houses">Houses</a>
-        <a href="updates">Updates</a>
-        <a href="about">About</a>
+        <a href="guides"><svg class="icon" aria-hidden="true"><use href="#i-guides"/></svg> Guides</a>
+        <a href="database"><svg class="icon" aria-hidden="true"><use href="#i-database"/></svg> Database</a>
+        <a href="tools"><svg class="icon" aria-hidden="true"><use href="#i-tools"/></svg> Tools</a>
+        <a href="houses"><svg class="icon" aria-hidden="true"><use href="#i-houses"/></svg> Houses</a>
+        <a href="updates"><svg class="icon" aria-hidden="true"><use href="#i-updates"/></svg> Updates</a>
+        <a href="about"><svg class="icon" aria-hidden="true"><use href="#i-about"/></svg> About</a>
       </nav>
     </div>
   </header>
@@ -465,23 +490,27 @@
       </div>
       <div class="route-grid">
         <a class="route-card" data-accent="gd" href="guides">
+          <span class="icon-slot" style="font-size:1.6rem;line-height:1"><svg class="icon" aria-hidden="true"><use href="#i-guides"/></svg></span>
           <p class="route-code">GD</p>
           <h3>Guides</h3>
           <p>Long-form walkthroughs grounded in the current Early Access build.</p>
         </a>
         <a class="route-card" data-accent="db" href="database">
+          <span class="icon-slot" style="font-size:1.6rem;line-height:1"><svg class="icon" aria-hidden="true"><use href="#i-database"/></svg></span>
           <p class="route-code">DB</p>
           <h3>Database</h3>
           <p>Filterable lists of traits, careers, and furniture — coming as the build stabilizes.</p>
           <span class="status-pill">Status: PLANNED</span>
         </a>
         <a class="route-card" data-accent="tl" href="tools">
+          <span class="icon-slot" style="font-size:1.6rem;line-height:1"><svg class="icon" aria-hidden="true"><use href="#i-tools"/></svg></span>
           <p class="route-code">TL</p>
           <h3>Tools</h3>
           <p>Verified external resources for <span translate="no">Paralives</span>: official channels, mod routes, community spaces, and reference companions.</p>
           <span class="status-pill">Status: LIVE</span>
         </a>
         <a class="route-card" data-accent="hs" href="houses">
+          <span class="icon-slot" style="font-size:1.6rem;line-height:1"><svg class="icon" aria-hidden="true"><use href="#i-houses"/></svg></span>
           <p class="route-code">HS</p>
           <h3>Houses</h3>
           <p>A community gallery for shared house designs, opening when the submission flow lands.</p>
@@ -497,76 +526,82 @@
       </div>
       <div class="guide-grid">
         <a class="guide-card" href="system-requirements">
-          <p class="guide-code">GD-01</p>
+          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-system"/></svg> GD-01</p>
           <h3>Paralives system requirements</h3>
           <p>Official PC specs for <span translate="no">Paralives</span>, with the Steam Early Access store page and studio site lined up in one quick reference.</p>
           <div class="guide-meta">Updated 2026-05-26</div>
         </a>
         <a class="guide-card" href="paramaker-guide">
-          <p class="guide-code">GD-02</p>
+          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-paramaker"/></svg> GD-02</p>
           <h3>Paramaker guide</h3>
           <p>An overview of <span translate="no">Paramaker</span>, the character creator behind each <span translate="no">Para</span>, with uncertain details clearly marked before they harden into myth.</p>
           <div class="guide-meta">Updated 2026-05-26</div>
         </a>
         <a class="guide-card" href="building-basics">
-          <p class="guide-code">GD-03</p>
+          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg> GD-03</p>
           <h3>Building basics</h3>
           <p>A practical look at <span translate="no">Paralives</span> build mode, from free walls to windows that can move independently of the old grid mindset.</p>
           <div class="guide-meta">Updated 2026-05-26</div>
         </a>
         <a class="guide-card" href="aging-too-fast">
-          <p class="guide-code">GD-04</p>
+          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-aging"/></svg> GD-04</p>
           <h3>Paralives aging too fast</h3>
           <p>A calm troubleshooting guide that covers community-reported lifespan and character-edit workarounds without presenting them as official or guaranteed.</p>
           <div class="guide-meta">Updated 2026-05-27</div>
         </a>
         <a class="guide-card" href="troubleshooting">
-          <p class="guide-code">GD-07</p>
+          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-troubleshooting"/></svg> GD-07</p>
           <h3>Paralives troubleshooting</h3>
           <p>A stable hub for known Early Access issues, official reporting links, and careful fix guides as they are verified.</p>
           <div class="guide-meta">Updated 2026-05-29</div>
         </a>
         <a class="guide-card" href="mods">
-          <p class="guide-code">GD-08</p>
+          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-mods"/></svg> GD-08</p>
           <h3>Paralives mods</h3>
           <p>A neutral <span translate="no">Steam Workshop</span> entry point covering subscription basics, safe removal steps, and subscriber-count snapshots without subjective picks.</p>
           <div class="guide-meta">Updated 2026-05-29</div>
         </a>
         <a class="guide-card" href="traits-guide">
-          <p class="guide-code">GD-09</p>
+          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-traits"/></svg> GD-09</p>
           <h3>Paralives traits guide</h3>
           <p>A build-aware overview of how traits shape live mode, how this site organizes them, and which specifics still need direct verification.</p>
           <div class="guide-meta">Updated 2026-05-29</div>
         </a>
         <a class="guide-card" href="faq">
-          <p class="guide-code">GD-10</p>
+          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-faq"/></svg> GD-10</p>
           <h3>Paralives FAQ</h3>
           <p>A concise Early Access question hub covering release status, platforms, multiplayer, mods, pets, saves, and the best next page to open.</p>
           <div class="guide-meta">Updated 2026-05-29</div>
         </a>
         <a class="guide-card" href="cheats">
-          <p class="guide-code">GD-11</p>
+          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-cheats"/></svg> GD-11</p>
           <h3>Paralives cheats</h3>
           <p>A categorized Early Access cheat-console reference for money, time, character editing, needs, build testing, and debug commands.</p>
           <div class="guide-meta">Updated 2026-05-29</div>
         </a>
         <a class="guide-card" href="paralives-vs-sims-4">
-          <p class="guide-code">GD-12</p>
+          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-vs"/></svg> GD-12</p>
           <h3>Paralives vs The Sims 4</h3>
           <p>A calm comparison for readers deciding whether Paralives already fits better as a fresh alternative, a companion game, or a wait-and-see Early Access buy.</p>
           <div class="guide-meta">Updated 2026-05-29</div>
         </a>
         <a class="guide-card" href="early-access-features">
-          <p class="guide-code">GD-05</p>
+          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-ea"/></svg> GD-05</p>
           <h3>Paralives Early Access features</h3>
           <p>An official-source guide that separates day-one systems from features planned to arrive later during Early Access.</p>
           <div class="guide-meta">Updated 2026-05-27</div>
         </a>
         <a class="guide-card" href="is-paralives-worth-it">
-          <p class="guide-code">GD-06</p>
+          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-worth"/></svg> GD-06</p>
           <h3>Is Paralives worth it?</h3>
           <p>A calm Early Access verdict for players deciding whether the current build is worth buying now or better saved for later.</p>
           <div class="guide-meta">Updated 2026-05-27</div>
+        </a>
+        <a class="guide-card" href="/steam-reviews.html">
+          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-steam-reviews"/></svg> REFERENCE</p>
+          <h3>Paralives Steam reviews snapshot</h3>
+          <p>A static Steam pulse page that freezes the current review count, positive ratio, and store label in one buyer-friendly reference.</p>
+          <div class="guide-meta">Updated 2026-05-29</div>
         </a>
       </div>
       <a class="section-link" href="guides">View all guides →</a>
@@ -578,6 +613,7 @@
         <p>Phase 1 starts small on purpose: a stable routing layer first, then verified depth.</p>
       </div>
       <div class="updates-list">
+        <p>2026-05-29 — New: Steam reviews snapshot → <a href="/steam-reviews.html">/steam-reviews.html</a>.</p>
         <p>2026-05-29 — Added a <a href="troubleshooting">troubleshooting hub</a> for known issues, official reporting links, and future fix guides.</p>
         <p>2026-05-27 — Added a dedicated <a href="updates">Updates page</a> that separates official Paralives source links from fan-site change notes.</p>
         <p>2026-05-27 — Added <a href="is-paralives-worth-it">an honest Early Access verdict page</a> to help readers decide whether the current build is worth buying now or waiting on.</p>
