@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- maintenance-tier: HOT -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paralives Patch Notes Archive | Paralives Guide</title>
+  <meta name="description" content="Track Paralives Early Access patch notes in a version-by-version index built only from official Steam announcements and paralives.com sources.">
+  <link rel="canonical" href="https://paralivesguide.help/patch-notes">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Paralives Patch Notes Archive",
+      "description": "A version-by-version archive of Paralives Early Access patch notes built from official Steam announcements and paralives.com sources.",
+      "dateModified": "2026-05-29",
+      "inLanguage": "en",
+      "mainEntityOfPage": "https://paralivesguide.help/patch-notes"
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BZ21KDKP4C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BZ21KDKP4C');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4624485020338199" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --cream: #fdf6ec;
+      --pink: #f4c8c0;
+      --pink-deep: #e89a8e;
+      --sage: #b8c9a7;
+      --sage-deep: #7a9269;
+      --ink: #3d3530;
+      --ink-soft: #6b5d54;
+      --line: #ead9c8;
+      --shadow: 0 4px 16px rgba(61, 53, 48, 0.06);
+      --shadow-hover: 0 8px 28px rgba(61, 53, 48, 0.12);
+      --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+      --font-body: "Inter", -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--cream); }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    a { color: inherit; text-decoration: none; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(253, 246, 236, 0.94);
+      backdrop-filter: blur(12px);
+    }
+    .icon{display:inline-block;width:1em;height:1em;vertical-align:-0.15em;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;fill:none;flex:none}
+    .topbar-inner,
+    .wrap,
+    .site-footer-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0;
+    }
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    .brand span { color: var(--pink-deep); }
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .topnav a {
+      position: relative;
+      font-size: 0.96rem;
+      color: var(--ink-soft);
+    }
+    .topnav a[aria-current]::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -3px;
+      height: 2px;
+      background: var(--pink-deep);
+      border-radius: 999px;
+    }
+    .wrap { padding: 56px 0 112px; }
+    .crumb {
+      margin-bottom: 18px;
+      color: var(--ink-soft);
+      font-size: 0.94rem;
+    }
+    article {
+      max-width: 840px;
+      padding: 34px clamp(22px, 4vw, 40px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255, 251, 246, 0.88);
+      box-shadow: var(--shadow);
+    }
+    .kicker {
+      margin: 0 0 12px;
+      color: var(--pink-deep);
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.02;
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin: -6px 0 24px;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+      font-family: var(--font-mono);
+    }
+    .article-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .article-meta span + span::before {
+      content: "·";
+      margin-right: 8px;
+      color: var(--line);
+    }
+    .toc,
+    .factbox,
+    .note,
+    .version-card,
+    .related a {
+      border-radius: 20px;
+    }
+    .toc {
+      margin: 28px 0;
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      background: rgba(244, 200, 192, 0.16);
+    }
+    .toc h2,
+    .factbox h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+    .toc ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .toc a { color: var(--sage-deep); }
+    .sec {
+      margin-top: 34px;
+      margin-bottom: 14px;
+      font-size: 1.85rem;
+    }
+    .factbox {
+      margin: 26px 0;
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      background: rgba(255, 251, 246, 0.9);
+      box-shadow: var(--shadow);
+    }
+    .factbox table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .factbox td {
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      vertical-align: top;
+    }
+    .factbox tr:first-child td { border-top: 0; }
+    .factbox td:first-child {
+      width: 34%;
+      color: var(--ink-soft);
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+    }
+    .note {
+      margin: 22px 0;
+      padding: 16px 18px;
+      background: rgba(184, 201, 167, 0.22);
+      color: var(--ink);
+    }
+    .version-index {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0 0;
+    }
+    .version-index a {
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      background: rgba(255, 251, 246, 0.92);
+      font-family: var(--font-mono);
+      font-size: 0.88rem;
+      color: var(--sage-deep);
+    }
+    .version-stack {
+      display: grid;
+      gap: 18px;
+      margin-top: 22px;
+    }
+    .version-card {
+      padding: 22px;
+      border: 1px solid var(--line);
+      background: rgba(255, 251, 246, 0.92);
+      box-shadow: var(--shadow);
+    }
+    .version-card h3 {
+      margin: 0 0 8px;
+      font-size: 1.45rem;
+    }
+    .version-meta {
+      margin: 0 0 14px;
+      color: var(--ink-soft);
+      font-family: var(--font-mono);
+      font-size: 0.86rem;
+      letter-spacing: 0.04em;
+    }
+    .version-card p { margin: 0 0 12px; }
+    .version-card .label {
+      display: inline-flex;
+      margin-bottom: 10px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(244, 200, 192, 0.22);
+      color: var(--pink-deep);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .source-link {
+      color: var(--sage-deep);
+      font-weight: 600;
+    }
+    .related {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .related a {
+      display: block;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 251, 246, 0.9);
+      box-shadow: var(--shadow);
+    }
+    .related .eyebrow {
+      display: block;
+      margin-bottom: 6px;
+      color: var(--ink-soft);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 28px 0 44px;
+    }
+    .site-footer .brand {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+    .disclaimer {
+      margin: 0;
+      max-width: 54rem;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+    }
+    .lang-switcher {
+      min-height: 1.5rem;
+      margin-top: 18px;
+    }
+    @media (max-width: 640px) {
+      .topbar-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 16px 0;
+      }
+      .topnav {
+        justify-content: flex-start;
+        gap: 14px 18px;
+      }
+      .wrap, .topbar-inner, .site-footer-inner {
+        width: min(1120px, calc(100% - 24px));
+      }
+    }
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-guides" viewBox="0 0 24 24"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H20v14.5A1.5 1.5 0 0 0 18.5 17H6.5A2.5 2.5 0 0 0 4 19.5z"/><path d="M12 4v13"/></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5"/><path d="M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></symbol>
+    <symbol id="i-tools" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m12 12 4-4"/></symbol>
+    <symbol id="i-houses" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+    <symbol id="i-updates" viewBox="0 0 24 24"><path d="M12 4a5 5 0 0 0-5 5v2.5c0 .8-.3 1.6-.9 2.1L4.5 15h15l-1.6-1.4a3 3 0 0 1-.9-2.1V9a5 5 0 0 0-5-5"/><path d="M9.5 18a2.5 2.5 0 0 0 5 0"/></symbol>
+    <symbol id="i-about" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10v6"/><path d="M12 7h.01"/></symbol>
+  </svg>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><a href="/">Paralives<span> </span>Guide</a></div>
+      <nav class="topnav" aria-label="Primary">
+        <a href="guides"><svg class="icon" aria-hidden="true"><use href="#i-guides"/></svg> Guides</a>
+        <a href="database"><svg class="icon" aria-hidden="true"><use href="#i-database"/></svg> Database</a>
+        <a href="tools"><svg class="icon" aria-hidden="true"><use href="#i-tools"/></svg> Tools</a>
+        <a href="houses"><svg class="icon" aria-hidden="true"><use href="#i-houses"/></svg> Houses</a>
+        <a href="updates"><svg class="icon" aria-hidden="true"><use href="#i-updates"/></svg> Updates</a>
+        <a href="about"><svg class="icon" aria-hidden="true"><use href="#i-about"/></svg> About</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="crumb"><a href="/">Home</a> / <a href="updates">Updates</a> / Patch notes archive</div>
+    <article>
+      <div class="kicker">UP-02 · PATCH ARCHIVE</div>
+      <h1>Paralives patch notes archive</h1>
+      <div class="article-meta">
+        <span>Updated: 2026-05-29</span>
+        <span>Game Version: EA 0.1</span>
+        <span>Page type: Patch archive</span>
+      </div>
+      <p>All <span translate="no">Paralives</span> Early Access patches, grouped by version, with official sources.</p>
+      <p>This page is the version-by-version companion to <a href="/updates.html">updates.html</a>. The goal is simple: point to the original official announcement, keep the summary neutral, and avoid reposting the full patch notes body when the source already exists.</p>
+
+      <div class="note"><b>Methodology:</b> Every entry on this page comes from official <span translate="no">Steam</span> announcements and official <span translate="no">paralives.com</span> pages only. If an announcement does not expose an exact version number, this archive keeps the slot broad and marks the missing label instead of inventing one.</div>
+
+      <nav class="toc">
+        <h2>In this archive</h2>
+        <ol>
+          <li><a href="#sources">How this archive is sourced</a></li>
+          <li><a href="#version-index">Version index</a></li>
+          <li><a href="#patches">Version sections</a></li>
+          <li><a href="#footnote">Sourcing footnote</a></li>
+          <li><a href="#related">Related pages</a></li>
+        </ol>
+      </nav>
+
+      <h2 class="sec" id="sources">How this archive is sourced</h2>
+      <p>The source chain is intentionally narrow: official <span translate="no">Steam Community Announcements</span>, plus official pages on <span translate="no">paralives.com</span> when they carry the same release information. Community summaries, news roundups, and player-made change logs do not get promoted into archive entries here.</p>
+      <div class="factbox">
+        <h3>Archive rules</h3>
+        <table>
+          <tr><td>Allowed sources</td><td>Official <span translate="no">Steam</span> announcements and official <span translate="no">paralives.com</span> pages only.</td></tr>
+          <tr><td>Entry format</td><td>Version label, release date, neutral summary, and an official source link.</td></tr>
+          <tr><td>Missing version labels</td><td>If the source does not show one clearly, the archive keeps a broader version bucket and says so.</td></tr>
+          <tr><td>Editorial stance</td><td>Organization and summary only, not a repost of the complete patch notes text.</td></tr>
+        </table>
+      </div>
+
+      <h2 class="sec" id="version-index">Version index</h2>
+      <p>The index stays in reverse order, with the most recent official item first.</p>
+      <div class="version-index">
+        <a href="#v0-1x">0.1.x</a>
+        <a href="#v0-1x-known-issues">0.1.x known issues</a>
+        <a href="#v0-1-0">0.1.0</a>
+      </div>
+
+      <h2 class="sec" id="patches">Version sections</h2>
+      <!-- patch-notes:auto-start -->
+      <div class="version-stack">
+        <section class="version-card" id="v0-1x">
+          <div class="label">Patch</div>
+          <h3>Version 0.1.x</h3>
+          <p class="version-meta">Posted 2026-05-29</p>
+          <p>The first official post-launch patch notice surfaced on the <span translate="no">Steam</span> news hub on May 29, 2026 under the title <i>Our First Patch Is Out Now!</i>. The official listing frames it as the first fixes pass after launch and links back to the full patch notes on the official announcement page.</p>
+          <p>Patch entry pending official source version label. The surfaced announcement text clearly identifies it as the first patch, but the visible hub snippet does not expose a numbered 0.1.x tag in the listing we could verify here.</p>
+          <a class="source-link" href="https://store.steampowered.com/news/app/1118520?feed=steam_community_announcements">Official source</a>
+        </section>
+
+        <section class="version-card" id="v0-1x-known-issues">
+          <div class="label">Known issues</div>
+          <h3>Version 0.1.x</h3>
+          <p class="version-meta">Posted 2026-05-26</p>
+          <p>The first post-launch follow-up on the official <span translate="no">Steam</span> news side was a Known Issues notice one day after launch. It acknowledged launch-period issues and kept the support loop centered on official reporting and feedback channels rather than an unofficial community changelog.</p>
+          <p>Patch entry pending official source version label. The official post title visible on <span translate="no">Steam</span> does not expose an exact 0.1.x number in the surfaced listing, so this archive keeps it under the broader launch-series bucket for now.</p>
+          <a class="source-link" href="https://store.steampowered.com/news/app/1118520?feed=steam_community_announcements">Official source</a>
+        </section>
+
+        <section class="version-card" id="v0-1-0">
+          <div class="label">Launch</div>
+          <h3>Version 0.1.0</h3>
+          <p class="version-meta">Posted 2026-05-25</p>
+          <p><span translate="no">Paralives</span> entered <span translate="no">Steam</span> Early Access on May 25, 2026. The official launch announcement framed the build as the start of the public Early Access cycle, with feedback collection and future free updates positioned as part of the development plan.</p>
+          <p>This is the clearest official starting point for the 0.1 line, even though it is a launch announcement rather than a numbered hotfix post.</p>
+          <a class="source-link" href="https://store.steampowered.com/news/app/1118520/view/520841474254834418">Official source</a>
+        </section>
+      </div>
+      <!-- patch-notes:auto-end -->
+
+      <h2 class="sec" id="footnote">How patch notes are sourced</h2>
+      <p>Checked against the official <span translate="no">Steam Community Announcements</span> listing and official <span translate="no">paralives.com</span> pages as of 2026-05-30. This page is intended to stay hand-maintained outside the marker block shell until a later brief replaces the marker contents with script-generated entries.</p>
+
+      <h2 class="sec" id="related">Related</h2>
+      <div class="related">
+        <a href="/updates.html">
+          <span class="eyebrow">Timeline</span>
+          <strong>Updates</strong>
+          <span>Use the broader updates route for official news links plus reviewed site changes.</span>
+        </a>
+        <a href="early-access-features">
+          <span class="eyebrow">Scope</span>
+          <strong>Early Access features</strong>
+          <span>See what was officially available at launch versus what the studio says is planned later.</span>
+        </a>
+        <a href="troubleshooting">
+          <span class="eyebrow">Issues</span>
+          <strong>Troubleshooting hub</strong>
+          <span>Go here for known issues, official reporting routes, and fix guides once they are verified.</span>
+        </a>
+        <a href="aging-too-fast">
+          <span class="eyebrow">Specific issue</span>
+          <strong>Paralives aging too fast</strong>
+          <span>One example of how this site separates community workarounds from official mechanics.</span>
+        </a>
+      </div>
+    </article>
+  </main>
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="brand">Paralives<span> </span>Guide</div>
+      <p class="disclaimer">
+        Paralives is a trademark of Paralives Studio. This is an unaffiliated fan resource;
+        nothing here is endorsed by or affiliated with Paralives Studio.
+      </p>
+      <div class="lang-switcher" aria-hidden="true"></div>
+    </div>
+  </footer>
+</body>
+</html>
