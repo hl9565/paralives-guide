@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- maintenance-tier: COLD -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paralives Color Wheel and Pattern System | Paralives Guide</title>
+  <meta name="description" content="See what the Paralives color wheel and pattern system actually does, where it appears in Early Access, why Sims players care about it, and which limits are still not confirmed.">
+  <link rel="canonical" href="https://paralivesguide.help/color-wheel">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does Paralives have a color wheel in Early Access?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Official Paralives Early Access materials list the color wheel as part of both the day-one build-mode toolset and the day-one Paramaker feature set."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the system only for build mode, or does it appear in Paramaker too?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It appears in both. Official feature lists place the color wheel in build mode and also describe Paramaker as offering a color wheel for everything at launch."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do Sims players keep focusing on this feature?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Because it shifts customization away from fixed preset swatches and toward direct color control, which is a meaningful difference for players used to choosing from predefined variants."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you import custom patterns or type exact color codes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Not confirmed as of Early Access 0.1. The official sources reviewed for this page confirm the color wheel and pattern-based customization concept, but they do not confirm custom pattern importing or exact color-code entry."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should every old preview detail about the color tools be treated as live?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Older previews are useful context, but exact controls and edge-case behavior should only be treated as live when current official Early Access material confirms them."
+          }
+        }
+      ]
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BZ21KDKP4C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BZ21KDKP4C');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4624485020338199" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --cream: #fdf6ec;
+      --pink: #f4c8c0;
+      --pink-deep: #e89a8e;
+      --sage: #b8c9a7;
+      --sage-deep: #7a9269;
+      --ink: #3d3530;
+      --ink-soft: #6b5d54;
+      --line: #ead9c8;
+      --shadow: 0 4px 16px rgba(61, 53, 48, 0.06);
+      --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+      --font-body: "Inter", -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+    }
+
+    * { box-sizing: border-box; }
+    html { background: var(--cream); }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 {
+      font-family: var(--font-display);
+      letter-spacing: -0.01em;
+      color: var(--ink);
+    }
+    a { color: inherit; text-decoration: none; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(253, 246, 236, 0.94);
+      backdrop-filter: blur(12px);
+    }
+    .icon{display:inline-block;width:1em;height:1em;vertical-align:-0.15em;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;fill:none;flex:none}
+    .topbar-inner,
+    .wrap,
+    .site-footer-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0;
+    }
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    .brand span { color: var(--pink-deep); }
+    .topnav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      align-items: center;
+      justify-content: flex-end;
+    }
+    .topnav a {
+      position: relative;
+      font-size: 0.96rem;
+      color: var(--ink-soft);
+    }
+    .topnav a[aria-current]::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -3px;
+      height: 2px;
+      background: var(--pink-deep);
+      border-radius: 999px;
+    }
+    .wrap { padding: 56px 0 112px; }
+    .crumb {
+      margin-bottom: 18px;
+      color: var(--ink-soft);
+      font-size: 0.94rem;
+    }
+    article {
+      max-width: 820px;
+      padding: 34px clamp(22px, 4vw, 40px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255, 251, 246, 0.88);
+      box-shadow: var(--shadow);
+    }
+    .kicker {
+      margin: 0 0 12px;
+      color: var(--pink-deep);
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2.4rem, 6vw, 4rem);
+      line-height: 1.02;
+    }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+    .article-meta span {
+      padding: 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 251, 246, 0.9);
+      color: var(--ink-soft);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.03em;
+    }
+    article p { margin: 0 0 16px; }
+    .hero-note,
+    .toc,
+    .factbox,
+    .note,
+    .compare-box,
+    .related a {
+      border-radius: 20px;
+    }
+    .hero-note,
+    .toc,
+    .factbox,
+    .compare-box {
+      border: 1px solid var(--line);
+      background: rgba(255, 251, 246, 0.9);
+      box-shadow: var(--shadow);
+    }
+    .hero-note {
+      margin: 26px 0;
+      padding: 20px 22px;
+      background: linear-gradient(135deg, rgba(244, 200, 192, 0.2), rgba(184, 201, 167, 0.2));
+    }
+    .hero-note strong {
+      display: block;
+      margin-bottom: 8px;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .toc {
+      margin: 28px 0;
+      padding: 20px 22px;
+      background: rgba(244, 200, 192, 0.16);
+    }
+    .toc h2 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+    .toc ol {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .toc a { color: var(--sage-deep); }
+    .sec {
+      margin-top: 34px;
+      margin-bottom: 14px;
+      font-size: 1.85rem;
+    }
+    .factbox,
+    .compare-box {
+      margin: 26px 0;
+      padding: 20px 22px;
+    }
+    .factbox h3,
+    .compare-box h3 {
+      margin: 0 0 12px;
+      font-size: 1.2rem;
+    }
+    .factbox table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .factbox td {
+      padding: 10px 0;
+      border-top: 1px solid var(--line);
+      vertical-align: top;
+    }
+    .factbox tr:first-child td { border-top: 0; }
+    .factbox td:first-child {
+      width: 38%;
+      color: var(--ink-soft);
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      letter-spacing: 0.04em;
+    }
+    .compare-box {
+      background: rgba(184, 201, 167, 0.14);
+    }
+    .note {
+      margin: 22px 0;
+      padding: 16px 18px;
+      background: rgba(184, 201, 167, 0.22);
+      color: var(--ink);
+    }
+    .faq details {
+      padding: 16px 0;
+      border-top: 1px solid var(--line);
+    }
+    .faq details:first-child { border-top: 0; }
+    .faq summary {
+      cursor: pointer;
+      font-weight: 600;
+      list-style: none;
+    }
+    .faq summary::-webkit-details-marker { display: none; }
+    .faq p {
+      margin: 10px 0 0;
+      color: var(--ink-soft);
+    }
+    .related {
+      max-width: 820px;
+      margin-top: 28px;
+    }
+    .related h2 {
+      margin-bottom: 14px;
+      font-size: 1.35rem;
+    }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .related-grid a {
+      grid-column: span 6;
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      background: rgba(255, 251, 246, 0.86);
+      box-shadow: var(--shadow);
+    }
+    .related-grid .t {
+      margin-bottom: 8px;
+      color: var(--ink-soft);
+      font-family: var(--font-mono);
+      font-size: 0.76rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .related-grid .h {
+      font-family: var(--font-display);
+      font-size: 1.08rem;
+    }
+    .site-footer {
+      border-top: 1px solid var(--line);
+      background: rgba(255, 251, 246, 0.72);
+    }
+    .site-footer-inner {
+      padding: 26px 0 34px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      color: var(--ink-soft);
+      font-size: 0.92rem;
+    }
+    .disclaimer { margin: 0; max-width: 70ch; }
+    @media (max-width: 720px) {
+      .topbar-inner { align-items: flex-start; }
+      .topnav { gap: 12px; }
+      .related-grid a { grid-column: span 12; }
+    }
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+    <symbol id="i-guides" viewBox="0 0 24 24"><path d="M5 6.5A2.5 2.5 0 0 1 7.5 4H20v14.5A1.5 1.5 0 0 0 18.5 17H7.5A2.5 2.5 0 0 0 5 19.5Z"/><path d="M7.5 4v13"/><path d="M9.5 8H17"/><path d="M9.5 11H17"/><path d="M9.5 14H14"/></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5"/><path d="M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></symbol>
+    <symbol id="i-tools" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m12 12 4-4"/></symbol>
+    <symbol id="i-houses" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+    <symbol id="i-updates" viewBox="0 0 24 24"><path d="M12 4a5 5 0 0 0-5 5v2.5c0 .8-.3 1.6-.9 2.1L4.5 15h15l-1.6-1.4a3 3 0 0 1-.9-2.1V9a5 5 0 0 0-5-5"/><path d="M9.5 18a2.5 2.5 0 0 0 5 0"/></symbol>
+    <symbol id="i-about" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10v6"/><path d="M12 7h.01"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M5 5h6v6H5z"/><path d="M13 5h6v6h-6z"/><path d="M5 13h6v6H5z"/><path d="M13 13h6v6h-6z"/></symbol>
+    <symbol id="i-paramaker" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r=".5"/><circle cx="15" cy="10" r=".5"/><path d="M8.5 16a5 5 0 0 1 7 0"/><path d="M12 13a3 3 0 0 0 3-3 3 3 0 1 0-6 0 3 3 0 0 0 3 3Z"/></symbol>
+    <symbol id="i-worth" viewBox="0 0 24 24"><path d="M12 4v16"/><path d="M6 7h12"/><path d="m8 7-3 5a3 3 0 0 0 6 0Z"/><path d="m16 7-3 5a3 3 0 0 0 6 0Z"/><path d="M8 20h8"/></symbol>
+    <symbol id="i-ea" viewBox="0 0 24 24"><path d="M12 20V9"/><path d="M12 13c0-4 2.5-6.5 6-7-1 4-2.5 6.5-6 7Z"/><path d="M12 15c0-3-1.8-5.1-5-6 0 3.6 1.6 5.9 5 6Z"/></symbol>
+  </svg>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><a href="/">Paralives<span> </span>Guide</a></div>
+      <nav class="topnav" aria-label="Primary">
+        <a href="guides" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-guides"/></svg> Guides</a>
+        <a href="database"><svg class="icon" aria-hidden="true"><use href="#i-database"/></svg> Database</a>
+        <a href="tools"><svg class="icon" aria-hidden="true"><use href="#i-tools"/></svg> Tools</a>
+        <a href="houses"><svg class="icon" aria-hidden="true"><use href="#i-houses"/></svg> Houses</a>
+        <a href="updates"><svg class="icon" aria-hidden="true"><use href="#i-updates"/></svg> Updates</a>
+        <a href="about"><svg class="icon" aria-hidden="true"><use href="#i-about"/></svg> About</a>
+      </nav>
+    </div>
+  </header>
+  <div class="wrap">
+    <div class="crumb"><a href="/">Home</a> &nbsp;/&nbsp; <a href="guides">Guides</a> &nbsp;/&nbsp; Color wheel &amp; patterns</div>
+    <article>
+      <div class="kicker">GD-13 · FEATURE GUIDE</div>
+      <h1>Paralives color wheel &amp; pattern system</h1>
+      <div class="article-meta">
+        <span>Updated: 2026-05-29</span>
+        <span>Game Version: EA 0.1</span>
+        <span>Page type: Feature guide</span>
+      </div>
+      <p>The color system is one of the easiest ways to explain why <span translate="no">Paralives</span> caught life-sim players' attention so early. Official Early Access material already confirms a color wheel in both build mode and <span translate="no">Paramaker</span>, and that alone changes how people think about furniture, outfits, and repeated preset variants.</p>
+      <div class="hero-note">
+        <strong>TL;DR</strong>
+        <p><span translate="no">Paralives</span> lets players work from a live color wheel and pattern-based customization system instead of relying only on fixed preset swatches, which is a meaningful shift for players used to more locked-in variant picking.</p>
+      </div>
+
+      <nav class="toc">
+        <h2>In this guide</h2>
+        <ol>
+          <li><a href="#what-it-is">What it is</a></li>
+          <li><a href="#where-it-appears">Where it appears</a></li>
+          <li><a href="#why-it-matters">Why it matters</a></li>
+          <li><a href="#limitations">Limitations / EA status</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#related">Related</a></li>
+        </ol>
+      </nav>
+
+      <h2 class="sec" id="what-it-is">What it is</h2>
+      <p>At the feature level, the safe claim is straightforward: official <span translate="no">Paralives</span> Early Access material confirms a color wheel as a live customization tool. The site's <a href="early-access-features">Early Access features guide</a>, which is built from official sources, places the color wheel in day-one build mode and also lists a color wheel for everything inside day-one <span translate="no">Paramaker</span>.</p>
+      <p>That means the system is not just a decorative footnote. It is part of how <span translate="no">Paralives</span> presents both environment customization and character customization. Official sources also frame patterns as part of that broader customization appeal, which is why players often talk about colors and patterns together rather than as separate features.</p>
+
+      <div class="factbox">
+        <h3>What is confirmed today</h3>
+        <table>
+          <tr><td>Day-one build mode</td><td>Official Early Access materials list the color wheel alongside flexible walls, stairs, fences, and object resizing.</td></tr>
+          <tr><td>Day-one Paramaker</td><td>Official Early Access materials describe Paramaker as launching with a color wheel for everything.</td></tr>
+          <tr><td>Best reading</td><td>The system is a core customization pillar, not a hidden extra.</td></tr>
+          <tr><td>What to avoid</td><td>Do not invent unconfirmed controls such as exact code entry, import formats, or every sub-menu behavior.</td></tr>
+        </table>
+      </div>
+
+      <h2 class="sec" id="where-it-appears">Where it appears</h2>
+      <p>The clearest official placement is split between two spaces. First, build mode: official feature lists put the color wheel in the launch build toolset, which is why it belongs next to guides like <a href="building-basics">building basics</a>. Second, <span translate="no">Paramaker</span>: official feature lists also describe a color wheel for everything in the character creator, which is why it naturally belongs next to the <a href="paramaker-guide">Paramaker guide</a>.</p>
+      <p>Beyond that, the broad public reading is that the system covers the places where players most notice repetitive preset variants: walls, floors, furniture-facing customization, and clothing or appearance styling. Official sources do not itemize every single object class or every exact surface rule in one place, so the safest phrasing is that the system is clearly present across build customization and character customization, with finer per-object behavior still requiring direct build checks.</p>
+
+      <h2 class="sec" id="why-it-matters">Why it matters</h2>
+      <div class="compare-box">
+        <h3>Why Sims players notice this immediately</h3>
+        <p>For many players coming from <span translate="no">The Sims</span>, the emotional difference is simple: preset swatches ask you to choose from what already exists, while a live color system asks what you actually want the object or outfit to look like. That does not make one model morally better than the other, but it does change how fast a room, outfit, or palette can feel personal.</p>
+        <p>This is why the feature keeps surfacing in broader comparison talk, including the site's <a href="paralives-vs-sims-4">Paralives vs The Sims 4</a> page. The appeal is not only visual freedom for its own sake. It is also the practical convenience of not having to hunt through a stack of fixed variants just to get closer to the tone, accent, or pattern mood you already had in mind.</p>
+      </div>
+      <p>In other words, the color wheel matters because it lowers the distance between idea and result. That is especially attractive in a life sim, where players often spend more time tuning a room or outfit than they do performing any single mechanical action.</p>
+
+      <h2 class="sec" id="limitations">Limitations / EA status</h2>
+      <p>The official sources reviewed for this page confirm the existence and importance of the color system, but they do not confirm every advanced detail players often ask about. As of EA 0.1, this page does <strong>not</strong> treat custom pattern importing, exact hex-code entry, saved palette libraries, or fully documented sub-object recolor rules as confirmed features.</p>
+      <p>That uncertainty matters because color-system discourse tends to absorb years of preview memory very quickly. Some long-circulating expectations may eventually prove true, but this page stays with the narrower claim that current official Early Access material confirms a color wheel and pattern-forward customization pitch, while several workflow details remain unconfirmed in current public source material.</p>
+      <div class="note"><strong>Not confirmed as of EA 0.1:</strong> custom pattern importing, exact color-code entry, and a fully itemized list of every object category or micro-control inside the current public build.</div>
+
+      <h2 class="sec" id="faq">FAQ</h2>
+      <div class="faq">
+        <details>
+          <summary>Does Paralives have a color wheel in Early Access?</summary>
+          <p>Yes. Official Paralives Early Access materials list the color wheel as part of both the day-one build-mode toolset and the day-one Paramaker feature set.</p>
+        </details>
+        <details>
+          <summary>Is the system only for build mode, or does it appear in Paramaker too?</summary>
+          <p>It appears in both. Official feature lists place the color wheel in build mode and also describe Paramaker as offering a color wheel for everything at launch.</p>
+        </details>
+        <details>
+          <summary>Why do Sims players keep focusing on this feature?</summary>
+          <p>Because it shifts customization away from fixed preset swatches and toward direct color control, which is a meaningful difference for players used to choosing from predefined variants.</p>
+        </details>
+        <details>
+          <summary>Can you import custom patterns or type exact color codes?</summary>
+          <p>Not confirmed as of Early Access 0.1. The official sources reviewed for this page confirm the color wheel and pattern-based customization concept, but they do not confirm custom pattern importing or exact color-code entry.</p>
+        </details>
+        <details>
+          <summary>Should every old preview detail about the color tools be treated as live?</summary>
+          <p>No. Older previews are useful context, but exact controls and edge-case behavior should only be treated as live when current official Early Access material confirms them.</p>
+        </details>
+      </div>
+    </article>
+
+    <section class="related" id="related">
+      <h2>Related</h2>
+      <div class="related-grid">
+        <a href="building-basics"><div class="t"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg> GD-03</div><div class="h">Building basics</div></a>
+        <a href="paramaker-guide"><div class="t"><svg class="icon" aria-hidden="true"><use href="#i-paramaker"/></svg> GD-02</div><div class="h">Paramaker guide</div></a>
+        <a href="is-paralives-worth-it"><div class="t"><svg class="icon" aria-hidden="true"><use href="#i-worth"/></svg> GD-06</div><div class="h">Is Paralives worth it?</div></a>
+        <a href="early-access-features"><div class="t"><svg class="icon" aria-hidden="true"><use href="#i-ea"/></svg> GD-05</div><div class="h">Paralives Early Access features</div></a>
+      </div>
+    </section>
+  </div>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="brand">Paralives<span> </span>Guide</div>
+      <p class="disclaimer">
+        Paralives is a trademark of Paralives Studio. This is an unaffiliated fan resource;
+        nothing here is endorsed by or affiliated with Paralives Studio.
+      </p>
+      <div class="lang-switcher" aria-hidden="true"></div>
+    </div>
+  </footer>
+</body>
+</html>
