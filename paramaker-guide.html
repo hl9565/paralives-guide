@@ -106,6 +106,10 @@
     }
 
     .icon{display:inline-block;width:1em;height:1em;vertical-align:-0.15em;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;fill:none;flex:none}
+    .official-figure{margin:1.5rem 0;text-align:center}
+    .official-figure picture,.official-figure img{display:block;max-width:100%;height:auto;margin:0 auto;border-radius:.5rem;border:1px solid var(--rule, #d8d4ca)}
+    .official-figure figcaption{font-size:.85rem;margin-top:.5rem;color:var(--muted, #6b6b6b)}
+    .official-figure a{color:inherit;text-decoration:underline}
     .topbar-inner,
     .wrap,
     .site-footer-inner {
@@ -414,6 +418,18 @@
         </ol>
       </nav>
 
+      <figure class="official-figure">
+        <picture>
+          <source type="image/webp" srcset="assets/img/official/paralives-com/town-overview.webp">
+          <img src="assets/img/official/paralives-com/town-overview.jpg"
+               width="1600"
+               height="900"
+               loading="lazy"
+               decoding="async"
+               alt="Wide overview of a Paralives town with houses and walkable streets, from the official trailer">
+        </picture>
+        <figcaption>Town overview — paralives.com · © Paralives Studio · <a href="https://paralives.com/" rel="noopener">source</a></figcaption>
+      </figure>
       <h2 class="sec" id="what-it-is">What Paramaker is for</h2>
       <p>At the simplest level, <span translate="no">Paramaker</span> is the game's character creator. It is where you shape appearance, identity, and the broad frame of who a <span translate="no">Para</span> is before everyday life takes over in live mode.</p>
       <p>That sounds ordinary on paper, but it matters because character creators in life sims tend to become shorthand for the whole game's tone. If the creator feels flexible and readable, the rest of the simulation usually feels easier to trust.</p>
