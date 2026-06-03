@@ -18,6 +18,19 @@
     gtag('config', 'G-BZ21KDKP4C');
   </script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4624485020338199" crossorigin="anonymous"></script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type":"Question","name":"Is Paralives released?","acceptedAnswer":{"@type":"Answer","text":"Yes. The official Paralives FAQ says Paralives released in Early Access on May 25, 2026."}},
+        {"@type":"Question","name":"Where can I buy Paralives?","acceptedAnswer":{"@type":"Answer","text":"The official FAQ says Paralives is available on Steam for PC and Mac."}},
+        {"@type":"Question","name":"Is Paralives multiplayer?","acceptedAnswer":{"@type":"Answer","text":"No. The official FAQ presents Paralives as a single-player game."}},
+        {"@type":"Question","name":"Does Paralives have mods?","acceptedAnswer":{"@type":"Answer","text":"Yes. Paralives has a Steam Workshop hub, and the site's mods guide explains the current Workshop-based setup."}},
+        {"@type":"Question","name":"Where should I start if I hit a bug?","acceptedAnswer":{"@type":"Answer","text":"Start with the site's troubleshooting hub, then use official links such as the Paralives FAQ, Paralives development page, and relevant Steam pages."}}
+      ]
+    }
+  </script>
   <style>
     :root {
       --cream:      #fdf6ec;
@@ -141,7 +154,7 @@
     }
 
     .hero {
-      max-width: 760px;
+      max-width: 860px;
       padding: 48px clamp(24px, 5vw, 56px);
       border: 1px solid rgba(232, 154, 142, 0.22);
       border-radius: 28px;
@@ -151,13 +164,20 @@
       box-shadow: var(--shadow);
     }
 
+    .kicker,
+    .card-code,
+    .item-meta,
+    .source-label {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
     .kicker {
       margin: 0 0 14px;
       color: var(--sage-deep);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
     }
 
     .hero h1 {
@@ -168,23 +188,15 @@
 
     .lede {
       margin: 0;
-      max-width: 36rem;
+      max-width: 42rem;
       color: var(--ink-soft);
       font-size: clamp(1.05rem, 2.6vw, 1.25rem);
     }
 
-    .lede em {
-      font-style: italic;
-      color: var(--ink);
-    }
-
-    .note {
-      margin: 24px 0 0;
-      color: var(--ink-soft);
-      font-size: 0.98rem;
-    }
-
     .signal-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 16px;
       margin: 28px 0 0;
       padding: 16px 20px;
       border: 1px solid var(--line);
@@ -196,162 +208,166 @@
       color: var(--ink);
     }
 
-    .signal-strip .sep {
-      color: var(--line);
-    }
-
     .section-block {
-      margin-top: 56px;
+      margin-top: 58px;
     }
 
     .section-head {
-      display: flex;
-      align-items: baseline;
-      justify-content: space-between;
-      gap: 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 0.75fr) minmax(260px, 1fr);
+      gap: 20px;
+      align-items: end;
       margin-bottom: 18px;
     }
 
     .section-head h2 {
       margin: 0;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      font-size: clamp(1.8rem, 4vw, 2.45rem);
+      line-height: 1.08;
     }
 
-    .section-head p {
+    .section-head p,
+    .preview-copy,
+    .mini-card p,
+    .route-card p,
+    .guide-card p,
+    .update-item p,
+    .qa-item p {
       margin: 0;
-      max-width: 36rem;
       color: var(--ink-soft);
     }
 
     .route-grid,
-    .guide-grid {
+    .card-grid,
+    .guide-grid,
+    .updates-grid,
+    .source-grid,
+    .faq-grid {
       display: grid;
       grid-template-columns: repeat(12, minmax(0, 1fr));
-      gap: 18px;
+      gap: 16px;
     }
 
     .route-card,
-    .guide-card {
+    .guide-card,
+    .mini-card,
+    .update-item,
+    .qa-item,
+    .source-card {
       display: block;
-      padding: 24px;
+      padding: 22px;
       border: 1px solid var(--line);
-      border-radius: 24px;
+      border-left: 3px solid var(--sage-deep);
+      border-radius: 8px;
       background: rgba(255, 251, 246, 0.9);
       box-shadow: var(--shadow);
+    }
+
+    a.route-card,
+    a.guide-card,
+    a.mini-card,
+    a.source-card {
       transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
     }
 
-    .route-card:hover,
-    .guide-card:hover {
+    a.route-card:hover,
+    a.guide-card:hover,
+    a.mini-card:hover,
+    a.source-card:hover {
       transform: translateY(-2px);
       box-shadow: var(--shadow-hover);
       border-color: rgba(122, 146, 105, 0.35);
     }
 
     .route-card {
-      grid-column: span 6;
-      border-left: 3px solid var(--line);
-      min-height: 210px;
+      grid-column: span 3;
+      min-height: 178px;
     }
 
-    .guide-card {
+    .guide-card,
+    .mini-card,
+    .source-card {
       grid-column: span 4;
-      border-left: 3px solid var(--accent-gd);
     }
 
-    .route-card[data-accent="gd"] {
-      border-left-color: var(--accent-gd);
+    .update-item,
+    .qa-item {
+      grid-column: span 4;
     }
 
-    .route-card[data-accent="db"] {
-      border-left-color: var(--accent-db);
+    .wide-card {
+      grid-column: span 6;
     }
 
-    .route-card[data-accent="tl"] {
-      border-left-color: var(--accent-tl);
+    .full-card {
+      grid-column: 1 / -1;
     }
 
-    .route-card[data-accent="hs"] {
-      border-left-color: var(--accent-hs);
-    }
-
-    .route-code,
-    .guide-code {
+    .card-code,
+    .item-meta,
+    .source-label {
+      display: block;
       margin: 0 0 10px;
-      font-family: var(--font-mono);
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    .route-card[data-accent="gd"] .route-code {
-      color: var(--accent-gd);
-    }
-
-    .route-card[data-accent="db"] .route-code {
-      color: var(--accent-db);
-    }
-
-    .route-card[data-accent="tl"] .route-code {
-      color: var(--ink);
-    }
-
-    .route-card[data-accent="hs"] .route-code {
-      color: var(--accent-db);
+      color: var(--sage-deep);
     }
 
     .route-card h3,
-    .guide-card h3 {
+    .guide-card h3,
+    .mini-card h3,
+    .update-item h3,
+    .qa-item h3,
+    .source-card h3 {
       margin: 0 0 10px;
-      font-size: 1.5rem;
-    }
-
-    .route-card p,
-    .guide-card p {
-      margin: 0;
-      color: var(--ink-soft);
-    }
-
-    .status-pill {
-      display: inline-flex;
-      align-items: center;
-      margin-top: 18px;
-      padding: 6px 10px;
-      border: 1px solid var(--sage-deep);
-      border-radius: 999px;
-      color: var(--sage-deep);
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .guide-meta {
-      margin-top: 14px;
-      font-family: var(--font-mono);
-      font-size: 0.82rem;
-      color: var(--ink-soft);
-      letter-spacing: 0.04em;
+      font-size: 1.35rem;
+      line-height: 1.16;
     }
 
     .section-link {
       display: inline-flex;
       margin-top: 18px;
       color: var(--sage-deep);
-      font-weight: 600;
+      font-weight: 700;
     }
 
-    .updates-list {
-      padding: 24px 26px;
+    .plain-section {
+      padding: 0 0 0 18px;
+      border-left: 3px solid var(--line);
+    }
+
+    .plain-section p,
+    .bullet-list {
+      max-width: 62rem;
+    }
+
+    .bullet-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin: 18px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .bullet-list li {
+      padding: 16px;
       border: 1px solid var(--line);
-      border-radius: 24px;
-      background: rgba(255, 251, 246, 0.84);
-      box-shadow: var(--shadow);
+      border-radius: 8px;
+      background: rgba(255, 251, 246, 0.72);
+      color: var(--ink-soft);
     }
 
-    .updates-list p {
-      margin: 0;
-      color: var(--ink-soft);
+    .bullet-list strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--ink);
+    }
+
+    .official-note {
+      padding: 18px 20px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: rgba(184, 201, 167, 0.22);
+      color: var(--ink);
     }
 
     .site-footer {
@@ -378,8 +394,18 @@
 
     @media (max-width: 860px) {
       .route-card,
-      .guide-card {
+      .guide-card,
+      .mini-card,
+      .update-item,
+      .qa-item,
+      .source-card,
+      .wide-card {
         grid-column: span 12;
+      }
+
+      .section-head,
+      .bullet-list {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -470,181 +496,171 @@
   </header>
 
   <main class="wrap">
-    <section class="hero">
-      <p class="kicker">A fan resource</p>
+    <div class="hero" aria-label="Paralives Guide introduction">
+      <p class="kicker">Fan resource · Early Access hub</p>
       <h1>Paralives Guide</h1>
-      <p class="lede">
-        A cozy, opinionated, build-aware companion for <em translate="no">Paralives</em>, the indie life sim
-        from <span translate="no">Paralives Studio</span>. Guides, databases, and external resource routes — fully open, written by
-        players who actually log the hours.
-      </p>
-      <p class="note">
-        Eleven guides are live; the database grows slowly, the tools route now doubles as a verified resources hub, and houses stays queued behind it.
-      </p>
-    </section>
+      <p class="lede"><span translate="no">Paralives</span> is an indie life sim by <span translate="no">Paralives Studio</span>, in Early Access since 2026-05-25. <span translate="no">Paralives Guide</span> is an unaffiliated fan resource that routes you to guides, databases, official-source updates, and honest Early Access context.</p>
+    </div>
 
-    <div class="signal-strip">
-      9 GUIDES <span class="sep">//</span> 0 DB ENTRIES <span class="sep">//</span> 0 TOOLS <span class="sep">//</span> 0 HOUSE PLANS <span class="sep">//</span> LAST FILED 2026-05-29
+    <div class="signal-strip" aria-label="Site scale signals">
+      <span>12 GUIDES</span>
+      <span>1 DB ENTRIES</span>
+      <span>0 HOUSE PLANS</span>
+      <span>LAST FILED 2026-06-03</span>
+      <span>DB-01 Version History</span>
     </div>
 
     <section class="section-block" aria-labelledby="routes-title">
       <div class="section-head">
         <h2 id="routes-title">Choose your route</h2>
-        <p>The site is organized by how you actually browse a life-sim guide: read a walkthrough, check a database, open a utility, or browse builds.</p>
+        <p>Start with the page that matches your question: learning the game, checking a source, deciding whether to buy, or fixing an Early Access issue.</p>
       </div>
-      <figure class="official-figure">
-        <picture>
-          <source type="image/webp" srcset="assets/img/official/paralives-com/town-overview.webp">
-          <img src="assets/img/official/paralives-com/town-overview.jpg"
-               width="1600"
-               height="900"
-               loading="eager"
-               decoding="async"
-               alt="Wide overview of a Paralives town with houses and walkable streets, from the official trailer">
-        </picture>
-        <figcaption>Town overview — paralives.com · © Paralives Studio · <a href="https://paralives.com/" rel="noopener">source</a></figcaption>
-      </figure>
       <div class="route-grid">
-        <a class="route-card" data-accent="gd" href="guides">
-          <span class="icon-slot" style="font-size:1.6rem;line-height:1"><svg class="icon" aria-hidden="true"><use href="#i-guides"/></svg></span>
-          <p class="route-code">GD</p>
-          <h3>Guides</h3>
-          <p>Long-form walkthroughs grounded in the current Early Access build.</p>
-        </a>
-        <a class="route-card" data-accent="db" href="database">
-          <span class="icon-slot" style="font-size:1.6rem;line-height:1"><svg class="icon" aria-hidden="true"><use href="#i-database"/></svg></span>
-          <p class="route-code">DB</p>
-          <h3>Database</h3>
-          <p>Filterable lists of traits, careers, and furniture — coming as the build stabilizes.</p>
-          <span class="status-pill">Status: PLANNED</span>
-        </a>
-        <a class="route-card" data-accent="tl" href="tools">
-          <span class="icon-slot" style="font-size:1.6rem;line-height:1"><svg class="icon" aria-hidden="true"><use href="#i-tools"/></svg></span>
-          <p class="route-code">TL</p>
-          <h3>Tools</h3>
-          <p>Verified external resources for <span translate="no">Paralives</span>: official channels, mod routes, community spaces, and reference companions.</p>
-          <span class="status-pill">Status: LIVE</span>
-        </a>
-        <a class="route-card" data-accent="hs" href="houses">
-          <span class="icon-slot" style="font-size:1.6rem;line-height:1"><svg class="icon" aria-hidden="true"><use href="#i-houses"/></svg></span>
-          <p class="route-code">HS</p>
-          <h3>Houses</h3>
-          <p>A community gallery for shared house designs, opening when the submission flow lands.</p>
-          <span class="status-pill">Status: PLANNED</span>
-        </a>
+        <a class="route-card" href="guides"><span class="card-code">Guides</span><h3>Guides</h3><p>Walkthroughs for Early Access systems and decisions.</p></a>
+        <a class="route-card" href="is-paralives-worth-it"><span class="card-code">Verdict</span><h3>Is Paralives worth it?</h3><p>A calm buying read for the current build.</p></a>
+        <a class="route-card" href="updates"><span class="card-code">News</span><h3>Updates</h3><p>Official-source routes plus fan-site change notes.</p></a>
+        <a class="route-card" href="faq"><span class="card-code">FAQ</span><h3>FAQ</h3><p>Short answers for release, platforms, mods, and bugs.</p></a>
+        <a class="route-card" href="database"><span class="card-code">DB-01</span><h3>Database</h3><p>Version History is live; row-level datasets come later.</p></a>
+        <a class="route-card" href="houses"><span class="card-code">Builds</span><h3>Houses</h3><p>House inspiration and future build browsing routes.</p></a>
+        <a class="route-card" href="mods"><span class="card-code">Workshop</span><h3>Mods</h3><p>Steam Workshop basics without subjective rankings.</p></a>
+        <a class="route-card" href="troubleshooting"><span class="card-code">Support</span><h3>Troubleshooting</h3><p>Known issues, reporting routes, and verified fixes.</p></a>
       </div>
+    </section>
+
+    <section class="section-block" aria-labelledby="get-title">
+      <div class="section-head">
+        <h2 id="get-title">Get Paralives</h2>
+        <p>The shortest official path is the store page, then this site's hardware and Early Access context pages.</p>
+      </div>
+      <div class="official-note">
+        <p><span translate="no">Paralives</span> is available in Early Access on <a href="https://store.steampowered.com/app/1118520/Paralives/"><span translate="no">Steam</span></a> for PC and Mac. Check <a href="system-requirements">system requirements</a> before buying, then use <a href="early-access-features">Early Access features</a> to separate day-one systems from features planned later.</p>
+      </div>
+    </section>
+
+    <section class="section-block" aria-labelledby="latest-title">
+      <div class="section-head">
+        <h2 id="latest-title">Latest from Paralives</h2>
+        <p>These three entries mirror current items on the Updates page, with the source label kept visible.</p>
+      </div>
+      <div class="updates-grid">
+        <article class="update-item"><span class="item-meta">2026-05-29 · Site update</span><h3><a href="troubleshooting">Added the troubleshooting hub</a></h3><p>The site now has a canonical route for known Early Access issues, official reporting links, and future fix guides.</p></article>
+        <article class="update-item"><span class="item-meta">2026-05-27 · Site update</span><h3><a href="is-paralives-worth-it">Added the honest Early Access verdict page</a></h3><p>A structured buying-decision page now helps readers weigh the current build against Early Access tradeoffs.</p></article>
+        <article class="update-item"><span class="item-meta">2026-05-27 · Site update</span><h3><a href="early-access-features">Added the Early Access features guide</a></h3><p>The guide separates day-one systems from features planned to arrive later during Early Access.</p></article>
+      </div>
+      <a class="section-link" href="updates">View all updates →</a>
+    </section>
+
+    <section class="section-block" aria-labelledby="quick-title">
+      <div class="section-head">
+        <h2 id="quick-title">Quick start routes</h2>
+        <p>Three common reader stages, three clean exits.</p>
+      </div>
+      <div class="card-grid">
+        <a class="mini-card" href="early-access-features"><span class="card-code">Curious</span><h3>Curious what Paralives is</h3><p>Start with what is actually in Early Access now.</p></a>
+        <a class="mini-card" href="is-paralives-worth-it"><span class="card-code">Buying</span><h3>Should I buy it?</h3><p>Read the current-build verdict before spending money.</p></a>
+        <a class="mini-card" href="troubleshooting"><span class="card-code">Playing</span><h3>Already playing</h3><p>Use troubleshooting first, then jump into guides.</p></a>
+      </div>
+    </section>
+
+    <section class="section-block plain-section" aria-labelledby="worth-title">
+      <h2 id="worth-title">Is Paralives worth it?</h2>
+      <p class="preview-copy">The short version: <span translate="no">Paralives</span> is easiest to recommend to players who specifically want a fresh life sim and are comfortable with Early Access rough edges. If you need a finished game, broad content depth, or years of expansion packs, waiting is the calmer choice.</p>
+      <a class="section-link" href="is-paralives-worth-it">Read the full verdict →</a>
+    </section>
+
+    <section class="section-block" aria-labelledby="ea-title">
+      <div class="section-head">
+        <h2 id="ea-title">What's in Early Access right now?</h2>
+        <p>Use the official-source feature split before assuming a previewed system is playable today.</p>
+      </div>
+      <ul class="bullet-list">
+        <li><strong>Confirmed at launch</strong> Open world town, live mode basics, building, and <span translate="no">Paramaker</span> are routed through the Early Access guide.</li>
+        <li><strong>Planned during EA</strong> Weather, seasons, pets, and other roadmap items should stay in a planned-later bucket.</li>
+        <li><strong>Best next page</strong> Open <a href="early-access-features">Early Access features</a> for the source-by-source breakdown.</li>
+      </ul>
+    </section>
+
+    <section class="section-block plain-section" aria-labelledby="paramaker-title">
+      <h2 id="paramaker-title">Paramaker preview</h2>
+      <p class="preview-copy"><span translate="no">Paramaker</span> is the character-creation side of <span translate="no">Paralives</span>: the route for shaping a <span translate="no">Para</span> before live-mode play. This homepage keeps it as a preview and links to the guide instead of repeating the full character-creator breakdown.</p>
+      <a class="section-link" href="paramaker-guide">Open the Paramaker guide →</a>
+    </section>
+
+    <section class="section-block plain-section" aria-labelledby="build-title">
+      <h2 id="build-title">Build mode preview</h2>
+      <p class="preview-copy">Grid-free building is one of <span translate="no">Paralives</span>' signature promises: walls, curves, flexible placement, and house-shaping tools are the big reason many builders watch the project. Start with the basics guide before hunting for advanced build inspiration.</p>
+      <a class="section-link" href="building-basics">Open building basics →</a>
     </section>
 
     <section class="section-block" aria-labelledby="featured-title">
       <div class="section-head">
         <h2 id="featured-title">Featured guides</h2>
-        <p>Eleven guides are live now, including an official-source feature split for Early Access, a calm buying verdict, a troubleshooting hub, a neutral mods entry point, a first-stop FAQ, a cheats reference, and a new traits overview.</p>
+        <p>A cold-start ladder for readers moving from official scope to creation, troubleshooting, and hardware checks.</p>
       </div>
       <div class="guide-grid">
-        <a class="guide-card" href="system-requirements">
-          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-system"/></svg> GD-01</p>
-          <h3>Paralives system requirements</h3>
-          <p>Official PC specs for <span translate="no">Paralives</span>, with the Steam Early Access store page and studio site lined up in one quick reference.</p>
-          <div class="guide-meta">Updated 2026-05-26</div>
-        </a>
-        <a class="guide-card" href="paramaker-guide">
-          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-paramaker"/></svg> GD-02</p>
-          <h3>Paramaker guide</h3>
-          <p>An overview of <span translate="no">Paramaker</span>, the character creator behind each <span translate="no">Para</span>, with uncertain details clearly marked before they harden into myth.</p>
-          <div class="guide-meta">Updated 2026-05-26</div>
-        </a>
-        <a class="guide-card" href="building-basics">
-          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-building"/></svg> GD-03</p>
-          <h3>Building basics</h3>
-          <p>A practical look at <span translate="no">Paralives</span> build mode, from free walls to windows that can move independently of the old grid mindset.</p>
-          <div class="guide-meta">Updated 2026-05-26</div>
-        </a>
-        <a class="guide-card" href="aging-too-fast">
-          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-aging"/></svg> GD-04</p>
-          <h3>Paralives aging too fast</h3>
-          <p>A calm troubleshooting guide that covers community-reported lifespan and character-edit workarounds without presenting them as official or guaranteed.</p>
-          <div class="guide-meta">Updated 2026-05-27</div>
-        </a>
-        <a class="guide-card" href="troubleshooting">
-          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-troubleshooting"/></svg> GD-07</p>
-          <h3>Paralives troubleshooting</h3>
-          <p>A stable hub for known Early Access issues, official reporting links, and careful fix guides as they are verified.</p>
-          <div class="guide-meta">Updated 2026-05-29</div>
-        </a>
-        <a class="guide-card" href="mods">
-          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-mods"/></svg> GD-08</p>
-          <h3>Paralives mods</h3>
-          <p>A neutral <span translate="no">Steam Workshop</span> entry point covering subscription basics, safe removal steps, and subscriber-count snapshots without subjective picks.</p>
-          <div class="guide-meta">Updated 2026-05-29</div>
-        </a>
-        <a class="guide-card" href="traits-guide">
-          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-traits"/></svg> GD-09</p>
-          <h3>Paralives traits guide</h3>
-          <p>A build-aware overview of how traits shape live mode, how this site organizes them, and which specifics still need direct verification.</p>
-          <div class="guide-meta">Updated 2026-05-29</div>
-        </a>
-        <a class="guide-card" href="faq">
-          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-faq"/></svg> GD-10</p>
-          <h3>Paralives FAQ</h3>
-          <p>A concise Early Access question hub covering release status, platforms, multiplayer, mods, pets, saves, and the best next page to open.</p>
-          <div class="guide-meta">Updated 2026-05-29</div>
-        </a>
-        <a class="guide-card" href="cheats">
-          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-cheats"/></svg> GD-11</p>
-          <h3>Paralives cheats</h3>
-          <p>A categorized Early Access cheat-console reference for money, time, character editing, needs, build testing, and debug commands.</p>
-          <div class="guide-meta">Updated 2026-05-29</div>
-        </a>
-        <a class="guide-card" href="paralives-vs-sims-4">
-          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-vs"/></svg> GD-12</p>
-          <h3>Paralives vs The Sims 4</h3>
-          <p>A calm comparison for readers deciding whether Paralives already fits better as a fresh alternative, a companion game, or a wait-and-see Early Access buy.</p>
-          <div class="guide-meta">Updated 2026-05-29</div>
-        </a>
-        <a class="guide-card" href="early-access-features">
-          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-ea"/></svg> GD-05</p>
-          <h3>Paralives Early Access features</h3>
-          <p>An official-source guide that separates day-one systems from features planned to arrive later during Early Access.</p>
-          <div class="guide-meta">Updated 2026-05-27</div>
-        </a>
-        <a class="guide-card" href="is-paralives-worth-it">
-          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-worth"/></svg> GD-06</p>
-          <h3>Is Paralives worth it?</h3>
-          <p>A calm Early Access verdict for players deciding whether the current build is worth buying now or better saved for later.</p>
-          <div class="guide-meta">Updated 2026-05-27</div>
-        </a>
-        <a class="guide-card" href="/steam-reviews.html">
-          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-steam-reviews"/></svg> REFERENCE</p>
-          <h3>Paralives Steam reviews snapshot</h3>
-          <p>A static Steam pulse page that freezes the current review count, positive ratio, and store label in one buyer-friendly reference.</p>
-          <div class="guide-meta">Updated 2026-05-29</div>
-        </a>
-        <a class="guide-card" href="/patch-notes.html">
-          <p class="guide-code"><svg class="icon" aria-hidden="true"><use href="#i-updates"/></svg> REFERENCE</p>
-          <h3>Paralives patch notes archive</h3>
-          <p>A version-by-version patch hub that points back to official Steam announcements instead of republishing the full notes body.</p>
-          <div class="guide-meta">Updated 2026-05-29</div>
-        </a>
+        <a class="guide-card" href="early-access-features"><span class="card-code">GD-05</span><h3>Early Access features</h3><p>Separate day-one systems from planned-later systems.</p></a>
+        <a class="guide-card" href="paramaker-guide"><span class="card-code">GD-02</span><h3>Paramaker guide</h3><p>Understand the character creator without guessing beyond sources.</p></a>
+        <a class="guide-card" href="building-basics"><span class="card-code">GD-03</span><h3>Building basics</h3><p>Start with walls, flexible placement, and build-mode vocabulary.</p></a>
+        <a class="guide-card" href="aging-too-fast"><span class="card-code">GD-04</span><h3>Paralives aging too fast</h3><p>A representative issue guide with community-tier notes labeled carefully.</p></a>
+        <a class="guide-card" href="system-requirements"><span class="card-code">GD-01</span><h3>System requirements</h3><p>Check official PC requirements before installing.</p></a>
       </div>
-      <a class="section-link" href="guides">View all guides →</a>
     </section>
 
-    <section class="section-block" id="updates" aria-labelledby="updates-title">
+    <section class="section-block plain-section" aria-labelledby="traits-title">
+      <h2 id="traits-title">Traits database preview</h2>
+      <p class="preview-copy">The current traits page is a narrative overview, not a row-level trait table. A proper database lands only when verified in-build trait data is available.</p>
+      <a class="section-link" href="traits-guide">Open traits overview →</a>
+    </section>
+
+    <section class="section-block plain-section" aria-labelledby="houses-title">
+      <h2 id="houses-title">House design inspiration</h2>
+      <p class="preview-copy">The Houses route is the place for build inspiration and future house-plan browsing. For now, it keeps the category visible while verified build content catches up.</p>
+      <a class="section-link" href="houses">Browse houses →</a>
+    </section>
+
+    <section class="section-block plain-section" aria-labelledby="mods-title">
+      <h2 id="mods-title">Mods on Steam Workshop</h2>
+      <p class="preview-copy"><span translate="no">Paralives</span> uses <span translate="no">Steam Workshop</span> as the mod route. This site explains the setup and safety basics, but it does not publish subjective mod rankings or "best mod" lists.</p>
+      <a class="section-link" href="mods">Open the mods guide →</a>
+    </section>
+
+    <section class="section-block plain-section" aria-labelledby="trouble-title">
+      <h2 id="trouble-title">Troubleshooting &amp; known issues</h2>
+      <p class="preview-copy">Early Access bugs need careful routing: verify hardware first, separate community workarounds from official statements, and use the troubleshooting hub for issue pages such as <a href="aging-too-fast">Paralives aging too fast</a>.</p>
+      <a class="section-link" href="troubleshooting">Open troubleshooting →</a>
+    </section>
+
+    <section class="section-block" aria-labelledby="faq-title">
       <div class="section-head">
-        <h2 id="updates-title">Updates</h2>
-        <p>Phase 1 starts small on purpose: a stable routing layer first, then verified depth.</p>
+        <h2 id="faq-title">Frequently asked questions</h2>
+        <p>These answers match the FAQ page wording in the homepage JSON-LD block.</p>
       </div>
-      <div class="updates-list">
-        <p>2026-05-29 — New guide: Color wheel &amp; pattern system → <a href="/color-wheel.html">/color-wheel.html</a>.</p>
-        <p>2026-05-29 — New: Patch notes archive → <a href="/patch-notes.html">/patch-notes.html</a>.</p>
-        <p>2026-05-29 — New: Steam reviews snapshot → <a href="/steam-reviews.html">/steam-reviews.html</a>.</p>
-        <p>2026-05-29 — Added a <a href="troubleshooting">troubleshooting hub</a> for known issues, official reporting links, and future fix guides.</p>
-        <p>2026-05-27 — Added a dedicated <a href="updates">Updates page</a> that separates official Paralives source links from fan-site change notes.</p>
-        <p>2026-05-27 — Added <a href="is-paralives-worth-it">an honest Early Access verdict page</a> to help readers decide whether the current build is worth buying now or waiting on.</p>
-        <p>2026-05-27 — Added a guide to separate official day-one Early Access features from systems Paralives says are planned to arrive later, including live mode, build mode, and <span translate="no">Paramaker</span>.</p>
-        <p>2026-05-27 — Added a troubleshooting guide for <span translate="no">Paralives</span> aging too fast, framing the current <span translate="no">Storyteller</span>, <span translate="no">EDITCHARACTER</span>, and <span translate="no">SETAGE</span> notes as community-reported rather than official.</p>
+      <div class="faq-grid">
+        <article class="qa-item"><h3>Is Paralives released?</h3><p>Yes. The official Paralives FAQ says Paralives released in Early Access on May 25, 2026.</p></article>
+        <article class="qa-item"><h3>Where can I buy Paralives?</h3><p>The official FAQ says Paralives is available on Steam for PC and Mac.</p></article>
+        <article class="qa-item"><h3>Is Paralives multiplayer?</h3><p>No. The official FAQ presents Paralives as a single-player game.</p></article>
+        <article class="qa-item"><h3>Does Paralives have mods?</h3><p>Yes. Paralives has a Steam Workshop hub, and the site's mods guide explains the current Workshop-based setup.</p></article>
+        <article class="qa-item wide-card"><h3>Where should I start if I hit a bug?</h3><p>Start with the site's troubleshooting hub, then use official links such as the Paralives FAQ, Paralives development page, and relevant Steam pages.</p></article>
       </div>
-      <a class="section-link" href="updates">View all updates →</a>
+      <a class="section-link" href="faq">All questions →</a>
+    </section>
+
+    <section class="section-block" aria-labelledby="links-title">
+      <div class="section-head">
+        <h2 id="links-title">Community &amp; official links</h2>
+        <p>Keep the source chain tight: official channels first, community leads only after they can be verified.</p>
+      </div>
+      <div class="source-grid">
+        <a class="source-card" href="https://paralives.com/"><span class="source-label">Official site</span><h3>paralives.com</h3><p>Studio pages, development status, FAQ, and news.</p></a>
+        <a class="source-card" href="https://store.steampowered.com/app/1118520/Paralives/"><span class="source-label">Store</span><h3>Steam store page</h3><p>Purchase route, platform notes, and store-facing details.</p></a>
+        <a class="source-card" href="https://steamcommunity.com/app/1118520"><span class="source-label">Steam community</span><h3>Steam Community hub</h3><p>Official Steam community surface for the app.</p></a>
+      </div>
+    </section>
+
+    <section class="section-block plain-section" aria-labelledby="about-title">
+      <h2 id="about-title">About this site</h2>
+      <p class="preview-copy"><span translate="no">Paralives Guide</span> is a fan-run, unofficial resource. It is built to keep official facts, community leads, and editorial advice clearly separated.</p>
+      <a class="section-link" href="about">Read about this site →</a>
     </section>
   </main>
 
