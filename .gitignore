@@ -12,3 +12,4 @@ briefs/
 .wrangler/
 .translate-cache/
 .source-monitor-cache/
+.workshop-cache/

@@ -441,8 +441,6 @@
       <p><span translate="no">Paralives</span> mods are already part of the Early Access conversation because the game has a <span translate="no">Steam Workshop</span> hub. Early Access began on May 25, 2026, so the mod scene is still new and can change quickly.</p>
       <p>This page is descriptive only. It explains how <span translate="no">Steam Workshop</span> subscription works, how to disable or remove items safely, and how this site handles subscriber-count snapshots without editorial labels or curated picks.</p>
 
-      <div class="note"><b>Status:</b> Workshop data could not be fetched during this implementation because the <span translate="no">Steam Workshop</span> request did not return in time. The snapshot section below links the hub without inventing rows.</div>
-
       <nav class="toc">
         <h2>On this page</h2>
         <ol>
@@ -487,9 +485,29 @@
       </ol>
 
       <h2 class="sec" id="snapshot">Most-subscribed mods on Steam Workshop right now</h2>
-      <div class="note">Data snapshot pending &mdash; Workshop hub link below.</div>
-      <p>This site has not personally tested these mods. Subscriber count reflects popularity, not endorsement. Read each mod's Workshop comments and last-updated date before subscribing.</p>
-      <p><a href="https://steamcommunity.com/app/1118520/workshop/"><span translate="no">Open the Paralives Steam Workshop hub</span></a> and sort by Most Subscribed to inspect the current public list directly.</p>
+      <!-- workshop-snapshot:auto-start -->
+      <p>This snapshot is ordered strictly by <span translate="no">Steam</span>'s own subscriber count. Subscriber count is a popularity signal on <span translate="no">Steam Workshop</span>, not a recommendation, quality ranking, or endorsement from this site.</p>
+      <p class="snapshot-date">Snapshot as of 2026-06-03. Refresh manually with <code>python3 scripts/workshop-snapshot.py</code>.</p>
+      <div class="factbox workshop-snapshot">
+        <h3>Most-subscribed public Workshop items</h3>
+        <table>
+          <tr><th>Mod title</th><th>Subscribers</th><th>Tags</th><th>Updated</th><th>Link</th></tr>
+          <tr><td><span translate="no">Sensible Camera Control</span></td><td>113,930</td><td><span translate="no">Modpacks</span></td><td>2026-05-25</td><td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3732825585"><span translate="no">View on Steam Workshop</span></a></td></tr>
+          <tr><td><span translate="no">Favorite Inks by myshunosun</span></td><td>78,581</td><td><span translate="no">Modpacks</span></td><td>2026-05-30</td><td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3732120005"><span translate="no">View on Steam Workshop</span></a></td></tr>
+          <tr><td><span translate="no">Invite to Current Lot</span></td><td>72,656</td><td><span translate="no">Modpacks</span></td><td>2026-05-29</td><td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3732831966"><span translate="no">View on Steam Workshop</span></a></td></tr>
+          <tr><td><span translate="no">Stylized Lash Pack</span></td><td>68,830</td><td><span translate="no">Modpacks</span></td><td>2026-05-28</td><td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3733469159"><span translate="no">View on Steam Workshop</span></a></td></tr>
+          <tr><td><span translate="no">Crystal Clear Map View</span></td><td>68,281</td><td><span translate="no">Modpacks</span></td><td>2026-05-30</td><td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3732855494"><span translate="no">View on Steam Workshop</span></a></td></tr>
+          <tr><td><span translate="no">Kidi Furniture Items</span></td><td>64,816</td><td><span translate="no">Modpacks</span></td><td>2026-02-27</td><td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3674608388"><span translate="no">View on Steam Workshop</span></a></td></tr>
+          <tr><td><span translate="no">Zoom out more!</span></td><td>63,389</td><td><span translate="no">Modpacks</span></td><td>2026-05-30</td><td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3732874872"><span translate="no">View on Steam Workshop</span></a></td></tr>
+          <tr><td><span translate="no">Display Townies on Map</span></td><td>58,180</td><td><span translate="no">Modpacks</span></td><td>2026-05-25</td><td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3732799847"><span translate="no">View on Steam Workshop</span></a></td></tr>
+          <tr><td><span translate="no">Realism Lash Pack</span></td><td>55,367</td><td><span translate="no">Modpacks</span></td><td>2026-05-29</td><td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3733560132"><span translate="no">View on Steam Workshop</span></a></td></tr>
+          <tr><td><span translate="no">Isego&#x27;s hair</span></td><td>53,366</td><td><span translate="no">Modpacks</span></td><td>2026-05-31</td><td><a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3733214353"><span translate="no">View on Steam Workshop</span></a></td></tr>
+        </table>
+      </div>
+      <p>The table is generated from public <span translate="no">Steam Workshop</span> data and intentionally omits author names and preview images. Item pages show those details on <span translate="no">Steam</span>.</p>
+      <p>Refresh runbook: run <code>python3 scripts/workshop-snapshot.py</code> after checking that the public Workshop page is reachable. The command fetches public item IDs, writes a dated JSON file under <code>.workshop-cache/</code>, and rewrites only this marker block.</p>
+      <!-- workshop-snapshot:auto-end -->
+
 
       <h2 class="sec" id="risks">Risks of installing mods during Early Access</h2>
       <p>Early Access builds change frequently. Workshop items can lag behind game patches, behave differently after an update, or stop working if an author removes or changes them.</p>
