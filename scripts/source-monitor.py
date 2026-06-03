@@ -221,10 +221,9 @@ def extract_version(title: str, excerpt: str, *, source_name: str) -> str | None
     match = EA_VERSION_RE.search(combined)
     if match:
         return match.group(1)
-    if source_name == "steam_news":
-        bare_match = BARE_VERSION_RE.search(title)
-        if bare_match:
-            return bare_match.group(1)
+    bare_match = BARE_VERSION_RE.search(title)
+    if bare_match:
+        return bare_match.group(1)
     return None
 
 
