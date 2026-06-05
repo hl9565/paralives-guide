@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- maintenance-tier: first-party utility -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Tree Planner | Paralives Guide</title>
+  <meta name="description" content="Use this no-backend Family Tree Planner to sketch Para names, life-stage labels, notes, partner links, and parent-child relationships before you build a household in Paramaker.">
+  <link rel="canonical" href="https://paralivesguide.help/family-tree-planner">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Family Tree Planner",
+      "applicationCategory": "LifestyleApplication",
+      "operatingSystem": "Any",
+      "url": "https://paralivesguide.help/family-tree-planner",
+      "description": "A client-side family tree planning utility for user-entered Para names and relationships."
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-BZ21KDKP4C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-BZ21KDKP4C');
+  </script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4624485020338199" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --cream: #fdf6ec;
+      --pink: #f4c8c0;
+      --pink-deep: #e89a8e;
+      --sage: #b8c9a7;
+      --sage-deep: #7a9269;
+      --ink: #3d3530;
+      --ink-soft: #6b5d54;
+      --line: #ead9c8;
+      --shadow: 0 4px 16px rgba(61, 53, 48, 0.06);
+      --shadow-hover: 0 8px 28px rgba(61, 53, 48, 0.12);
+      --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+      --font-body: "Inter", -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--cream); }
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; color: var(--ink); }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; color: inherit; }
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(253, 246, 236, 0.94);
+      backdrop-filter: blur(12px);
+    }
+    .icon{display:inline-block;width:1em;height:1em;vertical-align:-0.15em;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;fill:none;flex:none}
+    .topbar-inner, .wrap, .site-footer-inner {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 18px 0;
+    }
+    .brand {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+    .brand span { color: var(--pink-deep); }
+    .topnav { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; justify-content: flex-end; }
+    .topnav a { position: relative; font-size: 0.96rem; color: var(--ink-soft); }
+    .topnav a[aria-current]::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -3px;
+      height: 2px;
+      background: var(--pink-deep);
+      border-radius: 999px;
+    }
+    .wrap { padding: 56px 0 112px; }
+    .crumb { margin-bottom: 18px; color: var(--ink-soft); font-size: 0.94rem; }
+    article {
+      padding: 34px clamp(22px, 4vw, 40px);
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255, 251, 246, 0.88);
+      box-shadow: var(--shadow);
+    }
+    .kicker {
+      margin: 0 0 12px;
+      color: var(--pink-deep);
+      font-family: var(--font-mono);
+      font-size: 0.84rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    h1 { margin: 0 0 12px; font-size: clamp(2.4rem, 6vw, 4rem); line-height: 1.02; }
+    .article-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin: -2px 0 24px;
+      color: var(--ink-soft);
+      font-family: var(--font-mono);
+      font-size: 0.92rem;
+    }
+    .article-meta span { display: inline-flex; align-items: center; gap: 6px; }
+    .article-meta span + span::before { content: "\00b7"; margin-right: 8px; color: var(--line); }
+    article p { margin: 0 0 16px; }
+    .hero-note, .planner-panel, .tree-canvas, .related a {
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: rgba(255, 251, 246, 0.92);
+      box-shadow: var(--shadow);
+    }
+    .hero-note {
+      margin: 26px 0;
+      padding: 20px 22px;
+      background: linear-gradient(135deg, rgba(244, 200, 192, 0.2), rgba(184, 201, 167, 0.2));
+    }
+    .tool-grid {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.65fr);
+      gap: 18px;
+      margin-top: 28px;
+    }
+    .planner-panel { padding: 20px; }
+    .planner-panel + .planner-panel { margin-top: 18px; }
+    .planner-panel h2, .tree-canvas h2, .related h2 {
+      margin: 0 0 14px;
+      font-size: clamp(1.35rem, 3vw, 1.9rem);
+    }
+    .field-grid { display: grid; gap: 12px; }
+    label { display: grid; gap: 6px; color: var(--ink-soft); font-size: 0.92rem; }
+    input, select, textarea {
+      width: 100%;
+      min-width: 0;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(253, 246, 236, 0.92);
+      padding: 10px 12px;
+    }
+    textarea { min-height: 82px; resize: vertical; }
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(253, 246, 236, 0.96);
+      color: var(--ink);
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-hover); }
+    .btn.primary { border-color: rgba(232, 154, 142, 0.45); background: var(--pink); }
+    .btn.danger { color: #8b3c32; }
+    .small-note { margin: 10px 0 0; color: var(--ink-soft); font-size: 0.88rem; }
+    .tree-canvas {
+      position: relative;
+      min-height: 520px;
+      overflow: auto;
+      padding: 20px;
+    }
+    .tree-stage {
+      position: relative;
+      min-width: 680px;
+      min-height: 430px;
+      padding: 18px 18px 32px;
+    }
+    .edge-layer {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: visible;
+    }
+    .generation {
+      position: relative;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 22px;
+      min-height: 128px;
+      margin: 0 auto 34px;
+      z-index: 1;
+    }
+    .person-group {
+      display: inline-flex;
+      align-items: stretch;
+      gap: 10px;
+      max-width: 420px;
+    }
+    .para-card {
+      width: 178px;
+      min-height: 112px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--sage-deep);
+      border-radius: 18px;
+      background: rgba(253, 246, 236, 0.96);
+      box-shadow: var(--shadow);
+    }
+    .para-card h3 {
+      margin: 0 0 4px;
+      font-size: 1.12rem;
+      line-height: 1.15;
+      overflow-wrap: anywhere;
+    }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 3px 8px;
+      color: var(--ink-soft);
+      font-size: 0.76rem;
+      line-height: 1.4;
+    }
+    .card-note { margin-top: 8px; color: var(--ink-soft); font-size: 0.84rem; line-height: 1.45; overflow-wrap: anywhere; }
+    .empty-state {
+      display: grid;
+      place-items: center;
+      min-height: 330px;
+      padding: 28px;
+      border: 1px dashed var(--line);
+      border-radius: 20px;
+      color: var(--ink-soft);
+      text-align: center;
+    }
+    .list-stack { display: grid; gap: 10px; margin-top: 14px; }
+    .list-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 10px 12px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(253, 246, 236, 0.72);
+      color: var(--ink-soft);
+      font-size: 0.9rem;
+    }
+    .list-row strong { color: var(--ink); }
+    .list-row button {
+      border: 0;
+      background: transparent;
+      color: #8b3c32;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .status-line { min-height: 1.5rem; margin-top: 12px; color: var(--sage-deep); font-size: 0.92rem; }
+    .related { max-width: 980px; margin-top: 42px; }
+    .related-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 16px;
+    }
+    .related-grid a {
+      grid-column: span 4;
+      display: block;
+      padding: 18px 20px;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+    .related-grid a:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); }
+    .related-grid .t {
+      margin-bottom: 6px;
+      color: var(--ink-soft);
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .related-grid .h { font-family: var(--font-display); font-size: 1.1rem; }
+    .site-footer { border-top: 1px solid var(--line); padding: 28px 0 44px; }
+    .site-footer .brand { margin-bottom: 10px; font-size: 1rem; }
+    .disclaimer { margin: 0; max-width: 54rem; color: var(--ink-soft); font-size: 0.92rem; }
+    .lang-switcher { min-height: 1.5rem; margin-top: 18px; }
+    @media (max-width: 860px) {
+      .tool-grid { grid-template-columns: 1fr; }
+      .tree-stage { min-width: 540px; }
+      .related-grid a { grid-column: span 12; }
+    }
+    @media (max-width: 640px) {
+      .topbar-inner { align-items: flex-start; flex-direction: column; padding: 16px 0; }
+      .topnav { justify-content: flex-start; gap: 14px 18px; }
+      .wrap, .topbar-inner, .site-footer-inner { width: min(1120px, calc(100% - 24px)); }
+      article { padding: 26px 18px; border-radius: 22px; }
+      .tree-canvas { padding: 14px; }
+      .tree-stage { min-width: 420px; }
+      .person-group { flex-direction: column; }
+      .para-card { width: 156px; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-guides" viewBox="0 0 24 24"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4H20v14.5A1.5 1.5 0 0 0 18.5 17H6.5A2.5 2.5 0 0 0 4 19.5z"/><path d="M12 4v13"/></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="7" ry="3"/><path d="M5 5v6c0 1.7 3.1 3 7 3s7-1.3 7-3V5"/><path d="M5 11v6c0 1.7 3.1 3 7 3s7-1.3 7-3v-6"/></symbol>
+    <symbol id="i-tools" viewBox="0 0 24 24"><circle cx="12" cy="12" r="7"/><path d="M12 2v4"/><path d="M12 18v4"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m12 12 4-4"/></symbol>
+    <symbol id="i-houses" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5"/><path d="M6 9.5V20h12V9.5"/><path d="M10 20v-5h4v5"/></symbol>
+    <symbol id="i-updates" viewBox="0 0 24 24"><path d="M12 4a5 5 0 0 0-5 5v2.5c0 .8-.3 1.6-.9 2.1L4.5 15h15l-1.6-1.4a3 3 0 0 1-.9-2.1V9a5 5 0 0 0-5-5"/><path d="M9.5 18a2.5 2.5 0 0 0 5 0"/></symbol>
+    <symbol id="i-about" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 10v6"/><path d="M12 7h.01"/></symbol>
+    <symbol id="i-paramaker" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="10" r=".5"/><circle cx="15" cy="10" r=".5"/><path d="M8.5 16a5 5 0 0 1 7 0"/><path d="M12 13a3 3 0 0 0 3-3 3 3 0 1 0-6 0 3 3 0 0 0 3 3Z"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5"/><path d="M6 9.5V20h12V9.5"/></symbol>
+  </svg>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand"><a href="/">Paralives<span> </span>Guide</a></div>
+      <nav class="topnav" aria-label="Primary">
+        <a href="guides"><svg class="icon" aria-hidden="true"><use href="#i-guides"/></svg> Guides</a>
+        <a href="database"><svg class="icon" aria-hidden="true"><use href="#i-database"/></svg> Database</a>
+        <a href="tools" aria-current="page"><svg class="icon" aria-hidden="true"><use href="#i-tools"/></svg> Tools</a>
+        <a href="houses"><svg class="icon" aria-hidden="true"><use href="#i-houses"/></svg> Houses</a>
+        <a href="updates"><svg class="icon" aria-hidden="true"><use href="#i-updates"/></svg> Updates</a>
+        <a href="about"><svg class="icon" aria-hidden="true"><use href="#i-about"/></svg> About</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="crumb"><a href="/">Home</a> &nbsp;/&nbsp; <a href="tools">Tools</a> &nbsp;/&nbsp; Family Tree Planner</div>
+    <article>
+      <p class="kicker">TL-01</p>
+      <h1>Family Tree Planner</h1>
+      <div class="article-meta">
+        <span>Updated: 2026-06-05</span>
+        <span>Game Version: EA 0.1</span>
+        <span>Tools</span>
+      </div>
+
+      <p>Sketch a household before you build it in <span translate="no">Paramaker</span>. Add each <span translate="no">Para</span>, set partner or parent-child links, and keep notes for the story you want to remember.</p>
+
+      <div class="hero-note">
+        <p>This is a generic planner, not a rules page. The names, labels, notes, and relationships below come from you, stay in this browser, and do not describe any specific relationship limits or hidden game math.</p>
+      </div>
+
+      <div class="tool-grid" id="planner">
+        <div>
+          <section class="planner-panel" aria-labelledby="add-title">
+            <h2 id="add-title">Add Para</h2>
+            <form id="person-form">
+              <div class="field-grid">
+                <label>Name
+                  <input id="person-name" name="name" required maxlength="48" autocomplete="off" placeholder="Name">
+                </label>
+                <label>Life-stage label
+                  <select id="person-stage" name="stage">
+                    <option value="">No label</option>
+                    <option>Baby</option>
+                    <option>Child</option>
+                    <option>Teen</option>
+                    <option>Adult</option>
+                    <option>Elder</option>
+                  </select>
+                </label>
+                <label>Note
+                  <textarea id="person-note" name="note" maxlength="160" placeholder="Optional planning note"></textarea>
+                </label>
+              </div>
+              <div class="button-row">
+                <button class="btn primary" type="submit">Add Para</button>
+              </div>
+              <p class="small-note">Life-stage labels are only planner labels.</p>
+            </form>
+          </section>
+
+          <section class="planner-panel" aria-labelledby="relationship-title">
+            <h2 id="relationship-title">Relationships</h2>
+            <form id="relationship-form">
+              <div class="field-grid">
+                <label>Relationship
+                  <select id="relationship-type">
+                    <option value="partner">Partner</option>
+                    <option value="parent">Parent to child</option>
+                  </select>
+                </label>
+                <label id="person-a-label">First Para
+                  <select id="person-a"></select>
+                </label>
+                <label id="person-b-label">Second Para
+                  <select id="person-b"></select>
+                </label>
+              </div>
+              <div class="button-row">
+                <button class="btn primary" type="submit">Add relationship</button>
+              </div>
+            </form>
+            <div class="list-stack" id="relationship-list" aria-live="polite"></div>
+          </section>
+
+          <section class="planner-panel" aria-labelledby="save-title">
+            <h2 id="save-title">Save and export</h2>
+            <p class="small-note">The planner auto-saves to localStorage on this device.</p>
+            <div class="button-row">
+              <button class="btn" type="button" id="copy-json">Copy JSON</button>
+              <button class="btn" type="button" id="download-json">Download JSON</button>
+              <button class="btn danger" type="button" id="reset-tree">Clear / Reset</button>
+            </div>
+            <div class="status-line" id="status-line" role="status" aria-live="polite"></div>
+          </section>
+        </div>
+
+        <section class="tree-canvas" aria-labelledby="tree-title">
+          <h2 id="tree-title">Household layout</h2>
+          <div class="tree-stage" id="tree-stage"></div>
+        </section>
+      </div>
+    </article>
+
+    <section class="related" id="related">
+      <h2>Next routes</h2>
+      <div class="related-grid">
+        <a href="paramaker-guide"><div class="t"><svg class="icon" aria-hidden="true"><use href="#i-paramaker"/></svg> GD-02</div><div class="h">Paramaker guide</div></a>
+        <a href="/"><div class="t"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg> Home</div><div class="h">Back to homepage</div></a>
+        <a href="tools"><div class="t"><svg class="icon" aria-hidden="true"><use href="#i-tools"/></svg> Resources</div><div class="h">Tools &amp; resources</div></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="brand">Paralives<span> </span>Guide</div>
+      <p class="disclaimer">
+        Paralives is a trademark of Paralives Studio. This is an unaffiliated fan resource;
+        nothing here is endorsed by or affiliated with Paralives Studio.
+      </p>
+      <div class="lang-switcher" aria-hidden="true"></div>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      var STORAGE_KEY = "paralives-family-tree-planner-v1";
+      var state = { people: [], partners: [], parents: [] };
+      var els = {
+        form: document.getElementById("person-form"),
+        name: document.getElementById("person-name"),
+        stage: document.getElementById("person-stage"),
+        note: document.getElementById("person-note"),
+        relForm: document.getElementById("relationship-form"),
+        relType: document.getElementById("relationship-type"),
+        personA: document.getElementById("person-a"),
+        personB: document.getElementById("person-b"),
+        personALabel: document.getElementById("person-a-label"),
+        personBLabel: document.getElementById("person-b-label"),
+        relList: document.getElementById("relationship-list"),
+        tree: document.getElementById("tree-stage"),
+        status: document.getElementById("status-line"),
+        copy: document.getElementById("copy-json"),
+        download: document.getElementById("download-json"),
+        reset: document.getElementById("reset-tree")
+      };
+
+      function uid() {
+        return "p-" + Date.now().toString(36) + "-" + Math.random().toString(36).slice(2, 7);
+      }
+
+      function load() {
+        try {
+          var saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+          if (saved && Array.isArray(saved.people)) {
+            state.people = saved.people;
+            state.partners = Array.isArray(saved.partners) ? saved.partners : [];
+            state.parents = Array.isArray(saved.parents) ? saved.parents : [];
+          }
+        } catch (error) {
+          setStatus("Saved planner data could not be read.");
+        }
+      }
+
+      function save() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      }
+
+      function setStatus(message) {
+        els.status.textContent = message;
+        if (message) {
+          window.clearTimeout(setStatus.timer);
+          setStatus.timer = window.setTimeout(function () { els.status.textContent = ""; }, 3200);
+        }
+      }
+
+      function findPerson(id) {
+        return state.people.find(function (person) { return person.id === id; });
+      }
+
+      function personName(id) {
+        var person = findPerson(id);
+        return person ? person.name : "Unknown Para";
+      }
+
+      function escapeText(value) {
+        return String(value || "").replace(/[&<>"']/g, function (char) {
+          return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;" }[char];
+        });
+      }
+
+      function pairKey(a, b) {
+        return [a, b].sort().join("|");
+      }
+
+      function renderSelects() {
+        var options = state.people.map(function (person) {
+          return '<option value="' + person.id + '">' + escapeText(person.name) + "</option>";
+        }).join("");
+        els.personA.innerHTML = options;
+        els.personB.innerHTML = options;
+        var parentMode = els.relType.value === "parent";
+        els.personALabel.firstChild.nodeValue = parentMode ? "Parent" : "First Para";
+        els.personBLabel.firstChild.nodeValue = parentMode ? "Child" : "Second Para";
+        els.relForm.querySelector("button").disabled = state.people.length < 2;
+      }
+
+      function generationMap() {
+        var levels = {};
+        state.people.forEach(function (person) { levels[person.id] = 0; });
+        for (var pass = 0; pass < state.people.length; pass += 1) {
+          state.parents.forEach(function (link) {
+            if (levels[link.childId] <= levels[link.parentId]) {
+              levels[link.childId] = levels[link.parentId] + 1;
+            }
+          });
+        }
+        return levels;
+      }
+
+      function siblingNames(id) {
+        var parents = state.parents.filter(function (link) { return link.childId === id; }).map(function (link) { return link.parentId; });
+        if (!parents.length) return [];
+        var names = state.people
+          .filter(function (person) {
+            return person.id !== id && state.parents.some(function (link) {
+              return link.childId === person.id && parents.indexOf(link.parentId) !== -1;
+            });
+          })
+          .map(function (person) { return person.name; });
+        return Array.from(new Set(names));
+      }
+
+      function groupedByGeneration() {
+        var levels = generationMap();
+        var used = {};
+        var partnerKeys = new Set(state.partners.map(function (link) { return pairKey(link.aId, link.bId); }));
+        var groupsByLevel = {};
+
+        state.people.forEach(function (person) {
+          if (used[person.id]) return;
+          var partnerLink = state.partners.find(function (link) {
+            return (link.aId === person.id || link.bId === person.id) && partnerKeys.has(pairKey(link.aId, link.bId));
+          });
+          var group = [person.id];
+          if (partnerLink) {
+            var partnerId = partnerLink.aId === person.id ? partnerLink.bId : partnerLink.aId;
+            if (!used[partnerId] && findPerson(partnerId)) group.push(partnerId);
+          }
+          group.forEach(function (id) { used[id] = true; });
+          var level = Math.min.apply(null, group.map(function (id) { return levels[id] || 0; }));
+          groupsByLevel[level] = groupsByLevel[level] || [];
+          groupsByLevel[level].push(group);
+        });
+        return Object.keys(groupsByLevel).sort(function (a, b) { return Number(a) - Number(b); }).map(function (level) {
+          return groupsByLevel[level];
+        });
+      }
+
+      function renderTree() {
+        if (!state.people.length) {
+          els.tree.innerHTML = '<div class="empty-state">Add a Para to start the planner.</div>';
+          return;
+        }
+        var levels = groupedByGeneration();
+        var html = '<svg class="edge-layer" aria-hidden="true"></svg>';
+        html += levels.map(function (groups) {
+          return '<div class="generation">' + groups.map(function (group) {
+            return '<div class="person-group">' + group.map(cardHtml).join("") + "</div>";
+          }).join("") + "</div>";
+        }).join("");
+        els.tree.innerHTML = html;
+        window.requestAnimationFrame(drawEdges);
+      }
+
+      function cardHtml(id) {
+        var person = findPerson(id);
+        var siblings = siblingNames(id);
+        var chips = [];
+        if (person.stage) chips.push(person.stage);
+        if (siblings.length) chips.push("Sibling: " + siblings.join(", "));
+        return '<div class="para-card" data-id="' + id + '">' +
+          "<h3>" + escapeText(person.name) + "</h3>" +
+          (chips.length ? '<div class="chip-row">' + chips.map(function (chip) { return '<span class="chip">' + escapeText(chip) + "</span>"; }).join("") + "</div>" : "") +
+          (person.note ? '<div class="card-note">' + escapeText(person.note) + "</div>" : "") +
+          "</div>";
+      }
+
+      function drawEdges() {
+        var svg = els.tree.querySelector(".edge-layer");
+        if (!svg) return;
+        var treeBox = els.tree.getBoundingClientRect();
+        svg.setAttribute("viewBox", "0 0 " + els.tree.scrollWidth + " " + els.tree.scrollHeight);
+        svg.setAttribute("width", els.tree.scrollWidth);
+        svg.setAttribute("height", els.tree.scrollHeight);
+        var lines = [];
+
+        function center(card) {
+          var box = card.getBoundingClientRect();
+          return {
+            x: box.left - treeBox.left + els.tree.scrollLeft + box.width / 2,
+            y: box.top - treeBox.top + els.tree.scrollTop + box.height / 2,
+            top: box.top - treeBox.top + els.tree.scrollTop,
+            bottom: box.bottom - treeBox.top + els.tree.scrollTop
+          };
+        }
+
+        state.partners.forEach(function (link) {
+          var a = els.tree.querySelector('[data-id="' + link.aId + '"]');
+          var b = els.tree.querySelector('[data-id="' + link.bId + '"]');
+          if (!a || !b) return;
+          var ca = center(a);
+          var cb = center(b);
+          lines.push('<path d="M ' + ca.x + ' ' + ca.y + ' L ' + cb.x + ' ' + cb.y + '" stroke="#e89a8e" stroke-width="3" stroke-linecap="round" fill="none"/>');
+        });
+
+        state.parents.forEach(function (link) {
+          var parent = els.tree.querySelector('[data-id="' + link.parentId + '"]');
+          var child = els.tree.querySelector('[data-id="' + link.childId + '"]');
+          if (!parent || !child) return;
+          var cp = center(parent);
+          var cc = center(child);
+          var mid = cp.bottom + Math.max(18, (cc.top - cp.bottom) / 2);
+          lines.push('<path d="M ' + cp.x + ' ' + cp.bottom + ' C ' + cp.x + ' ' + mid + ', ' + cc.x + ' ' + mid + ', ' + cc.x + ' ' + cc.top + '" stroke="#7a9269" stroke-width="2.5" stroke-linecap="round" fill="none"/>');
+        });
+        svg.innerHTML = lines.join("");
+      }
+
+      function renderRelationships() {
+        var rows = [];
+        state.partners.forEach(function (link, index) {
+          rows.push('<div class="list-row"><span><strong>Partner</strong>: ' + escapeText(personName(link.aId)) + ' + ' + escapeText(personName(link.bId)) + '</span><button type="button" data-remove="partner" data-index="' + index + '">Remove</button></div>');
+        });
+        state.parents.forEach(function (link, index) {
+          rows.push('<div class="list-row"><span><strong>Parent-child</strong>: ' + escapeText(personName(link.parentId)) + ' to ' + escapeText(personName(link.childId)) + '</span><button type="button" data-remove="parent" data-index="' + index + '">Remove</button></div>');
+        });
+        els.relList.innerHTML = rows.join("") || '<p class="small-note">Add two Paras before wiring relationships.</p>';
+      }
+
+      function render(shouldSave) {
+        renderSelects();
+        renderRelationships();
+        renderTree();
+        if (shouldSave !== false) save();
+      }
+
+      els.form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var name = els.name.value.trim();
+        if (!name) return;
+        state.people.push({ id: uid(), name: name, stage: els.stage.value, note: els.note.value.trim() });
+        els.form.reset();
+        setStatus("Para added.");
+        render();
+      });
+
+      els.relType.addEventListener("change", renderSelects);
+
+      els.relForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var a = els.personA.value;
+        var b = els.personB.value;
+        if (!a || !b || a === b) {
+          setStatus("Choose two different Paras.");
+          return;
+        }
+        if (els.relType.value === "partner") {
+          var key = pairKey(a, b);
+          if (!state.partners.some(function (link) { return pairKey(link.aId, link.bId) === key; })) {
+            state.partners.push({ aId: a, bId: b });
+          }
+        } else if (!state.parents.some(function (link) { return link.parentId === a && link.childId === b; })) {
+          state.parents.push({ parentId: a, childId: b });
+        }
+        setStatus("Relationship added.");
+        render();
+      });
+
+      els.relList.addEventListener("click", function (event) {
+        var button = event.target.closest("button[data-remove]");
+        if (!button) return;
+        var list = button.dataset.remove === "partner" ? state.partners : state.parents;
+        list.splice(Number(button.dataset.index), 1);
+        setStatus("Relationship removed.");
+        render();
+      });
+
+      els.copy.addEventListener("click", function () {
+        var text = JSON.stringify(state, null, 2);
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { setStatus("JSON copied."); }, function () { setStatus("Copy failed; use Download JSON instead."); });
+        } else {
+          setStatus("Copy is not available in this browser; use Download JSON.");
+        }
+      });
+
+      els.download.addEventListener("click", function () {
+        var blob = new Blob([JSON.stringify(state, null, 2)], { type: "application/json" });
+        var url = URL.createObjectURL(blob);
+        var link = document.createElement("a");
+        link.href = url;
+        link.download = "family-tree-planner.json";
+        link.click();
+        URL.revokeObjectURL(url);
+        setStatus("JSON downloaded.");
+      });
+
+      els.reset.addEventListener("click", function () {
+        if (!window.confirm("Clear this family tree planner from this browser?")) return;
+        state = { people: [], partners: [], parents: [] };
+        localStorage.removeItem(STORAGE_KEY);
+        setStatus("Planner cleared.");
+        render(false);
+      });
+
+      window.addEventListener("resize", function () {
+        window.clearTimeout(drawEdges.timer);
+        drawEdges.timer = window.setTimeout(drawEdges, 120);
+      });
+
+      load();
+      render();
+    }());
+  </script>
+</body>
+</html>
