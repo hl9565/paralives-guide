@@ -13,3 +13,7 @@ briefs/
 .translate-cache/
 .source-monitor-cache/
 .workshop-cache/
+
+.dev.vars*
+!.dev.vars.example
+!.env.example
